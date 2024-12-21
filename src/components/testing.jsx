@@ -2,7 +2,9 @@ import "./testing.css"
 export default function Testing(){
     return (
         <div className="background">
-            testing
+            <button>-</button>
+            <span>0</span>
+            <button>+</button>
         </div>
     )
 }
