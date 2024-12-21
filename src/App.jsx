@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-    <ProductCart name="Laptop" price="$99.99" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fnilsonline.lk%2Flisa-beige-shirt-24000564&psig=AOvVaw0__iY4TN8pRuyTpX9J1QUJ&ust=1734849184444000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKCh2f-euIoDFQAAAAAdAAAAABAE"> 
+    <ProductCart name="Laptop" price="$99.99" src="https://nilsonline.lk/image/cache/catalog/nils/product/24000564/57-612x875.jpg"> 
 
     </ProductCart>
     <ProductCart name="Iphone 16" price="$499"> 
