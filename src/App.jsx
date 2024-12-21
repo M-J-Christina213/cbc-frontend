@@ -11,12 +11,6 @@ function App() {
 
   return (
     <>
-    <ProductCart name="Laptop" price="$99.99" src="https://nilsonline.lk/image/cache/catalog/nils/product/24000564/57-612x875.jpg"> 
-
-    </ProductCart>
-    <ProductCart name="Iphone 16" price="$499"> 
-
-    </ProductCart>
     
     <Testing> </Testing>
     </>
