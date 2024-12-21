@@ -1,4 +1,4 @@
-export default function testing(){
+export default function Testing(){
     return (
         <div>
             testing
