@@ -1,11 +1,11 @@
-export default function ProductCart(){
+export default function ProductCart(props){
     return (
         <div>
             <h1>
-                Product One
+                { props.name}
             </h1>
             <h2>
-                Price: $100
+                Price: {props.price}
             </h2>
             <button>
                 Add to Cart
