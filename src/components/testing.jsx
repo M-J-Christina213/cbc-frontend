@@ -1,7 +1,7 @@
 import "./testing.css"
 export default function Testing(){
     return (
-        <div>
+        <div className="background">
             testing
         </div>
     )
