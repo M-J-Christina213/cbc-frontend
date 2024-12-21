@@ -1,5 +1,6 @@
 .background{
     background-color: aquamarine;
-    width:370px;
+    width:450px;
     height: 290px;
+    border: 1px solid black;
 }
