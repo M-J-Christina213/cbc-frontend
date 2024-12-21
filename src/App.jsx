@@ -10,14 +10,14 @@ function App() {
 
   return (
     <>
-    <ProductCart> 
+    <ProductCart name="Laptop" price="$99.99"> 
 
     </ProductCart>
-    <ProductCart> 
+    <ProductCart name="Iphone 16" price="$499"> 
 
     </ProductCart>
     <UserData> 
-      
+
     </UserData>
       
     </>
