@@ -1,6 +1,7 @@
 export default function ProductCart(props){
     return (
         <div>
+            <img src={props.src} />
             <h1>
                 { props.name}
             </h1>
