@@ -5,7 +5,7 @@ export default function Testing(){
 
     function increment(){
         console.log("incrementing")
-        count = count + 1
+        setCount(count + 1)
     }
     return (
         <div className="background">
