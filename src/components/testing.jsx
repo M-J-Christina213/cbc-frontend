@@ -12,6 +12,11 @@ export default function Testing(){
         console.log("decrementing")
         setCount(count-1)
     }
+
+    function changeName(value){
+        setName(value)
+    }
+    
     return (
         <div className="background">
             <h1>{name}</h1>
