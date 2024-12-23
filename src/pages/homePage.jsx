@@ -6,6 +6,7 @@ export default function Homepage() {
           <h1>Beauty Essentials</h1>
           <p>Your one-stop shop for beauty products</p>
         </header>
+        <Link to="/login"> Login </Link>
         <section className="products">
           <h2>Our Top Picks</h2>
           <div className="product-item">
