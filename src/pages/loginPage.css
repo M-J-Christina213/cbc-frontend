@@ -40,4 +40,8 @@ input[type="password"]:focus {
     outline: none;
 }
 
+.btn-blue{
+    background-color:#007BFF  ;
+}
+
 
