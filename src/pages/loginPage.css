@@ -9,7 +9,7 @@ body {
     margin: 0;
 }
 
-div {
+.container { /* Add a .container class */
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
