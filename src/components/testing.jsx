@@ -14,7 +14,7 @@ export default function Testing(){
     }
     return (
         <div className="background">
-            <button>-</button>
+            <button onClick={decrement}>-</button>
             <span>{count}</span>
             <button onClick={increment}>+</button>
         </div>
