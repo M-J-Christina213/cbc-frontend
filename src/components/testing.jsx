@@ -15,9 +15,9 @@ export default function Testing(){
     return (
         <div className="background">
             <h1>{name}</h1>
-            <button onClick={decrement}>-</button>
+            <button className="val" onClick={decrement}>-</button>
             <span>{count}</span>
-            <button onClick={increment}>+</button>
+            <button className="val" onClick={increment}>+</button>
         </div>
     )
 }
