@@ -2,6 +2,7 @@ import { useState } from "react"
 import "./testing.css"
 export default function Testing(){
     const [count,setCount] = useState(0)
+    const [name, setName] = useState("")
 
     function increment(){
         setCount(count + 1)
