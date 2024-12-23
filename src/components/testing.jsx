@@ -18,7 +18,7 @@ export default function Testing(){
             <button className="val" onClick={decrement}>-</button>
             <span>{count}</span>
             <button className="val" onClick={increment}>+</button>
-        <div>
+        <div className="button-panel">
             <button> Students </button>
             <button> Teachers </button>
             <button> Admins </button>
