@@ -3,13 +3,13 @@ export default function Testing(){
     let count = 0;
 
     function increment(){
-        count = count + 1
+        console.log("incrementing")
     }
     return (
         <div className="background">
             <button>-</button>
-            <span>{count}0</span>
-            <button onClick={}>+</button>
+            <span>{count}</span>
+            <button onClick={increment}>+</button>
         </div>
     )
 }
