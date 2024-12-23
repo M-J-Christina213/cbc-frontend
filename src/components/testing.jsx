@@ -16,7 +16,7 @@ export default function Testing(){
     function changeName(value){
         setName(value)
     }
-    
+
     return (
         <div className="background">
             <h1>{name}</h1>
@@ -24,9 +24,9 @@ export default function Testing(){
             <span>{count}</span>
             <button className="val" onClick={increment}>+</button>
         <div className="button-panel">
-            <button> Students </button>
-            <button> Teachers </button>
-            <button> Admins </button>
+            <button onClick={()=>changeName("Students")}> Students </button>
+            <button onClick={()=>changeName("Teachers")}> Teachers </button>
+            <button onClick={()=>changeName("Admins")}> Admins </button>
         </div>
       </div>
     )
