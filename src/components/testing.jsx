@@ -4,9 +4,8 @@ export default function Testing(){
     const [count,setCount] = useState(0)
 
     function increment(){
-        if (count < 10){
-            setCount(count + 1)
-        }
+        
+        setCount(count + 1)
     }
 
     function decrement(){
