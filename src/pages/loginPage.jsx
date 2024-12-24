@@ -6,7 +6,7 @@ export default function LoginPage(){
             <h1> Login Page </h1>
             <input type="text" placeholder="Enter your username"/>
             <input type="password" placeholder="Enter your password"/>
-            <button className='btn-blue round-corners font-white'> Login </button>
+            <button className=''> Login </button>
             <Link to="/"> Home </Link>
         </div>
     )
