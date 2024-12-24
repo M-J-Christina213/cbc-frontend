@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function SignInPage() {
+export default function SignUpPage() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
