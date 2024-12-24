@@ -18,7 +18,7 @@ function App() {
       <Route path="/" element={<Homepage/>}/>
       <Route path="/login" element={<LoginPage/>}/>
       <Route path='/signup' element={<SignUpPage/>}/>
-      <Route path="/*" element={<h1>404 error </h1>} />
+      <Route path="/*" element={<Homepage/>} />
     </Routes>
     </BrowserRouter>
      
