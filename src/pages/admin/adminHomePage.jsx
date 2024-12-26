@@ -4,6 +4,14 @@ import { FaTachometerAlt, FaBox, FaClipboardList, FaUserAlt, FaCommentDots, FaPe
 export default function AdminHomePage() {
   return (
     <div className="flex items-start min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400">
+
+      <Routes path="/*"> 
+       <Route path="/dashboard" element={<h1> Dashboard </h1>} />
+       <Route path="/products" element={<h1> Product </h1>} />
+       <Route path="/orders" element={<h1> Orders</h1>} />
+       <Route path="/customers" element={<h1> Customers </h1>} />
+       <Route path="/reviews" element={<h1> Reviews </h1>} />
+      </Routes>
       {/* Sidebar */}
       <div className="w-64 bg-white p-4 shadow-md">
         <h2 className="text-2xl font-bold text-center text-pink-600 mb-6">Admin Dashboard</h2>
@@ -35,6 +43,7 @@ export default function AdminHomePage() {
           </li>
         </ul>
       </div>
+
 
       {/* Main Content */}
       <div className="flex-1 p-8 bg-white rounded-lg shadow-lg m-4">
