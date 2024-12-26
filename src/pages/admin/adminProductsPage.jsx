@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 
 export default function AdminProductsPage(){
 
