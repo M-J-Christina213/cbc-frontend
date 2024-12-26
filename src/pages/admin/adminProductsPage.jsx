@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export default function AdminProductsPage(){
 
@@ -53,6 +54,8 @@ export default function AdminProductsPage(){
           </Link>
         </div>
       </div>
+
+    
     
       
     )
