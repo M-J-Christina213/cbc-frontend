@@ -8,12 +8,12 @@ export default function LoginPage() {
           <div className="mb-4">
             <img src='/CBC-logo.jpg' className='rounded-full w-[100px] '/>
             <label className="block text-sm font-medium text-gray-700" htmlFor="username">
-              Username
+              Email: 
             </label>
             <input
               type="text"
-              id="username"
-              placeholder="Enter your username"
+              id="email"
+              placeholder="Enter your email"
               className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
             />
           </div>
@@ -25,8 +25,7 @@ export default function LoginPage() {
               type="password"
               id="password"
               placeholder="Enter your password"
-              className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
-            />
+              className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"/>
           </div>
           <button
             type="submit"
