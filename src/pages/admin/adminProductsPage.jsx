@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
@@ -21,15 +21,29 @@ export default function AdminProductsPage(){
           }
     ])
 
-   getProducts()
+    useEffect(
+        ()=>{
+            axios.get("http://localhost:5000/api/products")
+           .then((res)=>{
+            console.log(res.data)
+            setProducts(res.data)
+            })
+        },[]
+    )
+   
     return(
         
         <div className="flex-1 p-8 bg-white rounded-lg shadow-lg m-4">
         <h2 className="text-3xl font-bold text-center text-pink-600 mb-6">Welcome to Product Management section</h2>
         {
             products.map(
-                (product)=>{
-                    console.log(product)
+                (product, index)=>{
+                    return(
+                        <div key={product.productID}>
+                            {index}
+                            {product.productName}
+                        </div>
+                    )
                 }
             )
         }
@@ -81,11 +95,6 @@ export default function AdminProductsPage(){
       </div>
     )
 
-    async function getProducts(){
-        const res = await axios.get("http://localhost:5000/api/products")
-
-        console.log(res)
-    }
     
     
       
