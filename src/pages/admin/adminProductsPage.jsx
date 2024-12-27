@@ -23,8 +23,13 @@ export default function AdminProductsPage(){
 
    getProducts()
     return(
-        <div>
-            <h1> Admin Products Page </h1> 
+        
+        <div className="flex-1 p-8 bg-white rounded-lg shadow-lg m-4">
+        <h2 className="text-3xl font-bold text-center text-pink-600 mb-6">Welcome to Product Management section</h2>
+
+
+
+        
         <div className="overflow-x-auto">
           <table className="min-w-full table-auto">
             <thead>

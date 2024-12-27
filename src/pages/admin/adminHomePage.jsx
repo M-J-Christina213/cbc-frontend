@@ -38,10 +38,15 @@ export default function AdminHomePage() {
         </ul>
       </div>
 
-
-      {/* Main Content */}
-      <div className="flex-1 p-8 bg-white rounded-lg shadow-lg m-4">
+      {/* Main Content 
+        <div className="flex-1 p-8 bg-white rounded-lg shadow-lg m-4">
         <h2 className="text-3xl font-bold text-center text-pink-600 mb-6">Welcome to the Admin Panel</h2>
+      </div>
+      */}
+
+
+
+      
         <Routes path="/*">
        <Route path="/dashboard" element={<h1> Dashboard </h1>} />
        <Route path="/products" element={<AdminProductsPage/>} />
@@ -51,6 +56,6 @@ export default function AdminHomePage() {
        <Route path="/*" element={<h1> 404 not found the admin page</h1>} />
       </Routes>
       </div>
-    </div>
+   
   );
 }
