@@ -1,8 +1,25 @@
 import axios from 'axios';
+import { useState } from 'react';
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 export default function AdminProductsPage(){
+
+    const [products, setProducts] = useState([
+        {
+            "productID": "B10001",
+            "productName": "Glow Radiance Serum",
+            "altName": ["Radiance Serum", "Glow Serum", "Brightening Serum"],
+            "images": [
+              "https://example.com/images/glow-serum-front.jpg",
+              "https://example.com/images/glow-serum-back.jpg"
+            ],
+            "price": 29.99,
+            "lastPrice": 39.99,
+            "stock": 200,
+            "description": "A luxurious serum that brightens and hydrates the skin, leaving it with a glowing finish."
+          }
+    ])
 
    getProducts()
     return(
