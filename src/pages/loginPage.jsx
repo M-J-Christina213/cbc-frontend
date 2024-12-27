@@ -1,6 +1,11 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function LoginPage() {
+  
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
@@ -13,7 +18,9 @@ export default function LoginPage() {
             <input
               type="text"
               id="email"
-              placeholder="Enter your email"
+              placeholder="Enter your email" defaultValue={email} onChange={(e)=>{
+                console.log('your email is changed')
+              }}
               className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
             />
           </div>
@@ -24,7 +31,7 @@ export default function LoginPage() {
             <input
               type="password"
               id="password"
-              placeholder="Enter your password"
+              placeholder="Enter your password" defaultValue={password}
               className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"/>
           </div>
           <button
