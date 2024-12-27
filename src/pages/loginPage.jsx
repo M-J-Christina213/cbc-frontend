@@ -18,12 +18,14 @@ export default function LoginPage() {
           toast.error(res.data.message)
           return
         }
-        localStorage.setItem("token", res.data.token)
-        if(res.data.user.type == "admin"){
-          window.location.href = "/admin"
-        } else{
-          window.location.href = "/"
-        }
+        toast.success("You are successfully logged in");
+        setTimeout(() => {
+            if (res.data.user.type == "admin") {
+                window.location.href = "/admin";
+            } else {
+                window.location.href = "/";
+            }
+        }, 2000);
       }
     )
   }
