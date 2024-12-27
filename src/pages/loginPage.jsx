@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -5,6 +6,17 @@ export default function LoginPage() {
   
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+  function login(){
+    axios.post("http://localhost:5000/api/users/login", {
+      email : email,
+      password: password
+    }).then(
+      (res)=>{
+        console.log(res)
+      }
+    )
+  }
   
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400">
@@ -36,7 +48,7 @@ export default function LoginPage() {
               }}
               className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"/>
           </div>
-          <button
+          <button onClick={login}
             type="submit"
             className="w-full p-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition duration-200"
           >
