@@ -19,7 +19,7 @@ export default function LoginPage() {
               type="text"
               id="email"
               placeholder="Enter your email" defaultValue={email} onChange={(e)=>{
-                console.log('your email is changed')
+                setEmail(e.target.value)
               }}
               className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
             />
@@ -31,7 +31,9 @@ export default function LoginPage() {
             <input
               type="password"
               id="password"
-              placeholder="Enter your password" defaultValue={password}
+              placeholder="Enter your password" defaultValue={password} onChange={(e)=>{
+                setPassword(e.target.value)
+              }}
               className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"/>
           </div>
           <button
