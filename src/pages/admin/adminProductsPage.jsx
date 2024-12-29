@@ -94,7 +94,7 @@ export default function AdminProductsPage(){
 
         <div className="mt-6">
         <Link 
-            to="/admin/products/add" 
+            to="/admin/products/addProduct" 
             className="inline-block px-6 py-3 bg-pink-600 text-white font-semibold rounded-lg shadow-lg hover:bg-gradient-to-r from-purple-500 to-purple-700 transition-all duration-300 ease-in-out transform hover:scale-105 items-center justify-center gap-2"
         >
             <span className="text-lg">+</span> Add New Product
