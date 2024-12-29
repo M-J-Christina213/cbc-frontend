@@ -44,41 +44,52 @@ export default function AdminProductsPage(){
         <h2 className="text-3xl font-bold text-center text-pink-600 mb-6">Welcome to Product Management section</h2>
         
         <div className="overflow-x-auto">
-          <table className="min-w-full table-auto">
-            <thead>
-              <tr className="bg-purple-100 text-purple-700">
-                <th className='p-2 text-wrap'> Product ID </th>
-                <th className="p-3 text-left">Product Name</th>
-                <th className="p-3 text-left">Price</th>
-                <th className="p-3 text-left">Stock</th>
-                <th className="p-3 text-left">Description</th>
-                <th className="p-3 text-left">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b hover:bg-gray-50">
+    <table className="min-w-full table-auto border-collapse">
+      <thead>
+        <tr className="bg-purple-100 text-purple-700 font-semibold">
+          <th className="p-3 text-left">Product ID</th>
+          <th className="p-3 text-left">Product Name</th>
+          <th className="p-3 text-left">Price</th>
+          <th className="p-3 text-left">Last Price</th>
+          <th className="p-3 text-left">Stock</th>
+          <th className="p-3 text-left">Description</th>
+          <th className="p-3 text-left">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {products.map((product, index) => (
+          <tr
+            key={index}
+            className={`border-b ${
+              index % 2 === 0 ? "bg-purple-50" : "bg-white"
+            } hover:bg-purple-100`}
+          >
+            <td className="p-3">{product.productID}</td>
+            <td className="p-3">{product.productName}</td>
+            <td className="p-3">{product.price}</td>
+            <td className="p-3">{product.lastPrice}</td>
+            <td className="p-3">{product.stock}</td>
+            <td className="p-3">{product.description}</td>
+            <td className="p-3 flex gap-2">
+              <button
+                className="text-purple-600 hover:text-purple-800"
+                title="Edit Product"
+              >
+                <FaPencilAlt />
+              </button>
+              <button
+                className="text-red-600 hover:text-red-800"
+                title="Delete Product"
+              >
+                <FaTrashAlt />
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+ 
 
-                 {products.map((product, index)=>{
-                    return <tr key={index} >
-                                <td className="p-3"> {product.productID} </td>
-                                <td className="p-3"> {product.productName} </td>
-                                <td className="p-3"> {product.price } </td>
-                                <td className="p-3"> {product.lastPrice}</td>
-                                <td className="p-3"> {product.stock} </td>
-                                <td className="p-3"> {product.description} </td>
-                                <td className="p-3">
-                                    <button className="text-purple-600 hover:text-purple-800 mx-2"><FaPencilAlt /></button>
-                                    <button className="text-red-600 hover:text-red-800 mx-2"><FaTrashAlt /></button>
-                                </td>
-                            </tr>
-                    })
-                    }
-             </tr>
-         
-                
-              
-            </tbody>
-          </table>
         </div>
 
         <div className="mt-6">
