@@ -43,13 +43,11 @@ export default function AdminProductsPage(){
         <div className="flex-1 p-8 bg-white rounded-lg shadow-lg m-4">
         <h2 className="text-3xl font-bold text-center text-pink-600 mb-6">Welcome to Product Management section</h2>
         
-
-
-
         <div className="overflow-x-auto">
           <table className="min-w-full table-auto">
             <thead>
               <tr className="bg-purple-100 text-purple-700">
+                <th className='p-2 text-wrap'> Product ID </th>
                 <th className="p-3 text-left">Product Name</th>
                 <th className="p-3 text-left">Price</th>
                 <th className="p-3 text-left">Stock</th>
@@ -59,6 +57,19 @@ export default function AdminProductsPage(){
             </thead>
             <tbody>
               <tr className="border-b hover:bg-gray-50">
+
+              {products.map((product, index)=>{
+                return <tr key={index} >
+                            <td> {product.productID} </td>
+                            <td> {product.productName} </td>
+                            <td> {product.price } </td>
+                            <td> {product.lastPrice}</td>
+                            <td> {product.stock} </td>
+                            <td> {product.description} </td>
+                        </tr>
+              })
+              }
+         
                 <td className="p-3">Hydra Luxe Moisturizer</td>
                 <td className="p-3">$240.99</td>
                 <td className="p-3">100</td>
