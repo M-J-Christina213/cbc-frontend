@@ -42,18 +42,7 @@ export default function AdminProductsPage(){
         
         <div className="flex-1 p-8 bg-white rounded-lg shadow-lg m-4">
         <h2 className="text-3xl font-bold text-center text-pink-600 mb-6">Welcome to Product Management section</h2>
-        {
-            products.map(
-                (product, index)=>{
-                    return(
-                        <div key={product.productID}>
-                            {index}
-                            {product.productName}
-                        </div>
-                    )
-                }
-            )
-        }
+        
 
 
 
