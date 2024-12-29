@@ -58,38 +58,25 @@ export default function AdminProductsPage(){
             <tbody>
               <tr className="border-b hover:bg-gray-50">
 
-              {products.map((product, index)=>{
-                return <tr key={index} >
-                            <td> {product.productID} </td>
-                            <td> {product.productName} </td>
-                            <td> {product.price } </td>
-                            <td> {product.lastPrice}</td>
-                            <td> {product.stock} </td>
-                            <td> {product.description} </td>
-                        </tr>
-              })
-              }
+                 {products.map((product, index)=>{
+                    return <tr key={index} >
+                                <td className="p-3"> {product.productID} </td>
+                                <td className="p-3"> {product.productName} </td>
+                                <td className="p-3"> {product.price } </td>
+                                <td className="p-3"> {product.lastPrice}</td>
+                                <td className="p-3"> {product.stock} </td>
+                                <td className="p-3"> {product.description} </td>
+                                <td className="p-3">
+                                    <button className="text-purple-600 hover:text-purple-800 mx-2"><FaPencilAlt /></button>
+                                    <button className="text-red-600 hover:text-red-800 mx-2"><FaTrashAlt /></button>
+                                </td>
+                            </tr>
+                    })
+                    }
+             </tr>
          
-                <td className="p-3">Hydra Luxe Moisturizer</td>
-                <td className="p-3">$240.99</td>
-                <td className="p-3">100</td>
-                <td className="p-3">An ultra-nourishing moisturizer that deeply hydrates and improves skin texture.</td>
-                <td className="p-3">
-                  <button className="text-purple-600 hover:text-purple-800 mx-2"><FaPencilAlt /></button>
-                  <button className="text-red-600 hover:text-red-800 mx-2"><FaTrashAlt /></button>
-                </td>
-              </tr>
-              <tr className="border-b hover:bg-gray-50">
-                <td className="p-3">Glow Radiance Serum</td>
-                <td className="p-3">$155.49</td>
-                <td className="p-3">50</td>
-                <td className="p-3">A serum that brightens and evens out skin tone, leaving a radiant glow.</td>
-                <td className="p-3">
-                  <button className="text-purple-600 hover:text-purple-800 mx-2"><FaPencilAlt /></button>
-                  <button className="text-red-600 hover:text-red-800 mx-2"><FaTrashAlt /></button>
-                </td>
-              </tr>
-              {/* Add more product rows here */}
+                
+              
             </tbody>
           </table>
         </div>
@@ -100,9 +87,10 @@ export default function AdminProductsPage(){
           </Link>
         </div>
       </div>
-    )
+    
 
     
     
       
-}
+                )
+            }
