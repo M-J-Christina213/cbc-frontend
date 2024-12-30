@@ -19,6 +19,7 @@ export default function LoginPage() {
           return
         }
         toast.success("You are successfully logged in");
+        localStorage.setItem("token", res.data.token)
         setTimeout(() => {
             if (res.data.user.type == "admin") {
                 window.location.href = "/admin";
