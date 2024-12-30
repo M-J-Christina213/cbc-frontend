@@ -1,8 +1,10 @@
+import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function AddProductForm() {
 
-    const [productId, setProductId] = useSatae("");
+    const [productId, setProductId] = useState("");
     const [productName, setProductName] = useState("");
     const [alternativeNames, setAlernativeNames] = useState("");
     const [imageUrls, setImageUrls] = useState("");
@@ -11,6 +13,36 @@ export default function AddProductForm() {
     const [stock, setStock] = useState("");
     const [description, setDescription] = useState("");
 
+    async function handleSubmit(){
+        const altNames = alternativeNames.split(",")
+        const imgUrls = imageUrls.split(",");
+
+        const product ={
+          productId : productId,
+          productName : productName,
+          altNames : altNames,
+          images : imgUrls,
+          price : price,
+          lastPrice : lastPrice,
+          stock : stock,
+          description : description
+        }
+
+        const token = localStorage.getItem("token")
+
+        try {
+             await axios.post("http://localhost:5000/api/products", product, {
+                headers : {
+                    Authorization : "Bearer " + token
+                }
+            })
+            toast.success("Product Added Successfully")
+        } catch(err){
+            toast.error("Failed to add product")
+        }
+        
+        
+    }
     return (
         <div className="flex-1 w-full p-8 m-10 bg-white rounded-lg shadow-lg" >
             <h2 className="text-3xl font-bold text-center text-pink-600 mb-6">
@@ -73,10 +105,12 @@ export default function AddProductForm() {
                     onChange={(e)=>{setDescription(e.target.value)}}
                     ></textarea>
                 </div>
-                <button className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white font-semibold rounded-lg shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
+                <button type="submit" className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white font-semibold rounded-lg shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105"
+                onClick={handleSubmit}>
                     Add New Product
                 </button>
             </div>
         </div>
+        
     );
 }
