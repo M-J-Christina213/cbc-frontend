@@ -1,48 +1,46 @@
-export default function AddProductForm(){
-    return(
-        <div className="w-full h-full bg-cyan-500">
-            <h1 className="text-2xl font-bold text-center"> Add Product Form </h1>
-            <div className="flex flex-col w-full border items-center">
+export default function AddProductForm() {
+    return (
+        <div className="flex-1 w-full p-8 m-10 bg-white rounded-lg shadow-lg" >
+            <h2 className="text-3xl font-bold text-center text-pink-600 mb-6">
+                Add New Product
+            </h2>
+            <div className="flex flex-col gap-4 w-1/2 mx-auto">
                 <div className="flex flex-col">
-                    <label> Product ID </label>
-                    <input type="text" className="w-[200px]"></input>
+                    <label className="font-semibold text-gray-700">Product ID</label>
+                    <input type="text" placeholder="Enter Product ID" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" />
                 </div>
                 <div className="flex flex-col">
-                    <label> Product Namae </label>
-                    <input type="text" className="w-[200px]"></input>
+                    <label className="font-semibold text-gray-700">Product Name</label>
+                    <input type="text" placeholder="Enter Product Name" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" />
                 </div>
                 <div className="flex flex-col">
-                    <label> Alternative Names  </label>
-                    <input type="text" className="w-[200px]"></input>
+                    <label className="font-semibold text-gray-700">Alternative Names</label>
+                    <input type="text" placeholder="Enter Alternative Names" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" />
                 </div>
                 <div className="flex flex-col">
-                    <label> Image URLs </label>
-                    <input type="text" className="w-[200px]"></input>
+                    <label className="font-semibold text-gray-700">Image URLs</label>
+                    <input type="text" placeholder="Enter Image URLs" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" />
                 </div>
                 <div className="flex flex-col">
-                    <label> Price </label>
-                    <input type="number" className="w-[200px]"></input>
+                    <label className="font-semibold text-gray-700">Price</label>
+                    <input type="number" placeholder="Enter Price" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" />
                 </div>
                 <div className="flex flex-col">
-                    <label> Last Price </label>
-                    <input type="text" className="w-[200px]"></input>
+                    <label className="font-semibold text-gray-700">Last Price</label>
+                    <input type="text" placeholder="Enter Last Price" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" />
                 </div>
                 <div className="flex flex-col">
-                    <label> Stock </label>
-                    <input type="text" className="w-[200px]"></input>
+                    <label className="font-semibold text-gray-700">Stock</label>
+                    <input type="text" placeholder="Enter Stock" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" />
                 </div>
                 <div className="flex flex-col">
-                    <label> Description </label>
-                    <textarea type="text" className="w-[200px]"/>
+                    <label className="font-semibold text-gray-700">Description</label>
+                    <textarea placeholder="Enter Product Description" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600"></textarea>
                 </div>
-
-                <button className="w-[200px] inline-block px-6 py-3 bg-pink-600 text-white font-semibold rounded-lg shadow-lg hover:bg-gradient-to-r from-purple-500 to-purple-700 transition-all duration-300 ease-in-out transform hover:scale-105 items-center justify-center gap-2"> 
-                         Add New Product
+                <button className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white font-semibold rounded-lg shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
+                    Add New Product
                 </button>
-        
-                            
             </div>
-           
         </div>
-    )
+    );
 }
