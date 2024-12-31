@@ -1,20 +1,26 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 export default function AdminProductsPage() {
   const [products, setProducts] = useState([]);
+  const [productsLoaded, setProductsLoaded] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/products")
+    if(!productsLoaded){
+      axios.get("http://localhost:5000/api/products")
       .then((res) => {
         setProducts(res.data);
+        setProductsLoaded(true);
       })
       .catch((err) => {
         console.error("Failed to fetch products:", err);
       });
-  }, []);
+    }
+    
+  }, [productsLoaded]);
 
   return (
     <div className="flex-1 p-8 bg-white rounded-lg shadow-lg m-4">
@@ -50,7 +56,24 @@ export default function AdminProductsPage() {
                   <button className="text-purple-600 hover:text-purple-800" title="Edit Product">
                     <FaPencilAlt />
                   </button>
-                  <button className="text-red-600 hover:text-red-800" title="Delete Product">
+                  <button className="text-red-600 hover:text-red-800" title="Delete Product"
+                  onClick={()=>{
+                    alert(product.productID)
+                    const token = localStorage.getItem("token")
+                    axios.delete(`http://localhost:5000/api/products/${product.productId}`,{
+                      headers: {
+                        Authorization: `Bearer ${token}`,
+                      
+                      },
+                      
+                    }).then((res)=> {
+                      console.log(res.data)
+                      toast.success("Product deleted successfully");
+                      setProductsLoaded(false);
+                    })
+
+                  }}
+                  >
                     <FaTrashAlt />
                   </button>
                 </td>
