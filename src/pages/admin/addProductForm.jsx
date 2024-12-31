@@ -20,7 +20,7 @@ export default function AddProductForm() {
         const imgUrls = imageUrls.split(",");
 
         const product ={
-          productId : productId,
+          productID : productId,
           productName : productName,
           altNames : altNames,
           images : imgUrls,
