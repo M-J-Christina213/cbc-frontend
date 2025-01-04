@@ -17,7 +17,7 @@ export default function FileUploadTest(){
 
         const fileName = file.name
 
-        const extension = fileName.spilt(".")[fileName.split(".").length-1] 
+        const extension = fileName.split(".")[fileName.split(".").length-1] 
 
         if(extension != "jpg" && extension != "png"){
             alert ("Please select a jpg or png file")
