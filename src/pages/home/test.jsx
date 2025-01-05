@@ -29,10 +29,26 @@ export default function FileUploadTest(){
         supabase.storage.from("images").upload(file.name, file, {
             cacheControl : "3600",
             upsert : false
-        }).then((res)=>{
-            console.log(res)
-        })
+        }).then(({ data, error }) => {
+            if (error) {
+              console.error("Upload Error:", error);
+              return;
+            }
+            console.log("Upload Success:", data);
+        
+            // Get public URL
+      const { data: publicUrlData, error: urlError } = supabase.storage
+      .from("images")
+      .getPublicUrl(file.name);
+
+    if (urlError) {
+      console.error("Public URL Error:", urlError);
+    } else {
+      console.log("Public URL:", publicUrlData.publicUrl);
     }
+          });
+
+        }
     return (
         <div>
             <h1> File Upload test </h1>
