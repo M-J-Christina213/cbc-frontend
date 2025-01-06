@@ -26,6 +26,10 @@ export default function FileUploadTest(){
 
         const supabase = createClient(url, key)
 
+        const timestamp = new Date().getTime()
+
+        fileName = timestamp+"."+extension
+
         supabase.storage.from("images").upload(file.name, file, {
             cacheControl : "3600",
             upsert : false
