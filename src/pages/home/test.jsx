@@ -1,11 +1,16 @@
-import { createClient } from "@supabase/supabase-js"
+
 import { useState } from "react"
+import uploadMediaToSupabase from "../../utilis/mediaUpload"
 
 export default function FileUploadTest(){
 
     const [file, setFile] = useState(null)
-    function handleUpload(){
-       
+    async function handleUpload(){
+       uploadMediaToSupabase(file).then((url)=>{
+        console.log(err)
+       }).catch((err)=>{
+        console.log(err)
+       })
 
         }
     return (
