@@ -14,6 +14,11 @@ export default function uploadMediaToSupabase(file){
 
         const extension = fileName.split(".")[fileName.split(".").length-1] 
 
+        if(extension != "jpg" && extension != "png"){
+            alert ("Please select a jpg or png file")
+            return
+        }
+
         const supabase = createClient(url, key)
 
         const timestamp = new Date().getTime()
@@ -31,11 +36,6 @@ export default function uploadMediaToSupabase(file){
         })
 
     })
-
-    if(extension != "jpg" && extension != "png"){
-        alert ("Please select a jpg or png file")
-        return
-    }
 
    
 }
