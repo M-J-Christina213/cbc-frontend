@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import SignUpPage from './pages/signUpPage'
 import AdminHomepage from './pages/admin/adminHomePage'
 import { Toaster } from 'react-hot-toast'
-import FileUploadTest from './pages/home/test'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,7 +23,6 @@ function App() {
       <Route path='/signup' element={<SignUpPage/>}/>
       <Route path="/admin/*" element={<AdminHomepage/>}/>
       <Route path="/*" element={<Homepage/>} />
-      <Route path="/test" element={<FileUploadTest/>} />
     </Routes>
     </BrowserRouter>
      
