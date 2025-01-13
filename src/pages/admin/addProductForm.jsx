@@ -9,6 +9,7 @@ export default function AddProductForm() {
     const [productName, setProductName] = useState("");
     const [alternativeNames, setAlernativeNames] = useState("");
     const [imageUrls, setImageUrls] = useState("");
+    const [imageFiles, setImageFiles] = useState("");
     const [price, setPrice] = useState("");
     const [lastPrice, setLastPrice] = useState("");
     const [stock, setStock] = useState("");
@@ -76,9 +77,9 @@ export default function AddProductForm() {
                 <div className="flex flex-col">
                     <label className="font-semibold text-gray-700">Image URLs</label>
                     <input type="file" placeholder="Enter Image URLs" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" 
-                    value ={imageUrls}
+                    
                     onChange={(e)=>{
-                        console.log(e.target.files)
+                        setImageFiles(e.target.files)
                     }}
                     multiple //To select multiple files at once
                     />
