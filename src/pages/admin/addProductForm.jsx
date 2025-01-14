@@ -28,22 +28,14 @@ export default function AddProductForm() {
         
         const promisesArray = []
 
-        console.log("Selected image files:", imageFiles);
-
-
         // Create upload promises
         for (let i = 0; i < imageFiles.length; i++) {
-            console.log("Uploading file", imageFiles[i]);
-            promisesArray.push(uploadMediaToSupabase(imageFiles[i]));
+            promisesArray[i] = uploadMediaToSupabase(imageFiles[i])
         }
 
-        try {
-            const values = await Promise.all(promisesArray);
-            console.log("Upload success, URLs:", values); 
-        } catch (err) {
-            console.error("Error uploading files:", err);
-        }
+       const imgUrls = await Promise.all(promisesArray)
     
+       console.log(imgUrls)
        
     try {
         const values = await Promise.all(promisesArray); // Resolves with an array of URLs

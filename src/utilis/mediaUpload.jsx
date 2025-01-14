@@ -23,15 +23,21 @@ export default function uploadMediaToSupabase(file){
 
         const timestamp = new Date().getTime()
     
-        fileName = timestamp+ fileName +"."+extension
+        const finalFileName = `${timestamp}_${fileName}`;
 
-        supabase.storage.from("images").upload(fileName, file, {
+        supabase.storage.from("images").upload(finalFileName, file, {
             cacheControl: "3600",
             upsert: false,
-        }).then(() => {
-            const publicUrl = supabase.storage.from("images").getPublicUrl(fileName).data.publicUrl;
-            resolve(publicUrl); 
-        }).catch((err) => {
+        }) .then((response) => {
+            if (response.error) {
+              reject(`Upload failed: ${response.error.message}`);
+            } else {
+              const publicUrl = supabase.storage
+                .from("images")
+                .getPublicUrl(finalFileName).data.publicUrl;
+              resolve(publicUrl);
+            }
+          }).catch((err) => {
             reject("Upload failed: " + err.message);
         });
 
