@@ -17,12 +17,11 @@ function App() {
     <>
     <BrowserRouter>
     <Toaster position='top-right'/>
-     <Routes path="/*">
+     <Routes>
       <Route path="/" element={<Homepage/>}/>
       <Route path="/login" element={<LoginPage/>}/>
       <Route path='/signup' element={<SignUpPage/>}/>
       <Route path="/admin/*" element={<AdminHomepage/>}/>
-      <Route path="/*" element={<Homepage/>} />
     </Routes>
     </BrowserRouter>
      
