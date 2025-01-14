@@ -2,13 +2,14 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import uploadMediaToSupabase from "../../utilis/mediaUpload";
 
 export default function AddProductForm() {
 
     const [productId, setProductId] = useState("");
     const [productName, setProductName] = useState("");
     const [alternativeNames, setAlernativeNames] = useState("");
-    const [imageUrls, setImageUrls] = useState("");
+    const [imgUrls, setImageUrls] = useState("");
     const [imageFiles, setImageFiles] = useState("");
     const [price, setPrice] = useState("");
     const [lastPrice, setLastPrice] = useState("");
@@ -17,34 +18,66 @@ export default function AddProductForm() {
     const navigate = useNavigate();
 
     async function handleSubmit(){
-        const altNames = alternativeNames.split(",")
-        const imgUrls = imageUrls.split(",");
-
-        const product ={
-          productID : productId,
-          productName : productName,
-          altNames : altNames,
-          images : imgUrls,
-          price : price,
-          lastPrice : lastPrice,
-          stock : stock,
-          description : description
+        if (!imageFiles || imageFiles.length === 0) {
+            console.error("No files selected for upload");
+            toast.error("Please upload at least one image");
+            return;
         }
 
-        const token = localStorage.getItem("token")
+        const altNames = alternativeNames.split(",")
+        
+        const promisesArray = []
+
+        console.log("Selected image files:", imageFiles);
+
+
+        // Create upload promises
+        for (let i = 0; i < imageFiles.length; i++) {
+            console.log("Uploading file", imageFiles[i]);
+            promisesArray.push(uploadMediaToSupabase(imageFiles[i]));
+        }
 
         try {
-             await axios.post("http://localhost:5000/api/products", product, {
-                headers : {
-                    Authorization : "Bearer " + token
-                }
-            })
-            navigate("/admin/products")
-            toast.success("Product Added Successfully")
-        } catch(err){
-            toast.error("Failed to add product")
+            const values = await Promise.all(promisesArray);
+            console.log("Upload success, URLs:", values); 
+        } catch (err) {
+            console.error("Error uploading files:", err);
         }
-        
+    
+       
+    try {
+        const values = await Promise.all(promisesArray); // Resolves with an array of URLs
+        console.log("Upload success, URLs:", values);
+        setImageUrls(values); // Assign the URLs to imgUrls
+
+        // Create the product object
+        const product = {
+            productID: productId,
+            productName: productName,
+            altNames: altNames,
+            images: values, // Use the uploaded URLs here
+            price: price,
+            lastPrice: lastPrice,
+            stock: stock,
+            description: description,
+        };
+
+        const token = localStorage.getItem("token");
+
+        // API call to add the product
+        await axios.post("http://localhost:5000/api/products", product, {
+            headers: {
+                Authorization: "Bearer " + token,
+            },
+        });
+
+        navigate("/admin/products");
+        toast.success("Product Added Successfully");
+    } catch (err) {
+        console.error("Error during product creation:", err);
+        toast.error("Failed to add product");
+    }
+
         
     }
     return (
