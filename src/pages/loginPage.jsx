@@ -37,7 +37,7 @@ export default function LoginPage() {
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
         <h1 className="text 2x1 font-bold text-center text-pink-600 mb-6"> Welcome Back</h1>
           <div className="mb-4">
-            <img src='/CBC-logo.jpg' className='rounded-full w-[100px] '/>
+            <img src='/CBC-Logo.png' className='rounded-full w-[100px] '/>
             <label className="block text-sm font-medium text-gray-700" htmlFor="username">
               Email: 
             </label>
