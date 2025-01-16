@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import './App.css'
-import ProductCart from './components/productCard'
-import UserData from './components/userData'
 import LoginPage  from './pages/loginPage'
 import Homepage from './pages/homePage'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
