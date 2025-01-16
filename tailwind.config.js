@@ -7,9 +7,9 @@ export default {
   theme: {
     extend: {
       colors:{
-        "primary" : "9338eb",
-        "secondary" : "f9a8d4",
-        "accent" : "bbe7fe"
+        "primary" : "#9338eb",
+        "secondary" : "#f9a8d4",
+        "accent" : "#bbe7fe"
       }
     },
   },
