@@ -14,7 +14,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <div className='bg-primary'>
     <BrowserRouter>
     <Toaster position='top-right'/>
      <Routes>
@@ -25,7 +25,7 @@ function App() {
     </Routes>
     </BrowserRouter>
      
-    </>
+    </div>
   )
 }
 
