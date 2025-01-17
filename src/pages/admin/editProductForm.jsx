@@ -53,7 +53,6 @@ const altNames = product.altNames ? product.altNames.join(",") : "";
 
         // Create the product object
         const productData = {
-            productID: productId,
             productName: productName,
             altNames: altNames,
             images: imgUrls, 
@@ -66,11 +65,14 @@ const altNames = product.altNames ? product.altNames.join(",") : "";
         const token = localStorage.getItem("token");
  try {
         // API call to add the product
-        await axios.put(import.meta.env.VITE_BACKEND_URL+ "/api/products/" + productData.productID, productData, {
-            headers: {
-                Authorization: "Bearer " + token,
-            },
-        });
+        await axios.put(
+            `${import.meta.env.VITE_BACKEND_URL}/api/products/${productId}`, 
+            productData, {
+                headers: {
+                    Authorization: "Bearer " + token,
+                },
+            }
+        );
 
         navigate("/admin/products");
         toast.success("Product Updated Successfully");

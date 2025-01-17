@@ -75,18 +75,28 @@ export default function AdminProductsPage() {
                   className="text-red-600 hover:text-red-800"
                   title="Delete Product"
                   onClick={() => {
-                    const token = localStorage.getItem("token");
-                    axios
-                      .delete(import.meta.env.VITE_BACKEND_URL+ `/api/products/${product.productId}`, {
-                        headers: {
-                          Authorization: `Bearer ${token}`,
-                        },
-                      })
-                      .then((res) => {
-                        console.log(res.data);
-                        toast.success("Product deleted successfully");
-                        setProductsLoaded(false);
-                      });
+                    // Show a confirmation dialog before proceeding
+                    const confirmDelete = window.confirm("Do you want to delete this product permanently? This action can't be undone.");
+
+                    if (confirmDelete) {
+                      // Proceed with the delete action if the user confirms
+                      const token = localStorage.getItem("token");
+                      axios
+                        .delete(import.meta.env.VITE_BACKEND_URL + `/api/products/${product.productId}`, {
+                          headers: {
+                            Authorization: `Bearer ${token}`,
+                          },
+                        })
+                        .then((res) => {
+                          console.log(res.data);
+                          toast.success("Product deleted successfully");
+                          setProductsLoaded(false); // Reload product list after deletion
+                        })
+                        .catch((error) => {
+                          console.error("Error deleting product:", error);
+                          toast.error("Failed to delete product");
+                        });
+                    }
                   }}
                 >
                   <FaTrashAlt />
