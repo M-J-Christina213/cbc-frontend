@@ -32,36 +32,31 @@ const altNames = product.altNames ? product.altNames.join(",") : "";
     
 
     async function handleSubmit(){
-        if (!imageFiles || imageFiles.length === 0) {
-            console.error("No files selected for upload");
-            toast.error("Please upload at least one image");
-            return;
-        }
 
         const altNames = alternativeNames.split(",")
         
         const promisesArray = []
+        let imgUrls = product.images 
+        if (imageFiles.length > 0) {
+            
+            // Create upload promises
+            for (let i = 0; i < imageFiles.length; i++) {
+                promisesArray[i] = uploadMediaToSupabase(imageFiles[i])
+            }
+        
 
-        // Create upload promises
-        for (let i = 0; i < imageFiles.length; i++) {
-            promisesArray[i] = uploadMediaToSupabase(imageFiles[i])
-        }
-
-       const imgUrls = await Promise.all(promisesArray)
-    
-       console.log(imgUrls)
+        
        
-    try {
-        const values = await Promise.all(promisesArray); // Resolves with an array of URLs
-        console.log("Upload success, URLs:", values);
-        setImageUrls(values); // Assign the URLs to imgUrls
+       imgUrls = await Promise.all(promisesArray); 
+    
+    }
 
         // Create the product object
-        const product = {
+        const productData = {
             productID: productId,
             productName: productName,
             altNames: altNames,
-            images: values, // Use the uploaded URLs here
+            images: imgUrls, 
             price: price,
             lastPrice: lastPrice,
             stock: stock,
@@ -69,23 +64,25 @@ const altNames = product.altNames ? product.altNames.join(",") : "";
         };
 
         const token = localStorage.getItem("token");
-
+ try {
         // API call to add the product
-        await axios.post("http://localhost:5000/api/products", product, {
+        await axios.put(import.meta.env.VITE_BACKEND_URL+ "/api/products" + productData.productID, productData, {
             headers: {
                 Authorization: "Bearer " + token,
             },
         });
 
         navigate("/admin/products");
-        toast.success("Product Added Successfully");
+        toast.success("Product Updated Successfully");
     } catch(err) {
         console.error("Error during product creation:", err.response ? err.response.data : err.message);
-        toast.error("Failed to add product");
+        toast.error("Failed to update product");
     }
 
         
     }
+
+
     return (
         <div className="flex-1 w-full p-8 m-10 bg-white rounded-lg shadow-lg" >
             <h2 className="text-3xl font-bold text-center text-pink-600 mb-6">
@@ -153,7 +150,7 @@ const altNames = product.altNames ? product.altNames.join(",") : "";
                 </div>
                 <button type="submit" className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white font-semibold rounded-lg shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105"
                 onClick={handleSubmit}>
-                    Add New Product
+                    Update Product
                 </button>
             </div>
         </div>
