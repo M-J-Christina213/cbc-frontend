@@ -65,7 +65,7 @@ export default function AdminProductsPage() {
                   title="Edit Product"
                   onClick={()=>{
                     //move to editproduct page
-                    navigate("/admin/products/editProduct")
+                    navigate("/admin/products/editProduct", { state: { product: product } });
                   }}
                 >
                   <FaPencilAlt />
