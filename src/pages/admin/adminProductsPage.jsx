@@ -12,6 +12,7 @@ export default function AdminProductsPage() {
     if(!productsLoaded){
       axios.get(import.meta.env.VITE_BACKEND_URL+"/api/products")
       .then((res) => {
+        console.log(res.data);
         setProducts(res.data);
         setProductsLoaded(true);
       })
@@ -74,7 +75,6 @@ export default function AdminProductsPage() {
                   className="text-red-600 hover:text-red-800"
                   title="Delete Product"
                   onClick={() => {
-                    alert(product.productID);
                     const token = localStorage.getItem("token");
                     axios
                       .delete(import.meta.env.VITE_BACKEND_URL+ `/api/products/${product.productId}`, {

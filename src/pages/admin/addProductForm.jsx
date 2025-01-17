@@ -8,7 +8,7 @@ export default function AddProductForm() {
 
     const [productId, setProductId] = useState("");
     const [productName, setProductName] = useState("");
-    const [alternativeNames, setAlernativeNames] = useState("");
+    const [alternativeNames, setAlternativeNames] = useState("");
     const [imgUrls, setImageUrls] = useState("");
     const [imageFiles, setImageFiles] = useState([]);
     const [price, setPrice] = useState("");
@@ -106,7 +106,7 @@ export default function AddProductForm() {
                     <label className="font-semibold text-gray-700">Alternative Names</label>
                     <input type="text" placeholder="Enter Alternative Names" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" 
                     value ={alternativeNames}
-                    onChange={(e)=>{setAlernativeNames(e.target.value)}}
+                    onChange={(e)=>{setAlternativeNames(e.target.value)}}
                     />
                 </div>
                 <div className="flex flex-col">

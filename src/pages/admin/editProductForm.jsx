@@ -20,9 +20,9 @@ if (product == null) {
 const altNames = product.altNames ? product.altNames.join(",") : "";
 
 // Initialize state
-    const [productId, setProductId] = useState(product.productId);
+    const [productId, setProductId] = useState(product.productID);
     const [productName, setProductName] = useState(product.productName);
-    const [alternativeNames, setAlernativeNames] = useState(altNames);
+    const [alternativeNames, setAlternativeNames] = useState(altNames);
     const [imageFiles, setImageFiles] = useState([]);
     const [price, setPrice] = useState(product.price);
     const [lastPrice, setLastPrice] = useState(product.lastPrice);
@@ -110,7 +110,7 @@ const altNames = product.altNames ? product.altNames.join(",") : "";
                     <label className="font-semibold text-gray-700">Alternative Names</label>
                     <input type="text" placeholder="Enter Alternative Names" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" 
                     value ={alternativeNames}
-                    onChange={(e)=>{setAlernativeNames(e.target.value)}}
+                    onChange={(e)=>{setAlternativeNames(e.target.value)}}
                     />
                 </div>
                 <div className="flex flex-col">
