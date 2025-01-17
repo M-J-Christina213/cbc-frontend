@@ -90,14 +90,14 @@ export default function AdminProductsPage() {
           ))}
         </tbody>
       </table>
-      <div className="mt-6">
-        <Link
-          to="/admin/products/addProduct"
-          className="inline-block px-6 py-3 bg-pink-600 text-white font-semibold rounded-lg shadow-lg hover:bg-gradient-to-r from-purple-500 to-purple-700 transition-all duration-300 ease-in-out transform hover:scale-105"
-        >
-          <span className="text-lg">+</span> Add New Product
-        </Link>
-      </div>
+      <div className="mt-6 flex justify-end">
+  <Link
+    to="/admin/products/addProduct"
+    className="flex items-center justify-center px-4 py-2 text-primary border-2 border-primary font-bold text-2xl rounded-lg transition-all duration-300 ease-in-out hover:bg-primary  hover:text-white hover:scale-80 transform"
+  >
+    +
+  </Link>
+</div>
     </div>
   ) : (
     <div className="w-full h-full flex justify-center items-center">
