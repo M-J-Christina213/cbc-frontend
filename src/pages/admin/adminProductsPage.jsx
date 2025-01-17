@@ -71,7 +71,7 @@ export default function AdminProductsPage() {
                 >
                   <FaPencilAlt />
                 </button>
-                <button
+              <button
                   className="text-red-600 hover:text-red-800"
                   title="Delete Product"
                   onClick={() => {
