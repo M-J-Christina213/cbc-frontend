@@ -75,7 +75,7 @@ export default function EditProductForm() {
     return (
         <div className="flex-1 w-full p-8 m-10 bg-white rounded-lg shadow-lg" >
             <h2 className="text-3xl font-bold text-center text-pink-600 mb-6">
-                Add New Product
+                Edit Product form
             </h2>
             <div className="flex flex-col gap-4 w-1/2 mx-auto">
                 <div className="flex flex-col">

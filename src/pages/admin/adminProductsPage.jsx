@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function AdminProductsPage() {
   const [products, setProducts] = useState([]);
@@ -21,6 +21,8 @@ export default function AdminProductsPage() {
     }
     
   }, [productsLoaded]);
+
+  const navigate = useNavigate();
 
   return (
     <div className="flex-1 p-8 bg-white rounded-lg shadow-lg m-4">
@@ -61,6 +63,10 @@ export default function AdminProductsPage() {
                 <button
                   className="text-purple-600 hover:text-purple-800"
                   title="Edit Product"
+                  onClick={()=>{
+                    //move to editproduct page
+                    navigate("/admin/products/editProduct")
+                  }}
                 >
                   <FaPencilAlt />
                 </button>
