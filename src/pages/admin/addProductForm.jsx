@@ -34,7 +34,6 @@ export default function AddProductForm() {
         }
     }
     
-        const altNames = alternativeNames.split(",")
         
         const promisesArray = []
 
@@ -51,6 +50,9 @@ export default function AddProductForm() {
         const values = await Promise.all(promisesArray); // Resolves with an array of URLs
         console.log("Upload success, URLs:", values);
         setImageUrls(values); // Assign the URLs to imgUrls
+
+        const altNames = alternativeNames.split(",").map(name => name.trim()).filter(name => name !== "");
+        console.log("Alternative names: ", altNames);  // Add this log to verify the value
 
         // Create the product object
         const product = {
