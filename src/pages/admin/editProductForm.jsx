@@ -66,7 +66,7 @@ const altNames = product.altNames ? product.altNames.join(",") : "";
         const token = localStorage.getItem("token");
  try {
         // API call to add the product
-        await axios.put(import.meta.env.VITE_BACKEND_URL+ "/api/products" + productData.productID, productData, {
+        await axios.put(import.meta.env.VITE_BACKEND_URL+ "/api/products/" + productData.productID, productData, {
             headers: {
                 Authorization: "Bearer " + token,
             },
