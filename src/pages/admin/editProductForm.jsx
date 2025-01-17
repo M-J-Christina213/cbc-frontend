@@ -87,7 +87,7 @@ if (product==null){
             <div className="flex flex-col gap-4 w-1/2 mx-auto">
                 <div className="flex flex-col">
                     <label className="font-semibold text-gray-700">Product ID</label>
-                    <input type="text" placeholder="Enter Product ID" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" 
+                    <input disabled type="text" placeholder="Enter Product ID" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" 
                     value ={productId}
                     onChange={(e)=>{setProductId(e.target.value)}}
                     />
