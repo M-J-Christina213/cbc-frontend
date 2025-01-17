@@ -22,7 +22,17 @@ export default function AddProductForm() {
             toast.error("Please upload at least one image");
             return;
         }
-
+        
+        // Validate image files for correct file type (JPG or PNG)
+    const validImageTypes = ["image/jpeg", "image/png"];
+    for (let i = 0; i < imageFiles.length; i++) {
+        if (!validImageTypes.includes(imageFiles[i].type)) {
+            console.error("Invalid file type:", imageFiles[i].type);
+            toast.error("Please select a jpg or png file");
+            return; // Stop the process if an invalid file is found
+        }
+    }
+    
         const altNames = alternativeNames.split(",")
         
         const promisesArray = []

@@ -10,12 +10,19 @@ const navigate = useNavigate();
 
 const product = location.state.product
 
-if (product==null){
-    navigate("/admin/products")
+// Check if product is null and navigate early
+if (product == null) {
+    navigate("/admin/products");
+    return null; // Ensure the component doesn't render further
 }
+
+// Safely process altNames
+const altNames = product.altNames ? product.altNames.join(",") : "";
+
+// Initialize state
     const [productId, setProductId] = useState(product.productId);
     const [productName, setProductName] = useState(product.productName);
-    const [alternativeNames, setAlernativeNames] = useState("");
+    const [alternativeNames, setAlernativeNames] = useState(altNames);
     const [imageFiles, setImageFiles] = useState([]);
     const [price, setPrice] = useState(product.price);
     const [lastPrice, setLastPrice] = useState(product.lastPrice);
