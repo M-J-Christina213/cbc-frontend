@@ -1,21 +1,28 @@
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import uploadMediaToSupabase from "../../utilis/mediaUpload";
 
 export default function EditProductForm() {
+const location = useLocation()
+const navigate = useNavigate();
 
-    const [productId, setProductId] = useState("");
-    const [productName, setProductName] = useState("");
+const product = location.state.product
+
+if (product==null){
+    navigate("/admin/products")
+}
+    const [productId, setProductId] = useState(product.productId);
+    const [productName, setProductName] = useState(product.productName);
     const [alternativeNames, setAlernativeNames] = useState("");
-    const [imgUrls, setImageUrls] = useState("");
-    const [imageFiles, setImageFiles] = useState("");
-    const [price, setPrice] = useState("");
-    const [lastPrice, setLastPrice] = useState("");
-    const [stock, setStock] = useState("");
-    const [description, setDescription] = useState("");
-    const navigate = useNavigate();
+    const [imageFiles, setImageFiles] = useState([]);
+    const [price, setPrice] = useState(product.price);
+    const [lastPrice, setLastPrice] = useState(product.lastPrice);
+    const [stock, setStock] = useState(product.stock);
+    const [description, setDescription] = useState(product.description);
+    
+    
 
     async function handleSubmit(){
         if (!imageFiles || imageFiles.length === 0) {
