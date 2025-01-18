@@ -9,7 +9,7 @@ export default function ProductOverview(){
 
     useEffect(() => {
         console.log(productId);
-        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/productId/${productId}`)
+        axios.get(import.meta.env.VITE_BACKEND_URL+ "/api/products/"+ productId)
             .then((response) => {
                 console.log(response.data);
             })
