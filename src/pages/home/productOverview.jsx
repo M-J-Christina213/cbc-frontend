@@ -14,7 +14,13 @@ export default function ProductOverview(){
         axios.get(import.meta.env.VITE_BACKEND_URL+ "/api/products/"+ productId)
             .then((response) => {
                 console.log(response.data);
+              
+                //if null
+                if(response.data==null){
+                    setStatus("not found")
+                }
 
+                //if productfound
 
             })
             
