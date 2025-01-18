@@ -7,11 +7,13 @@ export default function Homepage() {
     
     <div className="h-screen w-full bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400">
        <Header/>
+       <div className='w-full h-[calc(100vh)]'>
         <Routes path="/*">
          <Route path='/' element={<h1> Home Page </h1>} />
          <Route path='/login' element={<LoginPage/>} />
+         <Route path='productInfo/' element={<h1> Product Info </h1>} />
         </Routes>
-      
+      </div>
     </div>
   );
 }
