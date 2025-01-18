@@ -22,6 +22,10 @@ export default function ProductOverview(){
                 }
 
                 //if productfound
+                if (response.data != null){
+                    setProduct(response.data)
+                    setStatus("found")
+                }
 
             })
             
@@ -44,9 +48,7 @@ export default function ProductOverview(){
             }
             {
                 status =="found" && (
-                    <div>
-                        product Found
-                    </div>
+                    
                 )
             }
         </div>
