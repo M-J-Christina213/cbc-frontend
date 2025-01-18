@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
+import ProductNotFound from "./productNotFound";
 
 export default function ProductOverview(){
 
@@ -37,7 +38,9 @@ export default function ProductOverview(){
                 )
             }
             {
-                status == "not found"&& <h1> Product not found</h1>
+                status == "not found"&& (
+                    <ProductNotFound/>
+                )
             }
             {
                 status =="found" && (
