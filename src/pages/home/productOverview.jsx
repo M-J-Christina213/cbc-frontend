@@ -23,7 +23,22 @@ export default function ProductOverview(){
     return (
         <div className="w-full h-[calc (100vh-100px)]" >
             {
-                status == "loading" && <h1> Loading.. </h1>
+                status == "loading" && (
+                    <div className="w-full h-full flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900">
+                        </div>
+                    </div>
+                )
+            }
+            {
+                status == "not found"&& <h1> Product not found</h1>
+            }
+            {
+                status =="found" && (
+                    <div>
+                        product Found
+                    </div>
+                )
             }
         </div>
     )
