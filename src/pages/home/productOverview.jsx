@@ -1,26 +1,30 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 
 export default function ProductOverview(){
 
     const params = useParams();
-    const productId = params.id;
+    const productId = params.productID;
+    const [product, setProduct] = useState(null)
+     const [status, setStatus] = useState("loading")
 
     useEffect(() => {
         console.log(productId);
         axios.get(import.meta.env.VITE_BACKEND_URL+ "/api/products/"+ productId)
             .then((response) => {
                 console.log(response.data);
+
+
             })
-            .catch((error) => {
-                console.error(error);
-            });
+            
     }, []);
 
     return (
-        <div className="w-full h-[calc (100vh-100px)] bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400" >
-            <h1> Product Overview </h1>
+        <div className="w-full h-[calc (100vh-100px)]" >
+            {
+                status == "loading" && <h1> Loading.. </h1>
+            }
         </div>
     )
 }
