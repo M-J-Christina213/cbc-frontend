@@ -6,10 +6,12 @@ export default function ProductOverview(){
     const productId = params.id;
 
     useEffect(
-        ()=>{
-            console.log(productId)
-        }
+    async ()=> {
+        console.log(productId)
+       const data = await axios.get(import.meta.env.VITE_BACKEND_URL="/api/productId/" + productId) 
+    }
     , [])
+
     return (
         <div className="w-full h-[calc (100vh-100px)] bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400" >
             <h1> Product Overview </h1>
