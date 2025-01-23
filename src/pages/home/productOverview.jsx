@@ -47,25 +47,37 @@ export default function ProductOverview() {
                 </div>
             )}
             {status === "found" && (
-                <div className="w-full h-full flex flex-wrap p-8 bg-gray-50">
-                {/* Image Section */}
-                <div className="w-full md:w-1/2 h-full flex justify-center items-center">
-                  <ImageSlider images={product.images}/>
-                </div>
-              
-                {/* Product Details Section */}
-                <div className="w-full md:w-1/2 h-full p-6">
-                <h1 className="text-3xl font-bold text-gray-800 mb-4">{product.productName}</h1>
-                <h1 className="text-xl font-bold text-gray-600 mb-4">{product.altNames.join(" | ")}</h1>
-                <p className="text-xl text-gray-600">{ 
-                 (product.price > product.lastPrice) && 
-                  <span className="line-through text-red-500"> ${product.price}</span> 
-                  }<span> ${"LKR." + product.lastPrice} </span> </p>
-                  <p className="text-base text-gray-600 mb-6">{product.description}</p>
-                </div>
-              </div>
-              
+    <div className="w-full h-full flex flex-wrap p-8 bg-gray-50">
+        {/* Image Section */}
+        <div className="w-full md:w-1/2 h-full flex justify-center items-center">
+            {product.images?.length > 0 ? (
+                <ImageSlider images={product.images} />
+            ) : (
+                <p>No images available</p>
             )}
+        </div>
+
+        {/* Product Details Section */}
+        <div className="w-full md:w-1/2 h-full p-6">
+            <h1 className="text-3xl font-bold text-gray-800 mb-4">
+                {product.productName || "No product name available"}
+            </h1>
+            <h1 className="text-xl font-bold text-gray-600 mb-4">
+                {product.altNames?.join(" | ") || "No alternative names available"}
+            </h1>
+            <p className="text-xl text-gray-600 mb-4">
+                {product.price > product.lastPrice && (
+                    <span className="line-through text-red-500 mr-2">LKR {product.price}</span>
+                )}
+                <span>LKR {product.lastPrice}</span>
+            </p>
+            <p className="text-base text-gray-600 mb-6">
+                {product.description || "No description available"}
+            </p>
+        </div>
+    </div>
+)}
+
         </div>
     );
 }
