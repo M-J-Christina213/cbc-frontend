@@ -61,7 +61,7 @@ export default function ProductOverview() {
                 <h1 className="text-3xl font-bold text-gray-800 mb-4">{product.productName}</h1>
                 <h1 className="text-xl font-bold text-gray-600 mb-4">{product.altNames.join(" | ")}</h1>
                 <p className="text-xl text-gray-600">{ 
-                 (product.price>product.lastPrice) &&
+                 (product.price>product.lastPrice) && 
                   <span className="line-through text-red-500"> ${product.price}</span> 
                   }<span> ${"LKR." + product.price} </span> </p>
                   <p className="text-base text-gray-600 mb-6">{product.description}</p>
