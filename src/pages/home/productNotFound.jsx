@@ -1,43 +1,21 @@
-import React from 'react';
+import { Link } from "react-router-dom";
 
 export default function ProductNotFound() {
-    return (
-        <div className="w-full h-[calc(100vh-100px)] flex items-center justify-center bg-gray-50">
-            <div
-                className="text-center bg-white p-8 rounded-lg shadow-xl max-w-lg w-full"
-                style={{
-                    backgroundColor: "#f9f9f9",
-                    borderRadius: "12px",
-                }}
+  return (
+    <div className="w-full h-[calc(100vh-100px)] flex justify-center items-center">
+      <div className="text-center p-8 bg-white shadow-lg rounded-lg">
+        <h1 className="text-4xl font-bold text-grey-800 mb-4"> 404 </h1>
+        <p className="text-xl font-bold text-pink-500 mb-6">Oops! Product Not Found</p>
+        <p className="text-lg text-gray-700 mb-6">The product you're looking for may have been moved or no longer exists.</p>
+        <div className="flex justify-center">
+          <Link 
+            to="/products" 
+              className="py-3 px-8 bg-primary text-white rounded-lg font-semibold hover:scale-105 transform transition duration-300 ease-out shadow-md"
             >
-                <h1
-                    className="text-4xl font-bold mb-4"
-                    style={{ color: "#9338eb" }}
-                >
-                    Product Not Found
-                </h1>
-                <p
-                    className="text-lg mb-6"
-                    style={{ color: "#4b5563" }}
-                >
-                    We couldn't find the product you're looking for. Please check back later or explore other options.
-                </p>
-                <button
-                    className="py-3 px-6 text-white text-xl rounded-full shadow-lg"
-                    style={{
-                        backgroundColor: "#9338eb",
-                        transition: "background-color 0.3s",
-                    }}
-                    onMouseOver={(e) => {
-                        e.target.style.backgroundColor = "#f9a8d4";
-                    }}
-                    onMouseOut={(e) => {
-                        e.target.style.backgroundColor = "#9338eb";
-                    }}
-                >
-                    Go to Home
-                </button>
-            </div>
+            Back to Products
+          </Link>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
