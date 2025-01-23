@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductNotFound from "./productNotFound";
+import ImageSlider from "../../components/imageSlider";
 
 export default function ProductOverview() {
     const params = useParams();
@@ -49,11 +50,7 @@ export default function ProductOverview() {
                 <div className="w-full h-full flex flex-wrap p-8 bg-gray-50">
                 {/* Image Section */}
                 <div className="w-full md:w-1/2 h-full flex justify-center items-center">
-                  <img
-                    src={product.images[0]}
-                    alt={product.name}
-                    className="w-full max-w-[350px] h-[300px] object-cover rounded-lg shadow-lg"
-                  />
+                  <ImageSlider images={product.images}/>
                 </div>
               
                 {/* Product Details Section */}
@@ -61,11 +58,10 @@ export default function ProductOverview() {
                 <h1 className="text-3xl font-bold text-gray-800 mb-4">{product.productName}</h1>
                 <h1 className="text-xl font-bold text-gray-600 mb-4">{product.altNames.join(" | ")}</h1>
                 <p className="text-xl text-gray-600">{ 
-                 (product.price>product.lastPrice) && 
+                 (product.price > product.lastPrice) && 
                   <span className="line-through text-red-500"> ${product.price}</span> 
                   }<span> ${"LKR." + product.lastPrice} </span> </p>
                   <p className="text-base text-gray-600 mb-6">{product.description}</p>
-                  
                 </div>
               </div>
               
