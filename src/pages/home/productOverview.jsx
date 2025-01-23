@@ -42,13 +42,13 @@ export default function ProductOverview(){
                 )
             }
             {
-                status == "not found"&& (
-                    <ProductNotFound/>
-                )
+                status == "not found"&& <h1> Product not found </h1>
+                
             }
             {
                 status =="found" && (
                     <div>
+                        product found
                         </div>
                 )
             }
