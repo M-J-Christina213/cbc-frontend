@@ -6,31 +6,26 @@ export default function ProductOverview() {
     const params = useParams();
     const productId = params.productID;
     const [product, setProduct] = useState(null);
-    const [status, setStatus] = useState("loading"); 
+    const [status, setStatus] = useState("loading");
 
     useEffect(() => {
         console.log("Product ID:", productId);
-        
-        // Fetch product details
-        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products/${productId}`)
-            .then((response) => {
-                console.log(response.data);
 
-                if (response.data == null) {
-                    setStatus("not_found");
-                } else {
-                    setProduct(response.data);
-                    setStatus("found");
-                }
-            })
-            .catch((error) => {
-                if (error.response && error.response.status === 404) {
+        const fetchProduct = async () => {
+            try {
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products/${productId}`);
+                setProduct(response.data);
+                setStatus("found");
+            } catch (error) {
+                if (error.response?.status === 404) {
                     setStatus("not_found");
                 } else {
                     setStatus("error");
-                    console.error("Error fetching product:", error.message);
                 }
-            });
+            }
+        };
+
+        fetchProduct();
     }, [productId]);
 
     return (
