@@ -42,17 +42,29 @@ export default function ProductOverview() {
             )}
             {status === "error" && (
                 <div className="flex justify-center items-center h-full">
-                    <h1 className="text-red-500 text-xl">Something went wrong. Please try again later.</h1>
+                    <h1 cslasName="text-red-500 text-xl">Something went wrong. Please try again later.</h1>
                 </div>
             )}
             {status === "found" && (
-                <div className="p-4">
-                    <h1 className="text-2xl font-bold">Product Details</h1>
-                    <p><strong>ID:</strong> {product.productID}</p>
-                    <p><strong>Name:</strong> {product.name}</p>
-                    <p><strong>Description:</strong> {product.description}</p>
-                    <p><strong>Price:</strong> ${product.price}</p>
+                <div className="w-full h-full flex flex-wrap p-8 bg-gray-50">
+                {/* Image Section */}
+                <div className="w-full md:w-1/2 h-full flex justify-center items-center">
+                  <img
+                    src={product.images[0]}
+                    alt={product.name}
+                    className="w-full max-w-[350px] h-[300px] object-cover rounded-lg shadow-lg"
+                  />
                 </div>
+              
+                {/* Product Details Section */}
+                <div className="w-full md:w-1/2 h-full p-6">
+                  <h1 className="text-3xl font-bold text-gray-800 mb-4">{product.productName}</h1>
+                  <p className="text-xl font-semibold text-primary mb-3">${product.price}</p>
+                  <p className="text-base text-gray-700 mb-6">{product.description}</p>
+                  
+                </div>
+              </div>
+              
             )}
         </div>
     );
