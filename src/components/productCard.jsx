@@ -1,16 +1,15 @@
-export default function ProductCart(props){
+import { Link } from "react-router-dom"
+
+export default function ProductCard(props){
     return (
-        <div>
-            <img src={props.src} />
-            <h1>
-                { props.name}
-            </h1>
-            <h2>
-                Price: {props.price}
-            </h2>
-            <button>
-                Add to Cart
-            </button>
-        </div>
+        <Link to={`/productInfo/${props.product.productID}`} >
+
+            <div className="flex flex-col items-center">
+                <img src={props.product.image} alt={product.productName} className="h-40 w-40 object-cover"/>
+                            <h1>{props.product.productName}</h1>
+                            <p>{props.product.description}</p>
+                            <p>{props.product.price}</p> 
+            </div>   
+        </Link>
     )
 }
