@@ -30,7 +30,7 @@ export default function ProductPage(){
 
     ,[])
     return (
-        <div className="w-full h-full bg-blue-300 overflow-y-scroll">
+        <div className="w-full h-full bg-secondary overflow-y-scroll">
             {products.map(
                 (product)=>
                     <div key={product.productID} className="flex flex-col items-center">
