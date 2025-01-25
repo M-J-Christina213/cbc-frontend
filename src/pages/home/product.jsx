@@ -33,9 +33,9 @@ export default function ProductPage(){
         <div className="w-full h-full bg-blue-300 overflow-y-scroll">
             {products.map(
                 (product)=>
-                    <div key={product.id} className="flex flex-col items-center">
+                    <div key={product.productID} className="flex flex-col items-center">
                         <img src={product.image} alt={product.name} className="h-40 w-40 object-cover"/>
-                        <h1>{product.name}</h1>
+                        <h1>{product.productName}</h1>
                         <p>{product.description}</p>
                         <p>{product.price}</p> 
                     </div>    
