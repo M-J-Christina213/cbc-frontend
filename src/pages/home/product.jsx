@@ -31,7 +31,7 @@ export default function ProductPage(){
 
     ,[])
     return (
-        <div className="w-full h-full bg-secondary overflow-y-scroll">
+        <div className="bg-gray-200 w-full h-full overflow-y-scroll">
           {products.map((product) => (
         <ProductCard key={product.productID} product={product} />
            ))}
