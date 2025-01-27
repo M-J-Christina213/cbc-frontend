@@ -6,7 +6,7 @@ export default function ProductCard(props) {
       to={`/productInfo/${props.product.productID}`}
       className="group"
     >
-      <div className="bg-white w-[300px] h-[400px] m-[10px] rounded-xl shadow-lg hover:shadow-2xl hover:border-[3px] transition-shadow duration-300 overflow-hidden flex flex-col">
+      <div className="bg-white w-[300px] h-[400px] m-[30px] rounded-xl shadow-lg hover:shadow-2xl hover:border-[3px] transition-shadow duration-300 overflow-hidden flex flex-col">
         <div className="h-[65%] overflow-hidden">
           <img
             src={props.product.images[0]}
