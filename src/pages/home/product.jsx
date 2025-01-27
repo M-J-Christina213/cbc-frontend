@@ -29,7 +29,7 @@ export default function ProductPage() {
 
   return (
 
-    <div className="bg-gray-100 w-full min-h-screen p-6 flex flex-col items-center">
+    <div className="w-full h-full overflow-y-scroll flex flex-wrap justify-center">
     {loadingStatus === "loading" && (
       <div className="flex flex-col items-center justify-center mt-10">
         <div className="relative flex justify-center items-center w-[100px] h-[100px]">
