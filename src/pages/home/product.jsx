@@ -19,7 +19,7 @@ export default function ProductPage() {
         })
         .catch(() => {
             toast.error("Failed to fetch products", {
-                position: "top-center"} // Center the toast message
+                position: "top-center"} 
                 
             )
               setLoadingStatus("error");
