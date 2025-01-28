@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductNotFound from "./productNotFound";
 import ImageSlider from "../../components/imageSlider";
+import { addToCart } from "../../utilis/cartFunction";
 
 export default function ProductOverview() {
     const params = useParams();
@@ -29,6 +30,11 @@ export default function ProductOverview() {
 
         fetchProduct();
     }, [productId]);
+
+    function onAddtoCartClick(){
+        addToCart(product.productID, 1)
+        toast.success(product.productID + "Added to Cart")
+    }
 
     return (
         <div className="w-full h-[calc(100vh-100px)]">
