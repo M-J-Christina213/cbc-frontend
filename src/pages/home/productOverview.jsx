@@ -75,7 +75,7 @@ export default function ProductOverview() {
                       <span> ${"LKR." + product.lastPrice} </span>
                     </p>
                     <p className="text-base text-gray-600 mb-6">{product.description}</p>
-                    <button onClick={onAddtoCartClick} className="bg-purple text-white p-2 rounded-lg"> Add to Cart </button>
+                    <button onClick={onAddtoCartClick} className="bg-primary text-white p-2 rounded-lg"> Add to Cart </button>
                   </div>
                 </div>
              
