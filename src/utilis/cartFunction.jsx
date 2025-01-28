@@ -20,5 +20,18 @@ export function addToCart(productId, qty)
         cart.push(
             {productId, qty}
         )
+    } else{
+        const newQty = cart[index].qty + qty 
+        
+        if (newQty<=0){
+            (cart.splice(index,1))
+        }
     }
+
+    saveCart(cart)
+}
+
+export function saveCart(cart){
+    localStorage.setItem("cart", JSON.stringify(cart))
+
 }
