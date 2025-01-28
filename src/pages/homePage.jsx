@@ -3,6 +3,7 @@ import Header from '../components/header';
 import LoginPage from './loginPage';
 import ProductOverview from './home/productOverview';
 import ProductPage from './home/product';
+import Cart from './home/cart';
 
 export default function Homepage() {
   return (
