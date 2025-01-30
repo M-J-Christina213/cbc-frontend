@@ -35,6 +35,7 @@ export default function ProductOverview() {
     function onAddtoCartClick(){
         addToCart(product.productID, 1)
         toast.success(product.productID + "Added to Cart")
+        setCart(loadCart());
     }
 
     return (

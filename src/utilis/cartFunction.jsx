@@ -26,10 +26,13 @@ export function addToCart(productId, qty)
         
         if (newQty<=0){
             (cart.splice(index,1))
+        } else {
+            cart[index].qty = newQty;
         }
     }
 
     saveCart(cart)
+    console.log("Cart updated:", cart);
 }
 
 export function saveCart(cart){
