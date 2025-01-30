@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { loadCart } from "../../utilis/cartFunction"
 
 export default function Cart(){
     const [cart, setCart] = useState([])
