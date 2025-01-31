@@ -9,9 +9,9 @@ export default function Cart() {
     }, []); 
 
     return (
-        <div className="w-full h-full overflow-y-scroll flex flex-wrap justify-center">
+        <div className="w-full h-full overflow-y-scroll flex flex-col  items-center">
             {cart.map((item) => (
-                <span key={item.productId}> 
+                <span className="border" key={item.productId}> 
                     {item.productId} X {item.qty} 
                 </span>
             ))}
