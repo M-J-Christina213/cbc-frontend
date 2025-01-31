@@ -1,11 +1,11 @@
-export default function CartCard(){
+export default function CartCard(props){
 
-    const productId = props.productID
+    const productID = props.productID
     const qty = props.qty
 
     return (
         <div className="border w-1/2 flex justify-between items-center">
-            <span> {productId} </span>
+            <span> {productID} </span>
             <span> X </span>
             <span> {qty} </span>
         </div>

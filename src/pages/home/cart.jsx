@@ -11,9 +11,15 @@ export default function Cart() {
 
     return (
         <div className="w-full h-full overflow-y-scroll flex flex-col  items-center">
-            {cart.map((item) => (
-               <CartCard key={item.productID} productID = {item.productID} qty={item.qty}/>
-            ))}
+            {
+             cart.map(
+                (item) => {
+                    return(
+                        <CartCard key={item.productId} productID={item.productId} qty={item.qty} />
+                    )
+                }
+              
+            )}
         </div>
     );
 }
