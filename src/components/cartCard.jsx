@@ -38,11 +38,12 @@ export default function CartCard(props){
     )
     return (
         <tr >
-            <td> <img src={product?.images[0]} className="w-[90px] h-[90px]"></img></td>
-            <td> {product?.productName } </td>
-            <td> {productID} </td>
-            <td> X </td>
-            <td> {qty} </td>
+            <td className=""> <img src={product?.images[0]} className="w-[90px] h-[90px] mx-auto"></img></td>
+            <td className="text-center"> {product?.productName } </td>
+            <td className="text-center"> {productID} </td>
+            <td className="text-center"> {qty} </td>
+            <td className="text-center"> LKR. {(product?.lastPrice || 0).toFixed(2)} </td>
+            <td className="text-center"> LKR. {(product?.lastPrice * qty || 0).toFixed(2)} </td>
         </tr>
-            )
+            ) 
 }
