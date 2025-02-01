@@ -37,10 +37,12 @@ export default function CartCard(props){
         } ,[ ]
     )
     return (
-        <div className="border w-1/2 flex justify-between items-center">
-            <span> {productID} </span>
-            <span> X </span>
-            <span> {qty} </span>
-        </div>
-    )
+        <tr >
+            <td> <img src={product?.images[0]} className="w-[90px] h-[90px]"></img></td>
+            <td> {product?.productName } </td>
+            <td> {productID} </td>
+            <td> X </td>
+            <td> {qty} </td>
+        </tr>
+            )
 }

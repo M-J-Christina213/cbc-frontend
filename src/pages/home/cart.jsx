@@ -10,16 +10,22 @@ export default function Cart() {
     }, []); 
 
     return (
-        <div className="w-full h-full overflow-y-scroll flex flex-col  items-center">
-            {
-             cart.map(
-                (item) => {
-                    return(
+        <div className="w-full h-full overflow-y-scroll flex flex-col items-center">
+            <table className="w-full">
+                <thead>
+                    <tr>
+                        <th> Image </th>
+                        <th> Product Name </th>
+                        <th> Product ID</th>
+                        <th> Qty </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {cart.map((item) => (
                         <CartCard key={item.productId} productID={item.productId} qty={item.qty} />
-                    )
-                }
-              
-            )}
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 }
