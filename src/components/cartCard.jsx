@@ -16,9 +16,15 @@ export default function CartCard(props){
                 axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products/${productID}`)
                 .then(
                     (response)=>{
-                        setProduct(response.data)
-                        console.log(response.data)
-                        setLoaded('loaded')
+
+                        if (response.data!=null){
+                            setProduct(response.data)
+                            console.log(response.data)
+                            setLoaded('loaded')
+                        }else{
+                            deleteItem(productID)
+                        }
+                        
 
                     
                     }
