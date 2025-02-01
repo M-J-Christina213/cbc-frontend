@@ -18,6 +18,8 @@ export default function Cart() {
                         <th> Product Name </th>
                         <th> Product ID</th>
                         <th> Qty </th>
+                        <th> Price </th>
+                        <th> Total </th>
                     </tr>
                 </thead>
                 <tbody>
