@@ -8,16 +8,17 @@ import toast from "react-hot-toast";
 
 export default function ProductOverview() {
     const params = useParams();
-    const productId = params.productID;
+    const productID = params.productID;
     const [product, setProduct] = useState(null);
     const [status, setStatus] = useState("loading");
+    const [cart, setCart] = useState([]);
 
     useEffect(() => {
-        console.log("Product ID:", productId);
+        console.log("Product ID:", productID);
 
         const fetchProduct = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products/${productId}`);
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products/${productID}`);
                 setProduct(response.data);
                 setStatus("found");
             } catch (error) {
@@ -30,7 +31,7 @@ export default function ProductOverview() {
         };
 
         fetchProduct();
-    }, [productId]);
+    }, [productID]);
 
     function onAddtoCartClick(){
         addToCart(product.productID, 1)
