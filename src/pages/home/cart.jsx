@@ -10,7 +10,7 @@ export default function Cart() {
     }, []); 
 
     return (
-        <div className="w-full h-full overflow-y-scroll flex flex-col items-center">
+        <div className="w-full h-full overflow-y-scroll flex flex-col items-end">
             <table className="w-full">
                 <thead>
                     <tr>
@@ -28,6 +28,7 @@ export default function Cart() {
                     ))}
                 </tbody>
             </table>
+            <button className="bg-primary text-white p-2 rounded-w-[30px]"> Checkout </button>
         </div>
     );
 }
