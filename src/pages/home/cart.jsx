@@ -11,7 +11,7 @@ export default function Cart() {
 
     return (
         <div className="w-full h-full overflow-y-scroll flex flex-col items-end">
-            <table className="w-full">
+            <table className="w-full bg-accent">
                 <thead>
                     <tr>
                         <th> Image </th>
