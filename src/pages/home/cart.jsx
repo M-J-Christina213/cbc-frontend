@@ -28,7 +28,7 @@ export default function Cart() {
                     ))}
                 </tbody>
             </table>
-            <button className="bg-primary text-white p-2 rounded-w-[30px]"> Checkout </button>
+            <button className="bg-primary text-white p-2 rounded-lg w-[300px]"> Checkout </button>
         </div>
     );
 }
