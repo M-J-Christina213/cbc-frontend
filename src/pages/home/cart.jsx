@@ -6,18 +6,21 @@ import axios from "axios";
 export default function Cart() {
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0)
-
+    const [labeledTotal, setLabelledTotal] = useState(0)
     useEffect(() => {
         setCart(loadCart());
-        axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/quote`,
-            {
-                orderedItems : loadCart()
-            }).then(
-                (res)=>{
-                    setTotal(res.data)
-                }
-            )
-    }, []); 
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/quote`, {
+            orderedItems: loadCart()
+        }).then((res) => {
+            console.log(res.data); // Debugging
+            if (typeof res.data === "object" && res.data !== null) {
+                setTotal(res.data.total ?? 0);  
+                setLabelledTotal(res.data.labeledTotal ?? 0); 
+            } else {
+                console.error("Unexpected response format:", res.data);
+            }
+        }).catch((err) => console.error("API Error:", err));
+    }, []);
 
     function onOrderCheckOutClick(){
         //second order to backend
@@ -44,6 +47,16 @@ export default function Cart() {
                     ))}
                 </tbody>
             </table>
+            <h1 className="text-3xl font-bold text-primary">
+                Total: Rs. {Number(labeledTotal).toFixed(2)}
+            </h1>
+            <h1 className="text-3xl font-bold text-primary">
+                    Total: Rs. {Number(labeledTotal - total).toFixed(2)}
+            </h1>
+            <h1 className="text-3xl font-bold text-primary">
+                    GrandTotal: Rs. {Number(total).toFixed(2)}
+            </h1>
+
             <button className="bg-primary text-white p-2 rounded-lg w-[300px]"> Checkout </button>
         </div>
     );
