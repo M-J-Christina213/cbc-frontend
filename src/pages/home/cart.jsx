@@ -7,7 +7,21 @@ export default function Cart() {
 
     useEffect(() => {
         setCart(loadCart());
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/orders/quote`,
+            {
+                orderedItems : loadCart()
+            }).then(
+                (res)=>{
+                    setTotal(res.data)
+                }
+            )
     }, []); 
+
+    function onOrderCheckOutClick(){
+        //second order to backend
+
+        //clear cart 
+    }
 
     return (
         <div className="w-full h-full overflow-y-scroll flex flex-col items-end">
