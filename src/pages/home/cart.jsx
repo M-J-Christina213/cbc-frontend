@@ -26,7 +26,15 @@ export default function Cart() {
         //second order to backend
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, {
             orderedItems: cart
-        }).then(
+        },
+        { headers: {
+            Authorization: "Bearer " + token,
+        },
+        }
+    
+    
+    
+    ).then(
             (res) => {
             console.log(res.data);
         //clear cart 
