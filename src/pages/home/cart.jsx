@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { loadCart } from "../../utilis/cartFunction";
 import CartCard from "../../components/cartCard";
+import axios from "axios";
 
 export default function Cart() {
     const [cart, setCart] = useState([]);
+    const [total, setTotal] = useState(0)
 
     useEffect(() => {
         setCart(loadCart());
-        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/orders/quote`,
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/quote`,
             {
                 orderedItems : loadCart()
             }).then(
