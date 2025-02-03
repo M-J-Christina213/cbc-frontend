@@ -12,7 +12,7 @@ export default function Cart() {
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/quote`, {
             orderedItems: loadCart()
         }).then((res) => {
-            console.log(res.data); 
+            
             if (typeof res.data === "object" && res.data !== null) {
                 setTotal(res.data.total ?? 0);  
                 setLabelledTotal(res.data.labeledTotal ?? 0); 
@@ -26,11 +26,8 @@ export default function Cart() {
         //second order to backend
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, {
             orderedItems: cart
-        },
-        { headers: {
-            Authorization: "Bearer " + token,
-        },
         }
+        
     
     
     
