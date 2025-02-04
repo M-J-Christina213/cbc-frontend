@@ -30,7 +30,10 @@ export default function Cart() {
         }
         //second order to backend
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, {
-            orderedItems: cart
+            orderedItems: cart,
+            name : "Jon Doe",
+            address: "123, Galle road, Colombo 03",
+            phone:"0775656123"
         },
         {headers: {
             Authorization: "Bearer " + token,
