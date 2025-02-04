@@ -9,36 +9,41 @@ export default function Cart() {
     const [labeledTotal, setLabelledTotal] = useState(0)
     useEffect(() => {
         setCart(loadCart());
+        const cartItems = loadCart();
+        console.log(cartItems); // Make sure productId exists in each item
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/quote`, {
-            orderedItems: loadCart()
-        }).then((res) => {
-            
-            if (typeof res.data === "object" && res.data !== null) {
-                setTotal(res.data.total ?? 0);  
-                setLabelledTotal(res.data.labeledTotal ?? 0); 
-            } else {
-                console.error("Unexpected response format:", res.data);
-            }
-        }).catch((err) => console.error("API Error:", err));
+            orderedItems: cartItems
+        })
+        .then((res) => {
+            console.log("Quote Response:", res.data); 
+            setTotal(res.data.total || 0);  
+            setLabelledTotal(res.data.labeledTotal || 0); 
+        })
+        .catch((err) => console.error("Quote API Error:", err));
+        
     }, []);
 
     function onOrderCheckOutClick(){
+        const token = localStorage.getItem("token")
+        if (token==null){
+            return
+        }
         //second order to backend
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, {
             orderedItems: cart
-        }
-        
-    
-    
-    
-    ).then(
+        },
+        {headers: {
+            Authorization: "Bearer " + token,
+        },
+    }
+    )
+    .then(
             (res) => {
             console.log(res.data);
         //clear cart 
-     }
-    )
-    
-   }
+            }
+        )
+    }
 
     return (
         <div className="w-full h-full overflow-y-scroll flex flex-col items-end">
@@ -69,7 +74,7 @@ export default function Cart() {
                     GrandTotal: Rs. {Number(total).toFixed(2)}
             </h1>
 
-            <button className="bg-primary text-white p-2 rounded-lg w-[300px]"> Checkout </button>
+            <button onClick={onOrderCheckOutClick} className="bg-primary text-white p-2 rounded-lg w-[300px]"> Checkout </button>
         </div>
     );
 }
