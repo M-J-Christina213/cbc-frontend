@@ -7,7 +7,7 @@ export default function Header() {
         
         <div className="h-full flex items-center w-[500px] justify-between">
         <Link to="/" className="text-primary font-bold text-x1 hover:border-b-2  border-b-secondary"> Home </Link>
-        <Link to="/products" className="text-primary font-bold text-x1 hover:border-b-2 border-b-secondary"> Products </Link>
+        <Link to="/products" className="text-primary  font-bold text-x1 hover:border-b-2 border-b-secondary"> Products </Link>
         <Link to="/aboutUs" className="text-primary font-bold text-x1 hover:border-b-2 border-b-secondary"> About Us </Link>
         <Link to="/contactUs" className="text-primary font-bold text-x1 hover:border-b-2 border-b-secondary"> Contact Us </Link>
         <Link to="/cart" className="text-primary font-bold text-x1 hover:border-b-2 border-b-secondary"> Cart </Link>
