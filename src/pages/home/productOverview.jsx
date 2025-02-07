@@ -59,8 +59,14 @@ export default function ProductOverview() {
             
             <div className="w-full h-full flex flex-col md:flex-row lg:flex-row items-center justify-center p-8 bg-gray-50">
                      <h1 className="text-3xl font-bold lg:hidden text-gray-800 mb-4">{product.productName}</h1>
+                     <p className="text-xl text-gray-600 lg:hidden">
+                      {product.price > product.lastPrice && (
+                        <span className="line-through text-red-500">${product.price}</span>
+                      )}
+                      <span> ${"LKR." + product.lastPrice} </span>
+                    </p>
                   {/* Image Section */}
-                  <div className="w-full md:w-[35%] h-full">
+                  <div className="w-[100%] lg:w-[35%] h-full">
                     
                       <ImageSlider
                         images={product.images}
@@ -73,7 +79,7 @@ export default function ProductOverview() {
                   <div className="w-full md:w-[65%] h-full p-6">
                     <h1 className="text-3xl font-bold text-gray-800 mb-4 hidden lg:block">{product.productName}</h1>
                     <h1 className="text-xl font-bold text-gray-600 mb-4">{product.altNames.join(" | ")}</h1>
-                    <p className="text-xl text-gray-600">
+                    <p className="text-xl text-gray-600 hidden lg:block">
                       {product.price > product.lastPrice && (
                         <span className="line-through text-red-500">${product.price}</span>
                       )}
