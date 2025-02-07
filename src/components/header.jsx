@@ -5,7 +5,7 @@ export default function Header() {
     return (
       <header className="bg-white w-full h-[100px] relative flex justify-center items-center">
         <img src="/CBC-Logo-transparent.png" className=" cursor-pointer h-full rounded-full absolute left-[10px]" />
-        <RxHamburgerMenu className="text-3x1 absolute right-[10px]"/>
+        <RxHamburgerMenu className="text-3x1 cursor-pointer text-primary absolute right-[10px] lg:hidden"/>
         <div className="h-full hidden lg:flex items-center w-[500px] justify-between">
     
         <Link to="/" className="text-primary font-bold text-x1 hover:border-b-2  border-b-secondary"> Home </Link>
