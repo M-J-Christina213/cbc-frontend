@@ -58,7 +58,7 @@ export default function ProductOverview() {
             {status === "found" && (
             
             <div className="w-full h-full flex flex-col md:flex-row lg:flex-row items-center justify-center p-8 bg-gray-50">
-                     <h1 className="text-3xl font-bold lg : hidden text-gray-800 mb-4">{product.productName}</h1>
+                     <h1 className="text-3xl font-bold lg:hidden text-gray-800 mb-4">{product.productName}</h1>
                   {/* Image Section */}
                   <div className="w-full md:w-[35%] h-full">
                     
@@ -71,7 +71,7 @@ export default function ProductOverview() {
               
                   {/* Product Details Section */}
                   <div className="w-full md:w-[65%] h-full p-6">
-                    <h1 className="text-3xl font-bold text-gray-800 mb-4">{product.productName}</h1>
+                    <h1 className="text-3xl font-bold text-gray-800 mb-4 hidden lg:block">{product.productName}</h1>
                     <h1 className="text-xl font-bold text-gray-600 mb-4">{product.altNames.join(" | ")}</h1>
                     <p className="text-xl text-gray-600">
                       {product.price > product.lastPrice && (
