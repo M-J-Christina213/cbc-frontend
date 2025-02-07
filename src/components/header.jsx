@@ -5,7 +5,14 @@ export default function Header() {
     return (
      <>
       <div className="fixed w-full h-screen bg-[#00000080] z-[10] border-[3px] border-red-900">
+         <div className="bg-white w-[300px] h-screen flex flex-col">
+          <Link to="/" className="text-primary font-bold text-x1 hover:border-b-2  border-b-secondary"> Home </Link>
+          <Link to="/products" className="text-primary  font-bold text-x1 hover:border-b-2 border-b-secondary"> Products </Link>
+          <Link to="/aboutUs" className="text-primary font-bold text-x1 hover:border-b-2 border-b-secondary"> About Us </Link>
+          <Link to="/contactUs" className="text-primary font-bold text-x1 hover:border-b-2 border-b-secondary"> Contact Us </Link>
+          <Link to="/cart" className="text-primary font-bold text-x1 hover:border-b-2 border-b-secondary"> Cart </Link>
 
+         </div>
         </div>
       <header className="bg-white w-full h-[100px] relative flex justify-center items-center">
         
