@@ -31,7 +31,7 @@ export default function ProductPage() {
 
     <div className="w-full h-full overflow-y-scroll flex flex-wrap justify-center">
     {loadingStatus === "loading" && (
-      <div className="flex flex-col items-center justify-center mt-10">
+      <div className="flex  flex-col items-center justify-center mt-10">
         <div className="relative flex justify-center items-center w-[100px] h-[100px]">
           <div className="absolute w-full h-full border-[6px] border-purple-500 rounded-full animate-spin border-t-transparent"></div>
           <div className="absolute w-[60px] h-[60px] bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 rounded-full shadow-lg"></div>

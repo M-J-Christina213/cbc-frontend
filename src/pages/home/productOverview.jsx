@@ -56,7 +56,7 @@ export default function ProductOverview() {
                 </div>
             )}
             {status === "found" && (
-                <div className="w-full h-full flex flex-wrap p-8 bg-gray-50">
+                <div className="w-full h-full flex lg: flex-col flex-wrap p-8 bg-gray-50">
                   {/* Image Section */}
                   <div className="w-full md:w-[35%] h-full flex justify-center items-center">
                     <div className="max-h-[400px] w-full overflow-hidden flex justify-center items-center">
