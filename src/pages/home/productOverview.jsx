@@ -57,7 +57,7 @@ export default function ProductOverview() {
             )}
             {status === "found" && (
             
-            <div className="w-full h-full flex flex-col md:flex-row lg:flex-row items-center justify-center p-8 bg-gray-50">
+            <div className="w-full h-full flex flex-col lg:flex-row items-center justify-center p-8 bg-gray-50">
                      <h1 className="text-3xl font-bold lg:hidden text-gray-800 mb-4">{product.productName}</h1>
                      <p className="text-xl text-gray-600 lg:hidden">
                       {product.price > product.lastPrice && (
