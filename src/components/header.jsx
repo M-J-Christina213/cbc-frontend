@@ -8,7 +8,7 @@ export default function Header() {
 
     return (
      <>
-      {isSliderOpen && <NavSlider/>}
+      {isSliderOpen && <NavSlider closeSlider={()=>{setIsSliderOpen(false)}}/>}
       <header className="bg-white w-full h-[100px] relative flex justify-center items-center">
         
         <img src="/CBC-Logo-transparent.png" className=" cursor-pointer h-full rounded-full absolute left-[10px]" />
