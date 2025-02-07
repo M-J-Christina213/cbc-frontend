@@ -56,15 +56,17 @@ export default function ProductOverview() {
                 </div>
             )}
             {status === "found" && (
-                <div className="w-full h-full flex lg: flex-col flex-wrap p-8 bg-gray-50">
+            
+            <div className="w-full h-full flex flex-col md:flex-row lg:flex-row items-center justify-center p-8 bg-gray-50">
+                     <h1 className="text-3xl font-bold lg : hidden text-gray-800 mb-4">{product.productName}</h1>
                   {/* Image Section */}
-                  <div className="w-full md:w-[35%] h-full flex justify-center items-center">
-                    <div className="max-h-[400px] w-full overflow-hidden flex justify-center items-center">
+                  <div className="w-full md:w-[35%] h-full">
+                    
                       <ImageSlider
                         images={product.images}
                         style={{ height: '100%', maxHeight: '400px', objectFit: 'contain' }}
                       />
-                    </div>
+                    
                   </div>
               
                   {/* Product Details Section */}
