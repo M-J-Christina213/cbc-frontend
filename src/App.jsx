@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import SignUpPage from './pages/signUpPage'
 import AdminHomepage from './pages/admin/adminHomePage'
 import { Toaster } from 'react-hot-toast'
+import { GoogleOAuthProvider } from '@react-oauth/google'
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <div className='bg-primary'>
     <BrowserRouter>
     <Toaster position='top-right'/>
+    <GoogleOAuthProvider clientId='379936970749-rc95kiaddidqut5i5klqkt7cjp3m48vq.apps.googleusercontent.com'>
      <Routes>
       <Route path="/*" element={<Homepage/>}/>
       <Route path="/login" element={<LoginPage/>}/>
@@ -22,7 +24,9 @@ function App() {
       <Route path="/admin/*" element={<AdminHomepage/>}/>
       <Route path="*" element={<h1>404: Page Not Found</h1>} />
     </Routes>
+    </GoogleOAuthProvider>
     </BrowserRouter>
+    
      
     </div>
   )
