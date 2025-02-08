@@ -1,3 +1,4 @@
+import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -7,6 +8,11 @@ export default function LoginPage() {
   
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const googleLogin = useGoogleLogin({
+     onSuccess: (res) => {
+      console.log(res)
+     }
+  })
 
 
   function login(){
@@ -68,6 +74,7 @@ export default function LoginPage() {
           >
             Login
           </button>
+          <button onClick={()=>{googleLogin()}}className='bg-white'> Login with Google </button>
         <div className="mt-4 text-center">
           <Link to="/" className="text-pink-600 hover:underline">
             Back to Home
