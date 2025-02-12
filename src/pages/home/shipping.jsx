@@ -1,7 +1,8 @@
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom"
 import CartCard from "../../components/cartCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function ShippingPage(){
     const location = useLocation();
@@ -63,7 +64,7 @@ export default function ShippingPage(){
                             GrandTotal: Rs. {Number(total).toFixed(2)}
                     </h1>
         
-                    <button onClick={onOrderCheckOutClick} className="bg-primary text-white p-2 rounded-lg w-[300px]"> Checkout </button>
+                    <button className="bg-primary text-white p-2 rounded-lg w-[300px]"> Checkout </button>
                 </div>
     </div>
 
