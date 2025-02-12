@@ -4,6 +4,7 @@ import LoginPage from './loginPage';
 import ProductOverview from './home/productOverview';
 import ProductPage from './home/product';
 import Cart from './home/cart';
+import ShippingPage from './home/shipping';
 
 export default function Homepage() {
   return (
@@ -16,6 +17,7 @@ export default function Homepage() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/cart" element={<Cart/>} />
           <Route path="/productInfo/:productID" element={<ProductOverview />} />
+          <Route path="/shipping" element={<ShippingPage/>} />
         </Routes>
       </div>
     </div>
