@@ -1,11 +1,33 @@
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom"
 import CartCard from "../../components/cartCard";
+import { useState } from "react";
 
 export default function ShippingPage(){
     const location = useLocation();
     const navigate = useNavigate();
     const cart = location.state.items
+
+    const [total, setTotal] = useState(0)
+    const [labeledTotal, setLabelledTotal] = useState(0)
+    
+
+    useEffect(() => {
+        console.log(cartItems); // Make sure productId exists in each item
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/quote`, {
+            orderedItems: cart
+        })
+        .then((res) => {
+            console.log("Quote Response:", res.data); 
+            if (res.data.total!=null){ 
+                setTotal(res.data.total);
+                setLabelledTotal(res.data.total);
+            }
+        })
+        .catch((err) => console.error("Quote API Error:", err));
+        
+    }, []);
+
 
     if (cart==null){
         toast.error("No items received")
