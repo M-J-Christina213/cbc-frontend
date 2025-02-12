@@ -60,8 +60,8 @@ export default function ShippingPage() {
     }
 
     return (
-        <div className="w-full h-full p-5">
-            <div className="max-w-4xl mx-auto bg-white p-6 shadow-lg rounded-lg">
+        <div className="w-full min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 p-5">
+            <div className="max-w-4xl mx-auto p-6 shadow-lg rounded-lg bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 ">
                 <h1 className="text-2xl font-bold mb-4">Shipping Details</h1>
                 <div className="grid grid-cols-1 gap-4">
                     <input 
@@ -98,7 +98,7 @@ export default function ShippingPage() {
                             <th className="p-2">Total</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="bg-white">
                         {cart.map((item) => (
                             <CartCard key={item.productId} productID={item.productId} qty={item.qty} />
                         ))}
