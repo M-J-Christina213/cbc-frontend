@@ -16,8 +16,10 @@ export default function Cart() {
         })
         .then((res) => {
             console.log("Quote Response:", res.data); 
-            setTotal(res.data.total || 0);  
-            setLabelledTotal(res.data.labeledTotal || 0); 
+            if (res.data.total!=null){ 
+                setTotal(res.data.total);
+                setLabelledTotal(res.data.total);
+            }
         })
         .catch((err) => console.error("Quote API Error:", err));
         
