@@ -12,7 +12,7 @@ export default function LoginPage() {
      onSuccess: (res) => {
       console.log(res)
       axios.post(import.meta.env.VITE_BACKEND_URL+"/api/users/googlelogin", {
-        tokentoken : res.access_token
+        token : res.access_token
        }).then(
          (res)=>{
           if (res.data.message == "User created"){
