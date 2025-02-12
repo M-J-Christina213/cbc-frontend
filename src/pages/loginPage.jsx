@@ -20,17 +20,17 @@ export default function LoginPage() {
             toast.success("Your account has been created now you can login via google")
           } else{
             // Check if the user object exists before trying to access its properties
-      if (res.data.user) {
-        localStorage.setItem("token", res.data.token);
-        if (res.data.user.type === "admin") {
-          window.location.href = "/admin";
-        } else {
-          window.location.href = "/";
+          if (res.data.user) {
+              localStorage.setItem("token", res.data.token);
+          if (res.data.user.type === "admin") {
+              window.location.href = "/admin";
+          } else {
+            window.location.href = "/";
+          }
+          } else {
+            toast.error("User data not available");
+          }
         }
-      } else {
-        toast.error("User data not available");
-      }
-    }
         }
       ).catch((error) => {
         console.error(error);
