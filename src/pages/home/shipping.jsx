@@ -14,7 +14,6 @@ export default function ShippingPage(){
     
 
     useEffect(() => {
-        console.log(cartItems); // Make sure productId exists in each item
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/quote`, {
             orderedItems: cart
         })
@@ -28,6 +27,31 @@ export default function ShippingPage(){
         .catch((err) => console.error("Quote API Error:", err));
         
     }, []);
+
+    function createOrder(){
+        const token = localStorage.getItem("token")
+        if (token==null){
+            return
+        }
+        //second order to backend
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, {
+            orderedItems: cart,
+            name : "Jon Doe",
+            address: "123, Galle road, Colombo 03",
+            phone:"0775656123"
+        },
+        {headers: {
+            Authorization: "Bearer " + token,
+        },
+    }
+    )
+    .then(
+            (res) => {
+            console.log(res.data);
+        //clear cart 
+            }
+        )
+    }
 
 
     if (cart==null){
@@ -64,7 +88,7 @@ export default function ShippingPage(){
                             GrandTotal: Rs. {Number(total).toFixed(2)}
                     </h1>
         
-                    <button className="bg-primary text-white p-2 rounded-lg w-[300px]"> Checkout </button>
+                    <button onClick={createOrder}className="bg-primary text-white p-2 rounded-lg w-[300px]"> Checkout </button>
                 </div>
     </div>
 
