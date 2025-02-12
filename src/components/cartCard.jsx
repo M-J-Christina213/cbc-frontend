@@ -38,6 +38,9 @@ export default function CartCard(props){
     )
     return (
         <tr className="hover:bg-secondary hover:text-white font-semibold cursor-pointer">
+            {
+                !loaded && <td className="text-center"> Loading... </td>
+            }
             <td className=""> <img src={product?.images[0]} className="w-[90px] h-[90px] mx-auto"></img></td>
             <td className="text-center"> {product?.productName } </td>
             <td className="text-center"> {productID} </td>
