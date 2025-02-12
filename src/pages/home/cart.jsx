@@ -73,7 +73,7 @@ export default function Cart() {
                 Total: Rs. {Number(labeledTotal).toFixed(2)}
             </h1>
             <h1 className="text-3xl font-bold text-primary">
-                    Total: Rs. {Number(labeledTotal - total).toFixed(2)}
+                    Discount: Rs. {Number(labeledTotal - total).toFixed(2)}
             </h1>
             <h1 className="text-3xl font-bold text-primary">
                     GrandTotal: Rs. {Number(total).toFixed(2)}
