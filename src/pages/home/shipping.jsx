@@ -26,7 +26,7 @@ export default function ShippingPage() {
             .then((res) => {
                 if (res.data.total !== null) {
                     setTotal(res.data.total);
-                    setLabelledTotal(res.data.total);
+                    setLabelledTotal(res.data.labeledTotal);
                 }
             })
             .catch(() => toast.error("Failed to fetch order quote. Please try again!"));

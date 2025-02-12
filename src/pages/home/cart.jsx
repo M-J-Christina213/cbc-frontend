@@ -20,7 +20,7 @@ export default function Cart() {
             console.log("Quote Response:", res.data); 
             if (res.data.total!=null){ 
                 setTotal(res.data.total);
-                setLabelledTotal(res.data.total);
+                setLabelledTotal(res.data.labeledTotal);
             }
         })
         .catch((err) => console.error("Quote API Error:", err));
