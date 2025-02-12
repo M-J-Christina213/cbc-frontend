@@ -1,97 +1,122 @@
 import toast from "react-hot-toast";
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom";
 import CartCard from "../../components/cartCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function ShippingPage(){
+export default function ShippingPage() {
     const location = useLocation();
     const navigate = useNavigate();
-    const cart = location.state.items
+    const cart = location.state?.items || [];
 
-    const [total, setTotal] = useState(0)
-    const [labeledTotal, setLabelledTotal] = useState(0)
-    
+    const [total, setTotal] = useState(0);
+    const [labeledTotal, setLabelledTotal] = useState(0);
+    const [name, setName] = useState("");
+    const [address, setAddress] = useState("");
+    const [phone, setPhone] = useState("");
 
     useEffect(() => {
-        axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/quote`, {
-            orderedItems: cart
-        })
-        .then((res) => {
-            console.log("Quote Response:", res.data); 
-            if (res.data.total!=null){ 
-                setTotal(res.data.total);
-                setLabelledTotal(res.data.total);
-            }
-        })
-        .catch((err) => console.error("Quote API Error:", err));
-        
-    }, []);
-
-    function createOrder(){
-        const token = localStorage.getItem("token")
-        if (token==null){
-            return
+        if (cart.length === 0) {
+            toast.error("No items in the cart");
+            navigate("/cart");
+            return;
         }
-        //second order to backend
+
+        axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/quote`, { orderedItems: cart })
+            .then((res) => {
+                if (res.data.total !== null) {
+                    setTotal(res.data.total);
+                    setLabelledTotal(res.data.total);
+                }
+            })
+            .catch(() => toast.error("Failed to fetch order quote. Please try again!"));
+    }, [cart, navigate]);
+
+    function createOrder() {
+        if (!name || !address || !phone) {
+            toast.error("Please fill in all fields");
+            return;
+        }
+
+        const token = localStorage.getItem("token");
+        if (!token) {
+            toast.error("You need to login first");
+            return;
+        }
+
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, {
             orderedItems: cart,
-            name : "Jon Doe",
-            address: "123, Galle road, Colombo 03",
-            phone:"0775656123"
-        },
-        {headers: {
-            Authorization: "Bearer " + token,
-        },
-    }
-    )
-    .then(
-            (res) => {
-            console.log(res.data);
-        //clear cart 
-            }
-        )
+            name,
+            address,
+            phone
+        }, {
+            headers: { Authorization: "Bearer " + token },
+        })
+            .then(() => {
+                toast.success("Order placed successfully!");
+                navigate("/orders");
+            })
+            .catch(() => toast.error("Order creation failed. Please try again!"));
     }
 
-
-    if (cart==null){
-        toast.error("No items received")
-        navigate("/cart")
-    }
-    return(
-    <div className="w-full h-full bg-red-900">
-        <div className="w-full h-full overflow-y-scroll flex flex-col items-end">
-                    <table className="w-full bg-accent">
-                        <thead>
-                            <tr>
-                                <th> Image </th>
-                                <th> Product Name </th>
-                                <th> Product ID</th>
-                                <th> Qty </th>
-                                <th> Price </th>
-                                <th> Total </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {cart.map((item) => (
-                                <CartCard key={item.productId} productID={item.productId} qty={item.qty} />
-                            ))}
-                        </tbody>
-                    </table>
-                    <h1 className="text-3xl font-bold text-primary">
-                        Total: Rs. {Number(labeledTotal).toFixed(2)}
-                    </h1>
-                    <h1 className="text-3xl font-bold text-primary">
-                            Discount: Rs. {Number(labeledTotal - total).toFixed(2)}
-                    </h1>
-                    <h1 className="text-3xl font-bold text-primary">
-                            GrandTotal: Rs. {Number(total).toFixed(2)}
-                    </h1>
-        
-                    <button onClick={createOrder}className="bg-primary text-white p-2 rounded-lg w-[300px]"> Checkout </button>
+    return (
+        <div className="w-full h-full p-5">
+            <div className="max-w-4xl mx-auto bg-white p-6 shadow-lg rounded-lg">
+                <h1 className="text-2xl font-bold mb-4">Shipping Details</h1>
+                <div className="grid grid-cols-1 gap-4">
+                    <input 
+                        type="text" 
+                        placeholder="Full Name" 
+                        className="p-2 border rounded w-full" 
+                        value={name} 
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <input 
+                        type="text" 
+                        placeholder="Address" 
+                        className="p-2 border rounded w-full" 
+                        value={address} 
+                        onChange={(e) => setAddress(e.target.value)}
+                    />
+                    <input 
+                        type="text" 
+                        placeholder="Phone Number" 
+                        className="p-2 border rounded w-full" 
+                        value={phone} 
+                        onChange={(e) => setPhone(e.target.value)}
+                    />
                 </div>
-    </div>
-
-    
-    )
+                
+                <table className="w-full mt-5 border-collapse border border-gray-200">
+                    <thead>
+                        <tr className="bg-gray-200">
+                            <th className="p-2">Image</th>
+                            <th className="p-2">Product Name</th>
+                            <th className="p-2">Product ID</th>
+                            <th className="p-2">Qty</th>
+                            <th className="p-2">Price</th>
+                            <th className="p-2">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {cart.map((item) => (
+                            <CartCard key={item.productId} productID={item.productId} qty={item.qty} />
+                        ))}
+                    </tbody>
+                </table>
+                
+                <div className="mt-4 text-lg font-bold">
+                    <p>Total: Rs. {Number(labeledTotal).toFixed(2)}</p>
+                    <p>Discount: Rs. {Number(labeledTotal - total).toFixed(2)}</p>
+                    <p>Grand Total: Rs. {Number(total).toFixed(2)}</p>
+                </div>
+                
+                <button 
+                    onClick={createOrder} 
+                    className="bg-blue-600 text-white p-3 rounded-lg w-full mt-4 hover:bg-blue-700">
+                    Checkout
+                </button>
+            </div>
+        </div>
+    );
 }
