@@ -5,7 +5,7 @@ import ProductOverview from './home/productOverview';
 import ProductPage from './home/product';
 import Cart from './home/cart';
 import ShippingPage from './home/shipping';
-import MyOrdersPage from './home/orders';
+import MyOrdersPage from './home/myOrders';
 
 export default function Homepage() {
   return (
