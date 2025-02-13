@@ -45,6 +45,23 @@ export default function ShippingPage() {
             return;
         }
 
+        try {
+            const decoded = jwt_decode(token);
+            const currentTime = Date.now() / 1000;
+    
+            if (decoded.exp && decoded.exp < currentTime) {
+                toast.error("Session expired, please log in again.");
+                localStorage.removeItem("token");
+                navigate("/login");
+                return;
+            }
+        } catch (error) {
+            toast.error("Invalid session. Please log in again.");
+            localStorage.removeItem("token");
+            navigate("/login");
+            return;
+        }
+
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, {
             orderedItems: cart,
             name,
