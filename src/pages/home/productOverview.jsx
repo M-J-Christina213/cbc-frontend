@@ -43,8 +43,11 @@ export default function ProductOverview() {
     function onBuyNowClick(){
         navigate("/shipping", {
             state: {
-                items: [{ productId: product.productID, 
-                    qty: 1 }]
+                items: [
+                    { 
+                        productId: product.productID, 
+                        qty: 1 
+                }]
             }
         });
     }
