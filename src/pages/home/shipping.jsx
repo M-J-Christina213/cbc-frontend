@@ -41,6 +41,7 @@ export default function ShippingPage() {
         const token = localStorage.getItem("token");
         if (!token) {
             toast.error("You need to login first");
+            navigate("/login");
             return;
         }
 
