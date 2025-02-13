@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import jwt_decode from "jwt-decode";
 
 export default function MyOrdersPage() {
     const [orders, setOrders] = useState([]);
@@ -11,12 +12,29 @@ export default function MyOrdersPage() {
         const token = localStorage.getItem("token");
         if (!token) {
             toast.error("You need to login first");
-            setLoading(false);
+            navigate("/login");
+            return;
+        }
+
+        try {
+            const decoded = jwt_decode(token);
+            const currentTime = Date.now() / 1000;
+    
+            if (decoded.exp && decoded.exp < currentTime) {
+                toast.error("Session expired, please log in again.");
+                localStorage.removeItem("token");
+                navigate("/login");
+                return;
+            }
+        } catch (error) {
+            toast.error("Invalid session. Please log in again.");
+            localStorage.removeItem("token");
+            navigate("/login");
             return;
         }
 
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, {
-            headers: { Authorization: "Bearer " + token },
+            headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
             setOrders(res.data);
