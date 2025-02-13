@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import CartCard from "../../components/cartCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 export default function ShippingPage() {
     const location = useLocation();
@@ -72,7 +73,7 @@ export default function ShippingPage() {
         })
         .then(() => {
             toast.success("Order placed successfully!");
-            navigate("/orders");  // ✅ Redirects to orders page
+            navigate("/orders");  
         })
         .catch(() => toast.error("Order creation failed. Please try again!"));
     }
