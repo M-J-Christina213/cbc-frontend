@@ -68,13 +68,13 @@ export default function ShippingPage() {
             address,
             phone
         }, {
-            headers: { Authorization: "Bearer " + token },
+            headers: { Authorization: `Bearer ${token}` },
         })
-            .then(() => {
-                toast.success("Order placed successfully!");
-                navigate("/orders");
-            })
-            .catch(() => toast.error("Order creation failed. Please try again!"));
+        .then(() => {
+            toast.success("Order placed successfully!");
+            navigate("/orders");  // ✅ Redirects to orders page
+        })
+        .catch(() => toast.error("Order creation failed. Please try again!"));
     }
 
     return (
