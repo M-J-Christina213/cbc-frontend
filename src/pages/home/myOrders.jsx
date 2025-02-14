@@ -59,9 +59,9 @@ export default function MyOrdersPage() {
                 <p className="text-center text-gray-500">No orders found.</p>
             ) : (
                 <div className="overflow-x-auto">
-                    <table className="w-full border-collapse border border-gray-200 shadow-lg">
+                    <table className="w-full bg-accent border-collapse border-2 border-gray-200 shadow-lg">
                         <thead>
-                            <tr className="bg-gray-100">
+                            <tr className="bg-primary text-white">
                                 <th className="border border-gray-200 px-4 py-2">Order ID</th>
                             
                                 <th className="border border-gray-200 px-4 py-2">Status</th>
