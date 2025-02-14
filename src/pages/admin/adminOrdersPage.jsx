@@ -65,7 +65,7 @@ export default function AdminOrdersPage() {
     
             // Update orders list
             setOrders(prevOrders =>
-                prevOrders.map(order => (order.orderId === orderId ? response.data.order : order))
+                prevOrders.map(o => (o.orderId === orderId ? response.data.order : o))
             );
     
             setSelectedOrder(null);
