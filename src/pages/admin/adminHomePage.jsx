@@ -3,6 +3,7 @@ import { FaTachometerAlt, FaBox, FaClipboardList, FaUserAlt, FaCommentDots, FaPe
 import AdminProductsPage from './adminProductsPage';
 import AddProductForm from './addProductForm';
 import EditProductForm from './editProductForm';
+import AdminOrdersPage from './adminOrdersPage';
 
 export default function AdminHomePage() {
   return (
@@ -54,7 +55,7 @@ export default function AdminHomePage() {
        <Route path="/products" element={<AdminProductsPage/>} />
        <Route path="/products/addProduct" element={<AddProductForm/>} />
        <Route path="/products/editProduct" element={<EditProductForm/>} />
-       <Route path="/orders" element={<h1> Orders</h1>} />
+       <Route path="/orders" element={<AdminOrdersPage/>} />
        <Route path="/customers" element={<h1> Customers </h1>} />
        <Route path="/reviews" element={<h1> Reviews </h1>} />
        <Route path="/*" element={<h1> 404 not found the admin page</h1>} />

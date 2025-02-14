@@ -18,7 +18,7 @@ export default function AdminOrdersPage() {
         }
 
         setLoading(true);
-        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/orders`, {
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/orders`, {
             headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
