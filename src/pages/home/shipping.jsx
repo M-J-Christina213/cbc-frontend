@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import CartCard from "../../components/cartCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import jwt_decode from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 
 export default function ShippingPage() {
     const location = useLocation();
@@ -47,7 +47,7 @@ export default function ShippingPage() {
         }
 
         try {
-            const decoded = jwt_decode(token);
+            const decoded = jwtDecode(token);
             const currentTime = Date.now() / 1000;
     
             if (decoded.exp && decoded.exp < currentTime) {
@@ -75,7 +75,10 @@ export default function ShippingPage() {
             toast.success("Order placed successfully!");
             navigate("/orders");  
         })
-        .catch(() => toast.error("Order creation failed. Please try again!"));
+        .catch((error) =>{
+            toast.error("Order creation failed. Please try again!");
+            console.log(error.message)
+    });
     }
 
     return (

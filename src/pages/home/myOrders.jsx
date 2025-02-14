@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import jwt_decode from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 
 export default function MyOrdersPage() {
     const [orders, setOrders] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true); //
     const [error, setError] = useState("");
 
     useEffect(() => {
@@ -17,7 +17,7 @@ export default function MyOrdersPage() {
         }
 
         try {
-            const decoded = jwt_decode(token);
+            const decoded = jwtDecode(token);
             const currentTime = Date.now() / 1000;
     
             if (decoded.exp && decoded.exp < currentTime) {
@@ -32,7 +32,7 @@ export default function MyOrdersPage() {
             navigate("/login");
             return;
         }
-
+        setLoading(true);
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, {
             headers: { Authorization: `Bearer ${token}` },
         })
@@ -44,6 +44,7 @@ export default function MyOrdersPage() {
             toast.error("Failed to fetch orders. Please try again!");
         })
         .finally(() => setLoading(false));
+        
     }, []);
 
     return (
