@@ -1,25 +1,29 @@
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import { FaTachometerAlt, FaBox, FaClipboardList, FaUserAlt, FaCommentDots, FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 import AdminProductsPage from './adminProductsPage';
 import AddProductForm from './addProductForm';
 import EditProductForm from './editProductForm';
 import AdminOrdersPage from './adminOrdersPage';
 import { useEffect, useState } from 'react';
-const navigate = useNavigate();
+import axios from 'axios';
+import toast from 'react-hot-toast';
+
 
 export default function AdminHomePage() {
   const [user, setUser] = useState(null)
+  const navigate = useNavigate();
   useEffect(()=>{
     const token = localStorage.getItem("token")
     if(!token){
       navigate("/login")
     }
-    axios.get(import.meta.env.VITE_BACKEND_URL+"/api/user",{
+    axios.get(import.meta.env.VITE_BACKEND_URL+"/api/users",{
       headers: { Authorization: `Bearer ${token}` },
 
     }).then((res)=>{
-      setUser(res.data)
+      console.log(res.data)
     }).catch((err)=>{
+      console.log("Failed to fetch user", err)
       toast.error("Failed to fetch user")
       navigate("/login")
     })
@@ -69,7 +73,7 @@ export default function AdminHomePage() {
 
 
       
-        <Routes path="/*">
+        {user!=null && <Routes path="/*">
        <Route path="/" element={<h1> Dashboard </h1>} />
        <Route path="/products" element={<AdminProductsPage/>} />
        <Route path="/products/addProduct" element={<AddProductForm/>} />
@@ -78,8 +82,15 @@ export default function AdminHomePage() {
        <Route path="/customers" element={<h1> Customers </h1>} />
        <Route path="/reviews" element={<h1> Reviews </h1>} />
        <Route path="/*" element={<h1> 404 not found the admin page</h1>} />
-      </Routes>
-      </div>
+      </Routes>}
+      {
+        user==null && <div className="flex justify-center items-center h-screen w-full">
+        {/*animationg loading screen*/}
+        
+    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-500 border-b-accent border-opacity-50"></div>
+    </div>
+    }
+    </div>
    
   );
 }
