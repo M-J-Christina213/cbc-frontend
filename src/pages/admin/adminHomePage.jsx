@@ -22,6 +22,12 @@ export default function AdminHomePage() {
 
     }).then((res)=>{
       console.log(res.data)
+      if (res.data.type!="admin"){
+        toast.error("You are not authorized to view this page")
+        navigate("/login")
+      }else{
+        setUser(res.data)
+      }
     }).catch((err)=>{
       console.log("Failed to fetch user", err)
       toast.error("Failed to fetch user")
