@@ -4,8 +4,27 @@ import AdminProductsPage from './adminProductsPage';
 import AddProductForm from './addProductForm';
 import EditProductForm from './editProductForm';
 import AdminOrdersPage from './adminOrdersPage';
+import { useEffect, useState } from 'react';
+const navigate = useNavigate();
 
 export default function AdminHomePage() {
+  const [user, setUser] = useState(null)
+  useEffect(()=>{
+    const token = localStorage.getItem("token")
+    if(!token){
+      navigate("/login")
+    }
+    axios.get(import.meta.env.VITE_BACKEND_URL+"/api/user",{
+      headers: { Authorization: `Bearer ${token}` },
+
+    }).then((res)=>{
+      setUser(res.data)
+    }).catch((err)=>{
+      toast.error("Failed to fetch user")
+      navigate("/login")
+    })
+  }, [])
+
   return (
     <div className="flex items-start min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400">
 
