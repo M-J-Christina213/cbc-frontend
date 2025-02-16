@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FiUser, FiShoppingCart, FiHeart, FiSearch } from "react-icons/fi";
@@ -61,10 +61,11 @@ export default function Header() {
             </li>
 
             {/* Shop Dropdown with Headless UI */}
-            <Menu as="li" className="relative">
+            <Menu as="li" className="relative group">
+              {/* Use group here */}
               <Menu.Button className="flex items-center gap-1 cursor-pointer hover:border-b-2 border-secondary pb-1">
                 <Link to="/shop">Shop</Link>
-                <FaChevronDown size={14} />
+                <FaChevronDown size={14} className="transition-transform group-hover:rotate-180" />
               </Menu.Button>
 
               {/* Dropdown Menu */}
@@ -77,7 +78,7 @@ export default function Header() {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Menu.Items className="absolute left-0 mt-2 bg-white shadow-md rounded-md w-40 text-sm">
+                <Menu.Items className="absolute left-0 mt-2 bg-white shadow-md rounded-md w-40 text-sm group-hover:block hidden">
                   <Menu.Item>
                     {({ active }) => (
                       <Link
@@ -131,7 +132,6 @@ export default function Header() {
                 </Menu.Items>
               </Transition>
             </Menu>
-
             <li>
               <Link to="/new-arrivals" className="hover:border-b-2 border-secondary pb-1">
                 New Arrivals
