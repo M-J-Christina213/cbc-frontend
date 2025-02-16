@@ -23,13 +23,13 @@ export default function Header() {
           />
 
           {/* Search Bar */}
-          <div className=" md:flex flex-grow mx-6 max-w-sm relative">
+          <div className="md:flex items-center flex-grow mx-6 max-w-md relative">
             <input
               type="text"
               placeholder="Search for products..."
               className="w-full px-10 py-1.5 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
             />
-            <FiSearch size={20} className="absolute left-3 text-gray-500" />
+            <FiSearch size={20} className="absolute left-3 text-gray-500 top-1/2 transform -translate-y-1/2" />
           </div>
 
           {/* Icons */}
