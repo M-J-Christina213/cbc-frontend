@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { FiUser, FiShoppingCart, FiHeart } from "react-icons/fi";
+import { FiUser, FiShoppingCart, FiHeart, FiSearch } from "react-icons/fi";
 import { FaChevronDown } from "react-icons/fa";
 import NavSlider from "./NavSlider";
 
@@ -21,15 +21,15 @@ export default function Header() {
             alt="Logo"
             className="h-20 cursor-pointer"
           />
-          <Link to="/"></Link>
 
           {/* Search Bar */}
-          <div className="hidden md:flex flex-grow mx-6 max-w-xs">
+          <div className=" md:flex flex-grow mx-6 max-w-sm relative">
             <input
               type="text"
               placeholder="Search for products..."
-              className="w-full px-3 py-1.5 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-10 py-1.5 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
             />
+            <FiSearch size={20} className="absolute left-3 text-gray-500" />
           </div>
 
           {/* Icons */}
