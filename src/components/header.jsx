@@ -64,11 +64,11 @@ export default function Header() {
                 <FaChevronDown size={14} />
               </div>
               <ul className="absolute left-0 mt-2 bg-white shadow-md rounded-md w-40 text-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                <li><Link to="/skincare" className="block px-4 py-2 hover:border-b-2 border-secondary">Skincare</Link></li>
-                <li><Link to="/makeup" className="block px-4 py-2 hover:border-b-2 border-secondary">Makeup</Link></li>
-                <li><Link to="/haircare" className="block px-4 py-2 hover:border-b-2 border-secondary">Haircare</Link></li>
-                <li><Link to="/fragrances" className="block px-4 py-2 hover:border-b-2 border-secondary">Fragrances</Link></li>
-                <li><Link to="/bath-body" className="block px-4 py-2 hover:border-b-2 border-secondary">Bath & Body</Link></li>
+                <li><Link to="/skincare" className="block px-4 py-2 text-black hover:border-b-2 border-secondary">Skincare</Link></li>
+                <li><Link to="/makeup" className="block px-4 py-2 text-black hover:border-b-2 border-secondary">Makeup</Link></li>
+                <li><Link to="/haircare" className="block px-4 py-2 text-black hover:border-b-2 border-secondary">Haircare</Link></li>
+                <li><Link to="/fragrances" className="block px-4 py-2 text-black hover:border-b-2 border-secondary">Fragrances</Link></li>
+                <li><Link to="/bath-body" className="block px-4 py-2 text-black hover:border-b-2 border-secondary">Bath & Body</Link></li>
               </ul>
             </li>
             <li><Link to="/new-arrivals" className="hover:border-b-2 border-secondary pb-1">New Arrivals</Link></li>
