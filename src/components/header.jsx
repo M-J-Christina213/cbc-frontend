@@ -53,6 +53,7 @@ export default function Header() {
         </div>
 
         {/* Bottom Navigation Section */}
+       
         <nav className="bg-black hidden lg:flex justify-center py-3 shadow-sm">
           <ul className="flex space-x-8 font-semibold text-white">
             <li>
@@ -93,8 +94,6 @@ export default function Header() {
                 </li>
               </ul>
             </li>
-
-
 
             <li><Link to="/new-arrivals" className="hover:border-b-2 border-secondary pb-1">New Arrivals</Link></li>
             <li><Link to="/special-offers" className="hover:border-b-2 border-secondary pb-1">Special Offers</Link></li>
