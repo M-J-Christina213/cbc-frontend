@@ -1,6 +1,6 @@
 import react from 'react';
 
-const NavLinks =() => {
+export default function NavLinks() {
     const Links = [
          {name: 'Home'},
         {name: 'Shop'},
@@ -16,4 +16,20 @@ const NavLinks =() => {
         {name: 'Contact Us'},
 
     ]
-}
+
+    return (
+        <>
+          {Links.map((Link)=> (
+            <div>
+                <div>
+                   <h1> {Link.name}</h1>
+                </div>
+            </div>
+          )
+        )}
+
+        </>
+    )
+    
+    }
+
