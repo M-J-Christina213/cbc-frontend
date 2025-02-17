@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FiUser, FiShoppingCart, FiHeart, FiSearch } from "react-icons/fi";
 import { FaChevronDown } from "react-icons/fa";
-import NavSlider from "./NavSlider";
+import NavSlider from "./navSlider";
 
 
 export default function Header() {
