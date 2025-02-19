@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { data, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FiUser, FiShoppingCart, FiHeart, FiSearch } from "react-icons/fi";
-import { FaCaretDown} from "react-icons/fa";
+import { FaCaretDown } from "react-icons/fa";
 import NavSlider from "./navSlider";
 
 const Menu = [
@@ -12,9 +12,9 @@ const Menu = [
     link: "/",
   },
   {
-    id: 2,
-    name: "Shop All",
-    link: "/shop",
+    id: 2, // "Shop" dropdown moved here
+    name: "Shop",
+    dropdown: true, // Indicating it's a dropdown
   },
   {
     id: 3,
@@ -40,49 +40,25 @@ const Menu = [
     id: 7,
     name: "Contact Us",
     link: "/contact-us",
-  }
-]
+  },
+];
 
 const DropdownLinks = [
-  {
-    id:1,
-    name: "Makeup",
-    link:"/#",
-  },
-  {
-    id :2,
-    name:"Skincare",
-    link:"/#",
-  },
-  {
-    id:3,
-    name : "Haircare",
-    link:"/#",
-  },
-  {
-    id: 4,
-    name : "Nails",
-    link:"/#"
-  },
-  {
-    id :5,
-    name : "Fragrances",
-    link:"/#"
-  },
-  {
-    id : 6,
-    name:"Bath & Body",
-    link: "/#"
-  }
-]
+  { id: 1, name: "Makeup", link: "/#" },
+  { id: 2, name: "Skincare", link: "/#" },
+  { id: 3, name: "Haircare", link: "/#" },
+  { id: 4, name: "Nails", link: "/#" },
+  { id: 5, name: "Fragrances", link: "/#" },
+  { id: 6, name: "Bath & Body", link: "/#" },
+];
 
 export default function Header() {
   const [isSliderOpen, setIsSliderOpen] = useState(false);
 
   return (
     <>
-      {isSliderOpen && <NavSlider closeSlider={() => setIsSliderOpen(false)} />} 
-      
+      {isSliderOpen && <NavSlider closeSlider={() => setIsSliderOpen(false)} />}
+
       {/* Top Section */}
       <header className="bg-white w-full shadow-md">
         <div className="flex justify-between items-center px-6 py-3 lg:px-12">
@@ -100,7 +76,10 @@ export default function Header() {
               placeholder="Search for products..."
               className="w-full px-10 py-1.5 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
             />
-            <FiSearch size={20} className="absolute left-3 text-gray-500 top-1/2 transform -translate-y-1/2" />
+            <FiSearch
+              size={20}
+              className="absolute left-3 text-gray-500 top-1/2 transform -translate-y-1/2"
+            />
           </div>
 
           {/* Icons */}
@@ -124,71 +103,45 @@ export default function Header() {
         </div>
 
         {/* Bottom Navigation Section */}
-
         <div className="bg-black flex justify-center">
           <ul className="sm:flex hidden items-center gap-4 justify-center pb-2 pt-2">
-            {Menu.map((data) => (
-              <li key={data.id}>
-                <a
-                  href={data.link}
-                  className="inline-block text-white px-4  hover:border-b-2 border-secondary"
-                >
-                  {data.name}
-                </a>
-              </li>
-            ))}
-            {/* Dropdown menus*/}
-            <li className="relative group">
-              <a href="/Shop All" 
-                className="text-white flex items-center gap-[2px] py-2 px-4 hover:border-b-2 border-secondary">
-                Shop 
-                <span>
-                  <FaCaretDown className="text-white transition-all duration-200 group-hover:rotate-180" />
-                </span>
-              </a>
-              <div className="absolute z-[9999] hidden group-hover:block w-[150px] rounded-md bg-white p-2 text-black">
-                <ul>
-                  {DropdownLinks.map((data) => (
-                    <li key={data.id}>
-                      <a href={data.link}
-                        className="inline-block w-full rounded-md p-2 hover:bg-primary/20">
-                        {data.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </li>
-
+            {Menu.map((data) =>
+              data.dropdown ? (
+                // "Shop" dropdown menu
+                <li key={data.id} className="relative group">
+                  <a className="text-white flex items-center gap-[2px] py-2 px-4 hover:border-b-2 border-secondary">
+                    {data.name}
+                    <FaCaretDown className="text-white transition-all duration-200 group-hover:rotate-180" />
+                  </a>
+                  <div className="absolute z-[9999] hidden group-hover:block w-[150px]  bg-white p-2 text-black">
+                    <ul>
+                      {DropdownLinks.map((link) => (
+                        <li key={link.id}>
+                          <a
+                            href={link.link}
+                            className="inline-block w-full  p-2 hover:bg-primary/20"
+                          >
+                            {link.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
+              ) : (
+                // Regular menu items
+                <li key={data.id}>
+                  <a
+                    href={data.link}
+                    className="inline-block text-white px-4 hover:border-b-2 border-secondary"
+                  >
+                    {data.name}
+                  </a>
+                </li>
+              )
+            )}
           </ul>
         </div>
-
-       {/*
-        <nav className="bg-black hidden lg:flex items-center  py-3 shadow-sm">
-          <ul className="flex space-x-8 font-semibold text-white">
-
-
-            
-            <li>
-              <Link to="/" className="py-7 px-3 inline-block hover:border-b-2 border-secondary">Home</Link>
-            </li>
-
-            
-            <li className="nav-item">
-  
-                <Link to="/shop" className="nav-links">Shop All</Link>
-
-              </li>
-
-            <li><Link to="/new-arrivals" className="hover:border-b-2 border-secondary pb-1">New Arrivals</Link></li>
-            <li><Link to="/special-offers" className="hover:border-b-2 border-secondary pb-1">Special Offers</Link></li>
-            <li><Link to="/gifts" className="hover:border-b-2 border-secondary pb-1">Gifts</Link></li>
-            <li><Link to="/about-us" className="hover:border-b-2 border-secondary pb-1">About Us</Link></li>
-            <li><Link to="/contact-us" className="hover:border-b-2 border-secondary pb-1">Contact Us</Link></li>
-            
-          </ul>
-        </nav>
-        */}
       </header>
     </>
   );
