@@ -1,11 +1,48 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FiUser, FiShoppingCart, FiHeart, FiSearch } from "react-icons/fi";
 import { FaChevronDown } from "react-icons/fa";
 import NavSlider from "./navSlider";
-import NavLinks from "./navLinks";
+import { Menu } from "@headlessui/react";
 
+const Menu = [
+  {
+    id: 1,
+    name: "Home",
+    link: "/",
+  },
+  {
+    id: 2,
+    name: "Shop All",
+    link: "/shop",
+  },
+  {
+    id: 3,
+    name: "New Arrivals",
+    link: "/new-arrivals",
+  },
+  {
+    id: 4,
+    name: "Special Offers",
+    link: "/special-offers",
+  },
+  {
+    id: 5,
+    name: "Gifts",
+    link: "/gifts",
+  },
+  {
+    id: 6,
+    name: "About Us",
+    link: "/about-us",
+  },
+  {
+    id: 7,
+    name: "Contact Us",
+    link: "/contact-us",
+  }
+]
 
 export default function Header() {
   const [isSliderOpen, setIsSliderOpen] = useState(false);
@@ -55,25 +92,44 @@ export default function Header() {
         </div>
 
         {/* Bottom Navigation Section */}
-       
+
+        <div>
+          <ul>
+            {
+              Menu.map((data)=> (
+                    <li>
+                      <a href={data.link} >{data.name}</a>
+                    </li>
+              ))
+            }
+          </ul>
+        </div>
+       {/*
         <nav className="bg-black hidden lg:flex items-center  py-3 shadow-sm">
           <ul className="flex space-x-8 font-semibold text-white">
+
+
+            
             <li>
               <Link to="/" className="py-7 px-3 inline-block hover:border-b-2 border-secondary">Home</Link>
             </li>
-            <NavLinks>
+
+            
+            <li className="nav-item">
   
                 <Link to="/shop" className="nav-links">Shop All</Link>
 
-            </NavLinks>
+              </li>
 
             <li><Link to="/new-arrivals" className="hover:border-b-2 border-secondary pb-1">New Arrivals</Link></li>
             <li><Link to="/special-offers" className="hover:border-b-2 border-secondary pb-1">Special Offers</Link></li>
             <li><Link to="/gifts" className="hover:border-b-2 border-secondary pb-1">Gifts</Link></li>
             <li><Link to="/about-us" className="hover:border-b-2 border-secondary pb-1">About Us</Link></li>
             <li><Link to="/contact-us" className="hover:border-b-2 border-secondary pb-1">Contact Us</Link></li>
+            
           </ul>
         </nav>
+        */}
       </header>
     </>
   );

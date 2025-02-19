@@ -1,19 +1,8 @@
-import react from 'react';
+import React from 'react';
 
 export default function NavLinks() {
     const Links = [
-         {name: 'Home'},
-        {name: 'Shop'},
-        {name: 'Makeup'},
-        {name: 'Skincare'},
-        {name: 'Haircare'},
-        {name: 'Fragrances'},
-        {name: 'Bath & Body'},
-        {name: 'New Arrivals'},
-        {name: 'Special Offers'},
-        {name: 'Gifts'},
-        {name: 'About Us'},
-        {name: 'Contact Us'},
+         
 
     ]
 
@@ -21,7 +10,7 @@ export default function NavLinks() {
         <>
           {Links.map((Link)=> (
             <div>
-                <div>
+                <div className='px-3 text-left'>
                    <h1> {Link.name}</h1>
                 </div>
             </div>
