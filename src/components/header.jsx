@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { data, Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FiUser, FiShoppingCart, FiHeart, FiSearch } from "react-icons/fi";
-import { FaChevronDown } from "react-icons/fa";
+import { FaCaretDown} from "react-icons/fa";
 import NavSlider from "./navSlider";
 
 const Menu = [
@@ -40,6 +40,39 @@ const Menu = [
     id: 7,
     name: "Contact Us",
     link: "/contact-us",
+  }
+]
+
+const DropdownLinks = [
+  {
+    id:1,
+    name: "Makeup",
+    link:"/#",
+  },
+  {
+    id :2,
+    name:"Skincare",
+    link:"/#",
+  },
+  {
+    id:3,
+    name : "Haircare",
+    link:"/#",
+  },
+  {
+    id: 4,
+    name : "Nails",
+    links:"/#"
+  },
+  {
+    id :5,
+    name : "Fragrances",
+    link:"/#"
+  },
+  {
+    id : 6,
+    name:"Bath & Body",
+    link: "/#"
   }
 ]
 
@@ -106,9 +139,28 @@ export default function Header() {
             ))}
             {/* Dropdown menus*/}
             <li>
-              <a href="#" 
-               className="text-white px-4 hover:border-b-2 border-secondary">
+              <a href="/Shop All" 
+               className="text-white flex items-center gap-[2px] py-2 px-4 hover:border-b-2 border-secondary">
+                Shop All 
+                <span>
+                  <FaCaretDown className="text-white transition-all duration-200 group-hover:rotate-180" />
+                </span>
               </a>
+              <div>
+                <ul>
+                  {/*Dropdown menu items*/}
+                  {DropdownLinks.map((data) => (
+                        <li key={data.id}>
+                        <a href={data.link}>
+                          {data.name}
+                        </a>
+    
+                      </li>
+                  ))}
+                
+
+                </ul>
+              </div>
             </li>
           </ul>
         </div>
