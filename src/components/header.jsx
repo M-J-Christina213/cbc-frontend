@@ -4,7 +4,6 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { FiUser, FiShoppingCart, FiHeart, FiSearch } from "react-icons/fi";
 import { FaChevronDown } from "react-icons/fa";
 import NavSlider from "./navSlider";
-import { Menu } from "@headlessui/react";
 
 const Menu = [
   {
@@ -93,17 +92,27 @@ export default function Header() {
 
         {/* Bottom Navigation Section */}
 
-        <div>
-          <ul>
-            {
-              Menu.map((data)=> (
-                    <li>
-                      <a href={data.link} >{data.name}</a>
-                    </li>
-              ))
-            }
+        <div className="bg-black flex justify-center">
+          <ul className="sm:flex hidden items-center gap-4 justify-center pb-2 pt-2">
+            {Menu.map((data) => (
+              <li key={data.id}>
+                <a
+                  href={data.link}
+                  className="inline-block text-white px-4  hover:border-b-2 border-secondary"
+                >
+                  {data.name}
+                </a>
+              </li>
+            ))}
+            {/* Dropdown menus*/}
+            <li>
+              <a href="#" 
+               className="text-white px-4 hover:border-b-2 border-secondary">
+              </a>
+            </li>
           </ul>
         </div>
+
        {/*
         <nav className="bg-black hidden lg:flex items-center  py-3 shadow-sm">
           <ul className="flex space-x-8 font-semibold text-white">
