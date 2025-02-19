@@ -62,7 +62,7 @@ const DropdownLinks = [
   {
     id: 4,
     name : "Nails",
-    links:"/#"
+    link:"/#"
   },
   {
     id :5,
@@ -138,30 +138,28 @@ export default function Header() {
               </li>
             ))}
             {/* Dropdown menus*/}
-            <li>
+            <li className="relative group">
               <a href="/Shop All" 
-               className="text-white flex items-center gap-[2px] py-2 px-4 hover:border-b-2 border-secondary">
-                Shop All 
+                className="text-white flex items-center gap-[2px] py-2 px-4 hover:border-b-2 border-secondary">
+                Shop 
                 <span>
                   <FaCaretDown className="text-white transition-all duration-200 group-hover:rotate-180" />
                 </span>
               </a>
-              <div>
+              <div className="absolute z-[9999] hidden group-hover:block w-[150px] rounded-md bg-white p-2 text-black">
                 <ul>
-                  {/*Dropdown menu items*/}
                   {DropdownLinks.map((data) => (
-                        <li key={data.id}>
-                        <a href={data.link}>
-                          {data.name}
-                        </a>
-    
-                      </li>
+                    <li key={data.id}>
+                      <a href={data.link}
+                        className="inline-block w-full rounded-md p-2 hover:bg-primary/20">
+                        {data.name}
+                      </a>
+                    </li>
                   ))}
-                
-
                 </ul>
               </div>
             </li>
+
           </ul>
         </div>
 
