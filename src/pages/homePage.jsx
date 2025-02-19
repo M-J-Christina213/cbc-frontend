@@ -13,6 +13,7 @@ export default function Homepage() {
     <div className="h-screen w-full">
       <Header />
       <div className="w-full h-[calc(100vh)]">
+      <HeroSection/>
         <Routes path="/*">
           <Route path="/" element={<h1> </h1>} />
           <Route path='/products' element={<ProductPage/>}/>
@@ -23,8 +24,6 @@ export default function Homepage() {
           <Route path="/orders" element={<MyOrdersPage/>} />
         </Routes>
       </div>
-
-      <HeroSection/>
 
      
 
