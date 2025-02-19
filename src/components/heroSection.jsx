@@ -1,5 +1,14 @@
 import React from "react";
 
-export default function heroSection(){
+export default function HeroSection(){
+
+    return (
     
+        <>
+        <div>
+            Hero
+        </div>
+        </>
+        
+    )
 }

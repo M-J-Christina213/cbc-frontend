@@ -6,6 +6,7 @@ import ProductPage from './home/product';
 import Cart from './home/cart';
 import ShippingPage from './home/shipping';
 import MyOrdersPage from './home/myOrders';
+import HeroSection from '../components/heroSection';
 
 export default function Homepage() {
   return (
@@ -23,8 +24,10 @@ export default function Homepage() {
         </Routes>
       </div>
 
+      <HeroSection/>
 
-      
+   
+
     </div>
   );
 }
