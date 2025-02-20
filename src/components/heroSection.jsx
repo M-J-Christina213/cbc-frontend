@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import valentineoffer from "../assets/images-cbc/valentineoffer.png";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 
@@ -15,22 +15,36 @@ export default function HeroSection() {
         }
     ];
 
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    const prevSlide = () => {
+        const isFirstSlide = currentSlide === 0;
+        const newindex = isFirstSlide ? slides.length - 1 : currentSlide - 1;
+        setCurrentSlide(newindex);
+    }
+    
+    const nextSlide = () => {
+       const isLastSlide = currentSlide === slides.length - 1;
+       const newindex = isLastSlide ? 0 : currentSlide + 1;
+         setCurrentSlide(newindex);
+    }
+
     return (
-        <div className="max-w-[1400px] min-h-screen w-full m-auto relative">
+        <div className="max-w-[1400px] min-h-screen w-full m-auto relative group">
             <div 
-                style={{ backgroundImage: `url(${slides[0].url})` }}
+                style={{ backgroundImage: `url(${slides[currentSlide].url})` }}
                 className="w-full h-[500px] bg-center bg-cover bg-no-repeat duration-500">
 
                 </div>
             
             {/* Left Arrow */}
-            <div className="absolute top-[50%] left-5 transform -translate-y-1/2 cursor-pointer text-2xl rounded-full bg-black/20 p-2">
-                <BsChevronCompactLeft size={30}/>
+            <div className="hidden group-hover:block absolute top-[50%] left-5 transform -translate-y-1/2 cursor-pointer text-2xl rounded-full bg-black/20 p-2">
+                <BsChevronCompactLeft onClick={prevSlide} size={30}/>
             </div>
             
             {/* Right Arrow */}
-            <div className="absolute top-[50%] right-5 transform -translate-y-1/2 cursor-pointer text-2xl rounded-full bg-black/20 p-2">
-                <BsChevronCompactRight size={30}/>
+            <div className="hidden group-hover:block absolute top-[50%] right-5 transform -translate-y-1/2 cursor-pointer text-2xl rounded-full bg-black/20 p-2">
+                <BsChevronCompactRight  onClick={nextSlide} size={30}/>
             </div>
         </div>
     );
