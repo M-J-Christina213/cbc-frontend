@@ -1,13 +1,14 @@
 import React from "react";
+import valentineoffer from "../assets/images-cbc/valentineoffer.png";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 
 export default function HeroSection() {
     const slides = [
         {
-            url: '/images-cbc/valentineoffer.png',
+            url: valentineoffer,
         },
         {
-            url: '/images/valentineoffer.png',
+            url: '/images-cbc/valentineoffer.png',
         },
         {
             url: '/images/valentineoffer.png',
@@ -15,12 +16,21 @@ export default function HeroSection() {
     ];
 
     return (
-        <div className="max-w-[1400px] min-h-screen w-full m-auto py-16 px-4 relative">
-            <h1>Hero section</h1>
+        <div className="max-w-[1400px] min-h-screen w-full m-auto relative">
             <div 
                 style={{ backgroundImage: `url(${slides[0].url})` }}
-                className="w-full h-full rounded-2xl bg-center bg-cover duration-500"
-            >
+                className="w-full h-[500px] bg-center bg-cover bg-no-repeat duration-500">
+
+                </div>
+            
+            {/* Left Arrow */}
+            <div className="absolute top-[50%] left-5 transform -translate-y-1/2 cursor-pointer text-2xl rounded-full bg-black/20 p-2">
+                <BsChevronCompactLeft size={30}/>
+            </div>
+            
+            {/* Right Arrow */}
+            <div className="absolute top-[50%] right-5 transform -translate-y-1/2 cursor-pointer text-2xl rounded-full bg-black/20 p-2">
+                <BsChevronCompactRight size={30}/>
             </div>
         </div>
     );
