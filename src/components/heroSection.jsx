@@ -4,7 +4,7 @@ import makeupSlide from "../assets/images-cbc/makeupSlide.png";
 import saleskincare from "../assets/images-cbc/saleskincare.png";
 import skincare from "../assets/images-cbc/skincare.png";
 
-
+import { RxDotFilled } from "react-icons/rx";
 
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 
@@ -38,6 +38,7 @@ export default function HeroSection() {
          setCurrentSlide(newindex);
     }
 
+
     return (
         <div className="max-w-[1400px] min-h-screen w-full m-auto relative group">
             <div 
@@ -54,6 +55,16 @@ export default function HeroSection() {
             {/* Right Arrow */}
             <div className="hidden group-hover:block absolute top-[50%] right-5 transform -translate-y-1/2 cursor-pointer text-2xl rounded-full bg-black/20 p-2">
                 <BsChevronCompactRight  onClick={nextSlide} size={30}/>
+            </div>
+
+            <div className="flex top-4 justify-center py-2">
+                {slides.map((slide, slideIndex) => (
+                    <div key={slideIndex} 
+                    onClick={() => setCurrentSlide(slideIndex)}
+                    className="text-2xl cursor-pointer">
+                        <RxDotFilled/>
+                    </div>
+                ))}
             </div>
         </div>
     );
