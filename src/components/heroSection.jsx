@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import valentineoffer from "../assets/images-cbc/valentineoffer.png";
+import makeupSlide from "../assets/images-cbc/makeupSlide.png";
+import saleskincare from "../assets/images-cbc/saleskincare.png";
+import skincare from "../assets/images-cbc/skincare.png";
+
+
+
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 
 export default function HeroSection() {
@@ -8,10 +14,13 @@ export default function HeroSection() {
             url: valentineoffer,
         },
         {
-            url: '/images-cbc/valentineoffer.png',
+            url: makeupSlide,
         },
         {
-            url: '/images/valentineoffer.png',
+            url: saleskincare,
+        },
+        {
+            url: skincare,
         }
     ];
 
