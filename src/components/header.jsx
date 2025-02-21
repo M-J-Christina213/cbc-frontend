@@ -12,7 +12,7 @@ const Menu = [
     link: "/",
   },
   {
-    id: 2, // "Shop" dropdown moved here
+    id: 2, 
     name: "Shop",
     dropdown: true, // Indicating it's a dropdown
   },
