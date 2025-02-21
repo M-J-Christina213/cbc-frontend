@@ -1,16 +1,20 @@
+import React from "react";
 import makeup from "../assets/images-cbc/categoryMakeup.png";
-import
-
+import skincare from "../assets/images-cbc/categorySkincare.png";
+import haircare from "../assets/images-cbc/categoryHaircare.png";
+import nails from "../assets/images-cbc/categoryNails.png";
+import BathAndBody from "../assets/images-cbc/categoryBathAndBody.png";
+import { FaStar } from "react-icons/fa";
 
 
 
 export default function ProductCategories() {
     const categories = [
         { id: 1, name: "Makeup", url: makeup, title:"Category Makeup", rating: 4.5, author:"white", aosDelay: 0},
-        { id: 2, name: "Skincare", url: skincare, title:"Category Skincare", rating: 4.5, author:"white", aosDelay: 0},
-        { id: 3, name: "Haircare", url: haircare, title:"Category Haircare", rating: 4.5, author:"white", aosDelay: 0},
-        { id: 4, name: "Nails" , url: nails, title:"Category Nails", rating: 4.5, author:"white", aosDelay: 0},
-        { id: 5, name: "Bath & Body", url: Bath & Body, title:"Category Bath and Body", rating: 4.5, author:"white", aosDelay: 0 }
+        { id: 2, name: "Skincare", url: skincare, title:"Category Skincare", rating: 4.5, author:"red", aosDelay: 0},
+        { id: 3, name: "Haircare", url: haircare, title:"Category Haircare", rating: 4.5, author:"brown", aosDelay: 0},
+        { id: 4, name: "Nails" , url: nails, title:"Category Nails", rating: 4.5, author:"yellow", aosDelay: 0},
+        { id: 5, name: "Bath & Body", url: BathAndBody, title:"Category Bath and Body", rating: 4.5, author:"white", aosDelay: 0 }
     ];
 
     return (
