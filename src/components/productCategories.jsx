@@ -35,7 +35,8 @@ export default function ProductCategories() {
                         {/* Card Section */}
                         {categories.map((data) => (
                             <div
-                            
+                               data-aos="fade-up"
+                               data-aos-delay={data.aosDelay}
                                 key={data.id}  
                                 className="space-y-3 "    >
                                <img src={data.img} alt=""
