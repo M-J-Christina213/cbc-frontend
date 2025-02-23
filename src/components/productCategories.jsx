@@ -10,11 +10,11 @@ import { FaStar } from "react-icons/fa";
 
 export default function ProductCategories() {
     const categories = [
-        { id: 1, name: "Makeup", img: makeup, title:"Category Makeup", rating: 4.5, author:"white", aosDelay: 0},
+        { id: 1, name: "Makeup", img: makeup, title:"Category Makeup", rating: 5, author:"white", aosDelay: 0},
         { id: 2, name: "Skincare", img: skincare, title:"Category Skincare", rating: 4.5, author:"red", aosDelay: 0},
-        { id: 3, name: "Haircare", img: haircare, title:"Category Haircare", rating: 4.5, author:"brown", aosDelay: 0},
-        { id: 4, name: "Nails" , img: nails, title:"Category Nails", rating: 4.5, author:"yellow", aosDelay: 0},
-        { id: 5, name: "Bath & Body", img: BodyAndBath, title:"Category Bath and Body", rating: 4.5, author:"white", aosDelay: 0 }
+        { id: 3, name: "Haircare", img: haircare, title:"Category Haircare", rating: 4.7, author:"brown", aosDelay: 0},
+        { id: 4, name: "Nails" , img: nails, title:"Category Nails", rating: 4, author:"yellow", aosDelay: 0},
+        { id: 5, name: "Bath & Body", img: BodyAndBath, title:"Category Bath and Body", rating: 4.2, author:"white", aosDelay: 0 }
     ];
 
     return (
@@ -36,7 +36,8 @@ export default function ProductCategories() {
                         {categories.map((data) => (
                             <div
                             
-                                key={data.id}      >
+                                key={data.id}  
+                                className="space-y-3 "    >
                                <img src={data.img} alt=""
                                className="h-[250px] w-[200px] object-cover rounded-md"/>
                                <div>
