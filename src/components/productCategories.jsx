@@ -3,18 +3,18 @@ import makeup from "../assets/images-cbc/categoryMakeup.png";
 import skincare from "../assets/images-cbc/categorySkincare.png";
 import haircare from "../assets/images-cbc/categoryHaircare.png";
 import nails from "../assets/images-cbc/categoryNails.png";
-import BathAndBody from "../assets/images-cbc/categoryBathAndBody.png";
+import BodyAndBath from "../assets/images-cbc/categoryBodyAndBath.png";
 import { FaStar } from "react-icons/fa";
 
 
 
 export default function ProductCategories() {
     const categories = [
-        { id: 1, name: "Makeup", url: makeup, title:"Category Makeup", rating: 4.5, author:"white", aosDelay: 0},
-        { id: 2, name: "Skincare", url: skincare, title:"Category Skincare", rating: 4.5, author:"red", aosDelay: 0},
-        { id: 3, name: "Haircare", url: haircare, title:"Category Haircare", rating: 4.5, author:"brown", aosDelay: 0},
-        { id: 4, name: "Nails" , url: nails, title:"Category Nails", rating: 4.5, author:"yellow", aosDelay: 0},
-        { id: 5, name: "Bath & Body", url: BathAndBody, title:"Category Bath and Body", rating: 4.5, author:"white", aosDelay: 0 }
+        { id: 1, name: "Makeup", img: makeup, title:"Category Makeup", rating: 4.5, author:"white", aosDelay: 0},
+        { id: 2, name: "Skincare", img: skincare, title:"Category Skincare", rating: 4.5, author:"red", aosDelay: 0},
+        { id: 3, name: "Haircare", img: haircare, title:"Category Haircare", rating: 4.5, author:"brown", aosDelay: 0},
+        { id: 4, name: "Nails" , img: nails, title:"Category Nails", rating: 4.5, author:"yellow", aosDelay: 0},
+        { id: 5, name: "Bath & Body", img: BodyAndBath, title:"Category Bath and Body", rating: 4.5, author:"white", aosDelay: 0 }
     ];
 
     return (
@@ -34,8 +34,19 @@ export default function ProductCategories() {
                     <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 place-items-center gap-5">
                         {/* Card Section */}
                         {categories.map((data) => (
-                            <div key={data.id} className="border p-4 rounded-lg shadow-md text-center w-40">
-                                <p className="font-semibold">{data.name}</p>
+                            <div
+                            
+                                key={data.id}      >
+                               <img src={data.img} alt=""
+                               className="h-[250px] w-[200px] object-cover rounded-md"/>
+                               <div>
+                                <h3 className="font-semibold"> {data.title} </h3>
+                                <p className="text-sm text-gray-600"> {data.color} </p>
+                                <div className="flex items-center gap-1">
+                                    <FaStar className="text-yellow-400"/>
+                                    <span> {data.rating} </span>
+                                </div>
+                                </div>
                             </div>
                         ))}
                     </div>
