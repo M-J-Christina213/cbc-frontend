@@ -11,6 +11,7 @@ import ProductCategories from '../components/productCategories';
 
 import SpecialOffersBanner from '../components/SpecialOfferBanner';
 import FeaturedProducts from '../components/FeatureProducts';
+import Testimonials from '../components/testimonials';
 
 
 export default function Homepage() {
@@ -22,6 +23,7 @@ export default function Homepage() {
       <ProductCategories/>
       <FeaturedProducts/>
       <SpecialOffersBanner/>
+      <Testimonials/>
         <Routes path="/*">
           <Route path="/" element={<h1> </h1>} />
           <Route path='/products' element={<ProductPage/>}/>
