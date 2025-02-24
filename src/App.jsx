@@ -13,7 +13,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div>
+    <div className='bg-primary'>
     <BrowserRouter>
     <Toaster position='top-right'/>
     <GoogleOAuthProvider clientId='379936970749-rc95kiaddidqut5i5klqkt7cjp3m48vq.apps.googleusercontent.com'>
