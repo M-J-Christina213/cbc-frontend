@@ -7,22 +7,10 @@ import SignUpPage from './pages/signUpPage'
 import AdminHomepage from './pages/admin/adminHomePage'
 import { Toaster } from 'react-hot-toast'
 import { GoogleOAuthProvider } from '@react-oauth/google'
-import AOS from "aos";
-import 'aos/dist/aos.css';
 
 
 function App() {
   const [count, setCount] = useState(0)
-  React.useEffect(() => {
-    AOS.init({
-      offset:100,
-      duration: 800,
-      easing:"ease-in-sine",
-      delay:100,
-    });
-    AOS.refresh()
-  },[]);
-
 
   return (
     <div>
