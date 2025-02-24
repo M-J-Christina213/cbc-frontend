@@ -94,9 +94,9 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="border px-4 py-2 rounded-l-md w-full"
+                className="border px-4 py-2  w-full"
               />
-              <button className="bg-pink-500 text-white px-6 py-2 rounded-r-md hover:bg-pink-600">Subscribe</button>
+              <button className="bg-pink-500 text-white px-6 py-2  hover:bg-pink-600">Subscribe</button>
             </div>
           </div>
         </div>
