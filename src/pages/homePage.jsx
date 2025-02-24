@@ -8,7 +8,10 @@ import ShippingPage from './home/shipping';
 import MyOrdersPage from './home/myOrders';
 import HeroSection from '../components/heroSection';
 import ProductCategories from '../components/productCategories';
+
+import SpecialOffersBanner from '../components/SpecialOfferBanner';
 import FeaturedProducts from '../components/FeatureProducts';
+
 
 export default function Homepage() {
   return (
@@ -18,6 +21,7 @@ export default function Homepage() {
       <HeroSection/>
       <ProductCategories/>
       <FeaturedProducts/>
+      <SpecialOffersBanner/>
         <Routes path="/*">
           <Route path="/" element={<h1> </h1>} />
           <Route path='/products' element={<ProductPage/>}/>
