@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import skincare from "../assets/images-cbc/saleskincare.png";
 
 const specialOffers = [
   {
@@ -7,7 +8,7 @@ const specialOffers = [
     description: 'Get 20% off on all skincare products. Limited time only!',
     price: 'Rs. 1,500',
     newPrice: 'Rs. 1,200',
-    image: '/images/offer1.jpg',
+    image: skincare,
   },
   {
     id: 2,
@@ -15,7 +16,7 @@ const specialOffers = [
     description: 'Buy any lipstick and get another one for free!',
     price: 'Rs. 1,000',
     newPrice: 'Rs. 500',
-    image: '/images/offer2.jpg',
+    image: skincare,
   },
   {
     id: 3,
@@ -23,7 +24,7 @@ const specialOffers = [
     description: 'Shop now and enjoy free shipping on orders above Rs. 2,000.',
     price: 'Rs. 2,000',
     newPrice: 'Rs. 2,000',
-    image: '/images/offer3.jpg',
+    image: skincare,
   },
 ];
 
