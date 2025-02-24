@@ -6,14 +6,30 @@ import ProductPage from './home/product';
 import Cart from './home/cart';
 import ShippingPage from './home/shipping';
 import MyOrdersPage from './home/myOrders';
+import HeroSection from '../components/heroSection';
+import ProductCategories from '../components/productCategories';
+
+import SpecialOffersBanner from '../components/SpecialOfferBanner';
+import FeaturedProducts from '../components/FeatureProducts';
+import Testimonials from '../components/testimonials';
+import FAQ from '../components/FAQ';
+import Footer from '../components/footer';
+
 
 export default function Homepage() {
   return (
     <div className="h-screen w-full">
       <Header />
-      <div className="w-full h-[calc(100vh)] bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400">
+      <div className="w-full h-[calc(100vh)]">
+      <HeroSection/>
+      <ProductCategories/>
+      <FeaturedProducts/>
+      <SpecialOffersBanner/>
+      <Testimonials/>
+      <FAQ/>
+      <Footer/>
         <Routes path="/*">
-          <Route path="/" element={<h1>Home Page</h1>} />
+          <Route path="/" element={<h1> </h1>} />
           <Route path='/products' element={<ProductPage/>}/>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/cart" element={<Cart/>} />
@@ -22,6 +38,9 @@ export default function Homepage() {
           <Route path="/orders" element={<MyOrdersPage/>} />
         </Routes>
       </div>
+
+     
+
     </div>
   );
 }
