@@ -14,23 +14,46 @@ import exclusiveBlush from "../assets/images-cbc/categoryMakeup.png";
 
 const productCategories = {
   "Best Sellers": [
-    { id: 1, name: "Matte Liquid Lipstick", price: "$15.99", image: makeup },
-    { id: 2, name: "Velvet Eyeshadow Palette", price: "$22.49", image: eyeshadow },
-    { id: 3, name: "Full-Coverage Foundation", price: "$18.99", image: foundation },
-    { id: 4, name: "Glow Highlighter", price: "$12.99", image: highlighter },
+    { id: 1, name: "Matte Liquid Lipstick", price: "$15.99", image: makeup, rating: 4 },
+    { id: 2, name: "Velvet Eyeshadow Palette", price: "$22.49", image: eyeshadow, rating: 5 },
+    { id: 3, name: "Full-Coverage Foundation", price: "$18.99", image: foundation, rating: 3 },
+    { id: 4, name: "Glow Highlighter", price: "$12.99", image: highlighter, rating: 4 },
   ],
   "New Arrivals": [
-    { id: 5, name: "Hydrating Lip Gloss", price: "$14.99", image: lipgloss },
-    { id: 6, name: "Shimmer Eyeshadow Palette", price: "$24.99", image: shimmerEyeshadow },
-    { id: 7, name: "BB Cream SPF 30", price: "$19.99", image: bbCream },
-    { id: 8, name: "Long-Wear Mascara", price: "$16.49", image: mascara },
+    { id: 5, name: "Hydrating Lip Gloss", price: "$14.99", image: lipgloss, rating: 4 },
+    { id: 6, name: "Shimmer Eyeshadow Palette", price: "$24.99", image: shimmerEyeshadow, rating: 5 },
+    { id: 7, name: "BB Cream SPF 30", price: "$19.99", image: bbCream, rating: 3 },
+    { id: 8, name: "Long-Wear Mascara", price: "$16.49", image: mascara, rating: 4 },
   ],
   "Exclusives": [
-    { id: 9, name: "Limited Edition Lipstick", price: "$21.99", image: exclusiveLipstick },
-    { id: 10, name: "Diamond Glow Palette", price: "$29.99", image: exclusivePalette },
-    { id: 11, name: "Luxury Foundation Stick", price: "$26.99", image: exclusiveFoundation },
-    { id: 12, name: "Silk Finish Blush", price: "$17.99", image: exclusiveBlush },
+    { id: 9, name: "Limited Edition Lipstick", price: "$21.99", image: exclusiveLipstick, rating: 5 },
+    { id: 10, name: "Diamond Glow Palette", price: "$29.99", image: exclusivePalette, rating: 4 },
+    { id: 11, name: "Luxury Foundation Stick", price: "$26.99", image: exclusiveFoundation, rating: 4 },
+    { id: 12, name: "Silk Finish Blush", price: "$17.99", image: exclusiveBlush, rating: 3 },
   ],
+};
+
+const StarRating = ({ rating }) => {
+  const stars = Array(5).fill(false).map((_, index) => index < rating);
+  return (
+    <div className="flex space-x-1">
+      {stars.map((filled, index) => (
+        <svg
+          key={index}
+          xmlns="http://www.w3.org/2000/svg"
+          fill={filled ? "currentColor" : "none"}
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          className={`w-5 h-5 ${filled ? "text-yellow-400" : "text-gray-400"}`}
+        >
+          <path
+            d="M12 17.75l-5.763 3.037 1.093-6.388-4.653-4.52 6.428-.934L12 2l2.855 5.95 6.428.934-4.653 4.52 1.093 6.388z"
+          />
+        </svg>
+      ))}
+    </div>
+  );
 };
 
 export default function FeaturedProducts() {
@@ -74,9 +97,7 @@ export default function FeaturedProducts() {
             />
             <h3 className="text-lg font-semibold mt-3">{product.name}</h3>
             <p className="text-primary font-bold mt-1">{product.price}</p>
-            <button className="mt-3 px-4 py-2 bg-primary text-white rounded-md w-full hover:bg-opacity-80 transition-all duration-300">
-              Add to Cart
-            </button>
+            <StarRating rating={product.rating} />
           </div>
         ))}
       </div>
