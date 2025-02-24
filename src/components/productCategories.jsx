@@ -18,7 +18,7 @@ export default function ProductCategories() {
     ];
 
     return (
-        <div className="mt-14 mb-12">
+        <div className=" mb-8">
             <div className="container mx-auto px-4">
                 {/* Header Section */}
                 <div className="flex flex-col items-center text-center mx-auto mb-10 max-w-[600px]">

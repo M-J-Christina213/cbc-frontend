@@ -60,7 +60,7 @@ export default function FeaturedProducts() {
   const [selectedCategory, setSelectedCategory] = useState("Best Sellers");
 
   return (
-    <div className="w-full py-10 px-6 md:px-12">
+    <div className="w-full py-10 px-6 md:px-12 bg-pink-200"> {/* Light pink background */}
       <h2 className="text-3xl font-bold text-center mb-6">Featured Products</h2>
 
       {/* Category Tabs */}
@@ -93,7 +93,7 @@ export default function FeaturedProducts() {
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-40 object-cover rounded-md"
+              className="w-full h-60 object-cover rounded-md"
             />
             <h3 className="text-lg font-semibold mt-3">{product.name}</h3>
             <p className="text-primary font-bold mt-1">{product.price}</p>
