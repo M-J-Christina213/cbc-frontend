@@ -8,6 +8,7 @@ import ShippingPage from './home/shipping';
 import MyOrdersPage from './home/myOrders';
 import HeroSection from '../components/heroSection';
 import ProductCategories from '../components/productCategories';
+import FeaturedProducts from '../components/FeatureProducts';
 
 export default function Homepage() {
   return (
@@ -16,6 +17,7 @@ export default function Homepage() {
       <div className="w-full h-[calc(100vh)]">
       <HeroSection/>
       <ProductCategories/>
+      <FeaturedProducts/>
         <Routes path="/*">
           <Route path="/" element={<h1> </h1>} />
           <Route path='/products' element={<ProductPage/>}/>
