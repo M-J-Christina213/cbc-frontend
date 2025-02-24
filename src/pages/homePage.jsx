@@ -13,6 +13,7 @@ import SpecialOffersBanner from '../components/SpecialOfferBanner';
 import FeaturedProducts from '../components/FeatureProducts';
 import Testimonials from '../components/testimonials';
 import FAQ from '../components/FAQ';
+import Footer from '../components/footer';
 
 
 export default function Homepage() {
@@ -26,6 +27,7 @@ export default function Homepage() {
       <SpecialOffersBanner/>
       <Testimonials/>
       <FAQ/>
+      <Footer/>
         <Routes path="/*">
           <Route path="/" element={<h1> </h1>} />
           <Route path='/products' element={<ProductPage/>}/>
