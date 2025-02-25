@@ -7,6 +7,7 @@ import AdminOrdersPage from './adminOrdersPage';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import AdminDashboard from './adminDashboard';
 
 
 export default function AdminHomePage() {
@@ -81,6 +82,8 @@ export default function AdminHomePage() {
       
         {user!=null && <Routes path="/*">
        <Route path="/" element={<h1> Dashboard </h1>} />
+       <Route path="/admin" element={<AdminDashboard/>} />
+       <Route path="/dashboard" element={<AdminDashboard/>} />
        <Route path="/products" element={<AdminProductsPage/>} />
        <Route path="/products/addProduct" element={<AddProductForm/>} />
        <Route path="/products/editProduct" element={<EditProductForm/>} />
