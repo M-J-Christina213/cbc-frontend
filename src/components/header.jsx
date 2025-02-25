@@ -104,25 +104,26 @@ export default function Header() {
 
         {/* Bottom Navigation Section */}
         <div className="bg-black flex justify-center">
+
           <ul className="sm:flex hidden items-center gap-4 justify-center pb-2 pt-2">
             {Menu.map((data) =>
               data.dropdown ? (
                 // "Shop" dropdown menu
                 <li key={data.id} className="relative group">
-                  <a className="text-white flex items-center gap-[2px] py-2 px-4 hover:border-b-2 border-secondary">
+                  <span className="text-white flex items-center gap-[2px] py-2 px-4 hover:border-b-2 border-secondary cursor-pointer">
                     {data.name}
                     <FaCaretDown className="text-white transition-all duration-200 group-hover:rotate-180" />
-                  </a>
-                  <div className="absolute z-[9999] hidden group-hover:block w-[150px]  bg-white p-2 text-black">
+                  </span>
+                  <div className="absolute z-[9999] hidden group-hover:block w-[150px] bg-white p-2 text-black">
                     <ul>
                       {DropdownLinks.map((link) => (
                         <li key={link.id}>
-                          <a
-                            href={link.link}
-                            className="inline-block w-full  p-2 hover:bg-primary/20"
+                          <Link
+                            to={link.link}
+                            className="inline-block w-full p-2 hover:bg-primary/20"
                           >
                             {link.name}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -131,16 +132,17 @@ export default function Header() {
               ) : (
                 // Regular menu items
                 <li key={data.id}>
-                  <a
-                    href={data.link}
+                  <Link
+                    to={data.link}
                     className="inline-block text-white px-4 hover:border-b-2 border-secondary"
                   >
                     {data.name}
-                  </a>
+                  </Link>
                 </li>
               )
             )}
           </ul>
+
         </div>
       </header>
     </>
