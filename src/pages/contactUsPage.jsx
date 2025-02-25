@@ -1,8 +1,11 @@
 import { FiPhone, FiMail } from 'react-icons/fi';
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 export default function ContactUs() {
   return (
     <div className="w-full">
+        <Header/>
       {/* Banner Section */}
       <div className="w-full h-60 bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center text-white text-4xl font-bold">
         Contact Us
@@ -41,6 +44,7 @@ export default function ContactUs() {
         </p>
         <p className="mt-4">Response Time: 24-48 hours</p>
       </div>
+      <Footer/>
     </div>
   );
 }
