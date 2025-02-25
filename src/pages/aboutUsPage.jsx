@@ -4,7 +4,7 @@ import Footer from '../components/footer';
 
 export default function AboutUs() {
   return (
-   
+        
     <div className="bg-white text-gray-900">
          <Header/>
       {/* Banner Section */}
