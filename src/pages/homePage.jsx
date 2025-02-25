@@ -32,6 +32,7 @@ export default function Homepage() {
         <Routes path="/*">
           <Route path="/" element={<h1> </h1>} />
           <Route path='/products' element={<ProductPage/>}/>
+          <Route path="/about-us" element={<AboutUs />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/cart" element={<Cart/>} />
           <Route path="/productInfo/:productID" element={<ProductOverview />} />
