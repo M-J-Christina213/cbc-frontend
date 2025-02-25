@@ -89,7 +89,7 @@ export default function Footer() {
           {/* Part 4: Newsletter */}
           <div>
             <h3 className="font-semibold mb-4">Subscribe to Our Newsletter</h3>
-            <p className="mb-4">Stay updated with our latest offers and news.</p>
+            <p className="mb-5">Stay updated with our latest offers and news.</p>
             <div className="flex mb-4">
               <input
                 type="email"
