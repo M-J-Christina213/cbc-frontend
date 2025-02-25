@@ -14,6 +14,7 @@ import FeaturedProducts from '../components/FeatureProducts';
 import Testimonials from '../components/testimonials';
 import FAQ from '../components/FAQ';
 import Footer from '../components/footer';
+import AboutUs from './aboutUsPage';
 
 
 export default function Homepage() {
