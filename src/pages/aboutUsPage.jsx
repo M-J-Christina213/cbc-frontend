@@ -104,10 +104,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* Footer Section */}
-      <div className="text-center py-6 text-sm text-gray-600 border-t mt-10">
-        &copy; 2025 Crystal Beauty Clear. All rights reserved.
-      </div>
+     
     </div>
   );
 }
