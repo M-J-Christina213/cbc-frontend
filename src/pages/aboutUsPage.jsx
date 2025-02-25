@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 export default function AboutUs() {
   return (
+   
     <div className="bg-white text-gray-900">
+         <Header/>
       {/* Banner Section */}
       <div className="relative w-full h-[400px]">
         <img
@@ -103,7 +107,7 @@ export default function AboutUs() {
           </div>
         </div>
       </section>
-
+      <Footer/>
      
     </div>
   );
