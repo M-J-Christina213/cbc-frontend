@@ -1,150 +1,81 @@
 import React from 'react';
-import { FaUser, FaBox, FaShoppingCart, FaStar, FaChartLine, FaPercentage } from 'react-icons/fa';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
+// Register Chart.js components
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
 const mockData = {
-  customers: {
-    active: 1200,
-    new: 300,
-    returning: 900,
-  },
-  products: {
-    total: 150,
-    bestSeller: 'Product X',
-  },
-  orders: {
-    recentOrders: 45,
-    totalRevenue: 5000,
-  },
-  reviews: {
-    totalReviews: 230,
-    highestRated: 'Product Y',
-  },
-  visits: {
-    dailyViews: 2000,
-    activeUsers: 150,
-    bounceRate: '25%',
-  },
-  promotions: {
-    activeCampaigns: 3,
-    revenueGenerated: 1200,
-  },
   analytics: {
+    totalUsers: 1200,
+    totalOrders: 300,
+    revenue: 45000,
     salesTrends: {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr'],
-      data: [500, 700, 600, 800],
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      data: [5000, 7000, 8000, 6000, 10000, 12000],
     },
   },
 };
 
-export default function AdminDashboard() {
+const AdminDashboard = () => {
   return (
-    <div className="flex flex-col bg-gray-100 min-h-screen">
-      {/* Header */}
-      <header className="bg-pink-600 p-4 text-white text-2xl font-semibold">
-        Admin Dashboard
-      </header>
+    <div className="p-6 bg-gray-100 min-h-screen">
+      <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
 
-      <div className="flex flex-1 p-6 space-x-6">
-        {/* Sidebar */}
-        <div className="w-1/4 bg-white rounded-lg shadow-lg p-4">
-          <h3 className="font-bold text-lg mb-4">Navigation</h3>
-          <ul className="space-y-4">
-            <li className="flex items-center gap-2">
-              <FaUser />
-              <span>Customers</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <FaBox />
-              <span>Products</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <FaShoppingCart />
-              <span>Orders</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <FaStar />
-              <span>Reviews</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <FaChartLine />
-              <span>Analytics</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <FaPercentage />
-              <span>Promotions</span>
-            </li>
-          </ul>
+      {/* Statistics */}
+      <div className="grid grid-cols-3 gap-4 mb-6">
+        <div className="bg-white p-4 shadow rounded-lg">
+          <h2 className="text-lg font-semibold">Total Users</h2>
+          <p className="text-xl font-bold">{mockData.analytics.totalUsers}</p>
         </div>
-
-        {/* Main Content */}
-        <div className="flex-1 grid grid-cols-2 gap-6">
-          {/* Customer Stats */}
-          <div className="bg-white rounded-lg shadow-lg p-4">
-            <h3 className="font-bold text-lg mb-4">Customers</h3>
-            <div className="space-y-2">
-              <p>Active: {mockData.customers.active}</p>
-              <p>New: {mockData.customers.new}</p>
-              <p>Returning: {mockData.customers.returning}</p>
-            </div>
-          </div>
-
-          {/* Product Stats */}
-          <div className="bg-white rounded-lg shadow-lg p-4">
-            <h3 className="font-bold text-lg mb-4">Products</h3>
-            <p>Total Products: {mockData.products.total}</p>
-            <p>Best Seller: {mockData.products.bestSeller}</p>
-          </div>
-
-          {/* Orders Stats */}
-          <div className="bg-white rounded-lg shadow-lg p-4">
-            <h3 className="font-bold text-lg mb-4">Orders</h3>
-            <p>Recent Orders: {mockData.orders.recentOrders}</p>
-            <p>Total Revenue: ${mockData.orders.totalRevenue}</p>
-          </div>
-
-          {/* Reviews Stats */}
-          <div className="bg-white rounded-lg shadow-lg p-4">
-            <h3 className="font-bold text-lg mb-4">Reviews</h3>
-            <p>Total Reviews: {mockData.reviews.totalReviews}</p>
-            <p>Highest Rated: {mockData.reviews.highestRated}</p>
-          </div>
-
-          {/* Visits Stats */}
-          <div className="bg-white rounded-lg shadow-lg p-4">
-            <h3 className="font-bold text-lg mb-4">Website Visits</h3>
-            <p>Daily Views: {mockData.visits.dailyViews}</p>
-            <p>Active Users: {mockData.visits.activeUsers}</p>
-            <p>Bounce Rate: {mockData.visits.bounceRate}</p>
-          </div>
-
-          {/* Promotions Stats */}
-          <div className="bg-white rounded-lg shadow-lg p-4">
-            <h3 className="font-bold text-lg mb-4">Promotions</h3>
-            <p>Active Campaigns: {mockData.promotions.activeCampaigns}</p>
-            <p>Revenue Generated: ${mockData.promotions.revenueGenerated}</p>
-          </div>
-
-          {/* Analytics: Sales Trends Chart */}
-          <div className="bg-white rounded-lg shadow-lg p-4 col-span-2">
-            <h3 className="font-bold text-lg mb-4">Sales Trends</h3>
-            <Line
-              data={{
-                labels: mockData.analytics.salesTrends.labels,
-                datasets: [
-                  {
-                    label: 'Sales',
-                    data: mockData.analytics.salesTrends.data,
-                    fill: false,
-                    borderColor: '#FF7F50',
-                    tension: 0.1,
-                  },
-                ],
-              }}
-            />
-          </div>
+        <div className="bg-white p-4 shadow rounded-lg">
+          <h2 className="text-lg font-semibold">Total Orders</h2>
+          <p className="text-xl font-bold">{mockData.analytics.totalOrders}</p>
         </div>
+        <div className="bg-white p-4 shadow rounded-lg">
+          <h2 className="text-lg font-semibold">Revenue</h2>
+          <p className="text-xl font-bold">${mockData.analytics.revenue}</p>
+        </div>
+      </div>
+
+      {/* Sales Chart */}
+      <div className="bg-white p-4 shadow rounded-lg">
+        <h2 className="text-lg font-semibold mb-4">Sales Trends</h2>
+        <Line
+          key={JSON.stringify(mockData.analytics.salesTrends)}
+          data={{
+            labels: mockData.analytics.salesTrends.labels,
+            datasets: [
+              {
+                label: 'Sales',
+                data: mockData.analytics.salesTrends.data,
+                fill: false,
+                borderColor: '#FF7F50',
+                tension: 0.1,
+              },
+            ],
+          }}
+        />
       </div>
     </div>
   );
-}
+};
+
+export default AdminDashboard;
