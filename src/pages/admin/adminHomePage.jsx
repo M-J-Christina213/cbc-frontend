@@ -81,7 +81,7 @@ export default function AdminHomePage() {
 
       
         {user!=null && <Routes path="/*">
-       <Route path="/" element={<h1> Dashboard </h1>} />
+       <Route path="/" element={<AdminDashboard/>} />
        <Route path="/dashboard" element={<AdminDashboard/>} />
        <Route path="/products" element={<AdminProductsPage/>} />
        <Route path="/products/addProduct" element={<AddProductForm/>} />
