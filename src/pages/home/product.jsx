@@ -2,7 +2,17 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import ProductCard from "../../components/productCard";
-import { useParams } from "react-router-dom"; 
+import { Link, useParams } from "react-router-dom"; 
+
+const DropdownLinks = [
+  { id: 1, name: "Makeup", link: "/makeup" }, 
+  { id: 2, name: "Skincare", link: "/skincare" }, 
+  { id: 3, name: "Haircare", link: "/haircare" }, 
+  { id: 4, name: "Nails", link: "/nails" }, 
+  { id: 5, name: "Fragrances", link: "/fragrances" }, 
+  { id: 6, name: "Bath & Body", link: "/bath-body" }, 
+  { id: 7, name: "Tools & Brushes", link: "/tools-brushes" }
+];
 
 export default function ProductPage() {
   const { category } = useParams(); // Capture category from URL
@@ -11,26 +21,19 @@ export default function ProductPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [loadingStatus, setLoadingStatus] = useState("loading");
 
-  // Fetch products based on category
   useEffect(() => {
     setLoadingStatus("loading");
-
-    // Assuming the URL directly maps to the Product ID
     const categoryFilter = category ? `category=${category}` : "";
 
     axios
-      .get(
-        `${import.meta.env.VITE_BACKEND_URL}/api/products?${categoryFilter}`
-      )
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/products?${categoryFilter}`)
       .then((res) => {
         setProducts(res.data);
         setFilteredProducts(res.data);
         setLoadingStatus("loaded");
       })
       .catch(() => {
-        toast.error("Failed to fetch products", {
-          position: "top-center",
-        });
+        toast.error("Failed to fetch products", { position: "top-center" });
         setLoadingStatus("error");
       });
   }, [category]);
@@ -49,9 +52,7 @@ export default function ProductPage() {
           setLoadingStatus("loaded");
         })
         .catch(() => {
-          toast.error("Failed to fetch products", {
-            position: "top-center",
-          });
+          toast.error("Failed to fetch products", { position: "top-center" });
           setLoadingStatus("error");
         });
     } else {
@@ -63,9 +64,7 @@ export default function ProductPage() {
           setLoadingStatus("loaded");
         })
         .catch(() => {
-          toast.error("Failed to fetch products", {
-            position: "top-center",
-          });
+          toast.error("Failed to fetch products", { position: "top-center" });
           setLoadingStatus("error");
         });
     }
@@ -84,13 +83,11 @@ export default function ProductPage() {
 
       {/* Category Navigation */}
       <div className="flex space-x-4 mt-4">
-        <a href="/makeup" className="text-blue-500">Makeup</a>
-        <a href="/skincare" className="text-blue-500">Skincare</a>
-        <a href="/haircare" className="text-blue-500">Haircare</a>
-        <a href="/nails" className="text-blue-500">Nails</a>
-        <a href="/fragrances" className="text-blue-500">Fragrances</a>
-        <a href="/bath-body" className="text-blue-500">Bath & Body</a>
-        <a href="/tools-brushes" className="text-blue-500">Tools & Brushes</a>
+        {DropdownLinks.map((item) => (
+          <Link key={item.id} to={item.link} className="text-blue-500 hover:underline">
+            {item.name}
+          </Link>
+        ))}
       </div>
 
       {loadingStatus === "loading" && (
