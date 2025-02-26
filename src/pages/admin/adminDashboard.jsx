@@ -36,28 +36,30 @@ const mockData = {
 
 const AdminDashboard = () => {
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
+    <div className="flex-1 p-8 bg-white rounded-lg shadow-lg m-4">
+      <h1 className="text-xl font-bold text-center text-pink-600 mb-6">
+        Admin Dashboard
+      </h1>
 
       {/* Statistics */}
       <div className="grid grid-cols-3 gap-4 mb-6">
-        <div className="bg-white p-4 shadow rounded-lg">
-          <h2 className="text-lg font-semibold">Total Users</h2>
-          <p className="text-xl font-bold">{mockData.analytics.totalUsers}</p>
+        <div className="bg-purple-50 p-4 shadow rounded-lg">
+          <h2 className="text-lg font-semibold text-purple-700">Total Users</h2>
+          <p className="text-xl font-bold text-purple-900">{mockData.analytics.totalUsers}</p>
         </div>
-        <div className="bg-white p-4 shadow rounded-lg">
-          <h2 className="text-lg font-semibold">Total Orders</h2>
-          <p className="text-xl font-bold">{mockData.analytics.totalOrders}</p>
+        <div className="bg-purple-50 p-4 shadow rounded-lg">
+          <h2 className="text-lg font-semibold text-purple-700">Total Orders</h2>
+          <p className="text-xl font-bold text-purple-900">{mockData.analytics.totalOrders}</p>
         </div>
-        <div className="bg-white p-4 shadow rounded-lg">
-          <h2 className="text-lg font-semibold">Revenue</h2>
-          <p className="text-xl font-bold">${mockData.analytics.revenue}</p>
+        <div className="bg-purple-50 p-4 shadow rounded-lg">
+          <h2 className="text-lg font-semibold text-purple-700">Revenue</h2>
+          <p className="text-xl font-bold text-purple-900">${mockData.analytics.revenue}</p>
         </div>
       </div>
 
       {/* Sales Chart */}
-      <div className="bg-white p-4 shadow rounded-lg">
-        <h2 className="text-lg font-semibold mb-4">Sales Trends</h2>
+      <div className="bg-purple-50 p-6 shadow rounded-lg">
+        <h2 className="text-lg font-semibold text-purple-700 mb-4">Sales Trends</h2>
         <Line
           key={JSON.stringify(mockData.analytics.salesTrends)}
           data={{
