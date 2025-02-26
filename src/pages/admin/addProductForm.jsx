@@ -8,6 +8,8 @@ export default function AddProductForm() {
 
     const [productId, setProductId] = useState("");
     const [productName, setProductName] = useState("");
+    const [category, setCategory] = useState("");
+    const [subcategory, setSubcategory] = useState("");
     const [alternativeNames, setAlternativeNames] = useState("");
     const [imgUrls, setImageUrls] = useState("");
     const [imageFiles, setImageFiles] = useState([]);
@@ -15,8 +17,6 @@ export default function AddProductForm() {
     const [lastPrice, setLastPrice] = useState("");
     const [stock, setStock] = useState("");
     const [description, setDescription] = useState("");
-    const [category, setCategory] = useState("");
-    const [subcategory, setSubcategory] = useState("");
     const navigate = useNavigate();
 
     async function handleSubmit(){
@@ -27,14 +27,15 @@ export default function AddProductForm() {
         }
         
         // Validate image files for correct file type (JPG or PNG)
-        const validImageTypes = ["image/jpeg", "image/png"];
-        for (let i = 0; i < imageFiles.length; i++) {
-            if (!validImageTypes.includes(imageFiles[i].type)) {
-                console.error("Invalid file type:", imageFiles[i].type);
-                toast.error("Please select a jpg or png file");
-                return; // Stop the process if an invalid file is found
-            }
+    const validImageTypes = ["image/jpeg", "image/png"];
+    for (let i = 0; i < imageFiles.length; i++) {
+        if (!validImageTypes.includes(imageFiles[i].type)) {
+            console.error("Invalid file type:", imageFiles[i].type);
+            toast.error("Please select a jpg or png file");
+            return; // Stop the process if an invalid file is found
         }
+    }
+    
         
         const promisesArray = []
 
@@ -65,8 +66,6 @@ export default function AddProductForm() {
             lastPrice: lastPrice,
             stock: stock,
             description: description,
-            category: category,
-            subcategory: subcategory,
         };
 
         const token = localStorage.getItem("token");
@@ -86,6 +85,7 @@ export default function AddProductForm() {
         toast.error("Failed to add product");
     }
 
+        
     }
     return (
         <div className="flex-1 w-full p-8 m-10 bg-white rounded-lg shadow-lg" >
@@ -108,13 +108,6 @@ export default function AddProductForm() {
                     />
                 </div>
                 <div className="flex flex-col">
-                    <label className="font-semibold text-gray-700">Alternative Names</label>
-                    <input type="text" placeholder="Enter Alternative Names" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" 
-                    value ={alternativeNames}
-                    onChange={(e)=>{setAlternativeNames(e.target.value)}}
-                    />
-                </div>
-                <div className="flex flex-col">
                     <label className="font-semibold text-gray-700">Category</label>
                     <input type="text" placeholder="Enter Category" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" 
                     value ={category}
@@ -128,13 +121,23 @@ export default function AddProductForm() {
                     onChange={(e)=>{setSubcategory(e.target.value)}}
                     />
                 </div>
+
+                <div className="flex flex-col">
+                    <label className="font-semibold text-gray-700">Alternative Names</label>
+                    <input type="text" placeholder="Enter Alternative Names" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" 
+                    value ={alternativeNames}
+                    onChange={(e)=>{setAlternativeNames(e.target.value)}}
+                    />
+                </div>
                 <div className="flex flex-col">
                     <label className="font-semibold text-gray-700">Image URLs</label>
-                    <input type="file" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" 
+                    <input type="file" placeholder="Enter Image URLs" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" 
+                    
                     onChange={(e)=>{
                         setImageFiles(e.target.files)
                     }}
-                    multiple />
+                    multiple //To select multiple files at once
+                    />
                 </div>
                 <div className="flex flex-col">
                     <label className="font-semibold text-gray-700">Price</label>
@@ -142,6 +145,27 @@ export default function AddProductForm() {
                     value ={price}
                     onChange={(e)=>{setPrice(e.target.value)}}
                     />
+                </div>
+                <div className="flex flex-col">
+                    <label className="font-semibold text-gray-700">Last Price</label>
+                    <input type="text" placeholder="Enter Last Price" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" 
+                    value ={lastPrice}
+                    onChange={(e)=>{setLastPrice(e.target.value)}}
+                    />
+                </div>
+                <div className="flex flex-col">
+                    <label className="font-semibold text-gray-700">Stock</label>
+                    <input type="text" placeholder="Enter Stock" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" 
+                    value ={stock}
+                    onChange={(e)=>{setStock(e.target.value)}}
+                    />
+                </div>
+                <div className="flex flex-col">
+                    <label className="font-semibold text-gray-700">Description</label>
+                    <textarea placeholder="Enter Product Description" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600"
+                    value ={description}
+                    onChange={(e)=>{setDescription(e.target.value)}}
+                    ></textarea>
                 </div>
                 <button type="submit" className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white font-semibold rounded-lg shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105"
                 onClick={handleSubmit}>
