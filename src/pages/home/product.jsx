@@ -21,52 +21,40 @@ export default function ProductPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [loadingStatus, setLoadingStatus] = useState("loading");
 
+  // Fetch products when category changes
   useEffect(() => {
     setLoadingStatus("loading");
     const categoryFilter = category ? `category=${category}` : "";
 
+    console.log("Fetching products for category:", category);
+
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/api/products?${categoryFilter}`)
       .then((res) => {
+        console.log("Products received:", res.data);
         setProducts(res.data);
         setFilteredProducts(res.data);
         setLoadingStatus("loaded");
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error("Error fetching products:", err);
         toast.error("Failed to fetch products", { position: "top-center" });
         setLoadingStatus("error");
       });
   }, [category]);
 
+  // Search function
   function search(e) {
-    const query = e.target.value;
+    const query = e.target.value.trim();
     setSearchQuery(query);
-    setLoadingStatus("loading");
 
     if (query === "") {
-      axios
-        .get(import.meta.env.VITE_BACKEND_URL + "/api/products")
-        .then((res) => {
-          setProducts(res.data);
-          setFilteredProducts(res.data);
-          setLoadingStatus("loaded");
-        })
-        .catch(() => {
-          toast.error("Failed to fetch products", { position: "top-center" });
-          setLoadingStatus("error");
-        });
+      setFilteredProducts(products); // Reset to original products when search is cleared
     } else {
-      axios
-        .get(import.meta.env.VITE_BACKEND_URL + "/api/products/search/" + query)
-        .then((res) => {
-          setProducts(res.data);
-          setFilteredProducts(res.data);
-          setLoadingStatus("loaded");
-        })
-        .catch(() => {
-          toast.error("Failed to fetch products", { position: "top-center" });
-          setLoadingStatus("error");
-        });
+      const filtered = products.filter((product) =>
+        product.name.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredProducts(filtered);
     }
   }
 
@@ -90,6 +78,7 @@ export default function ProductPage() {
         ))}
       </div>
 
+      {/* Loading State */}
       {loadingStatus === "loading" && (
         <div className="flex flex-col items-center justify-center mt-10">
           <div className="relative flex justify-center items-center w-[100px] h-[100px]">
@@ -100,6 +89,7 @@ export default function ProductPage() {
         </div>
       )}
 
+      {/* Error State */}
       {loadingStatus === "error" && (
         <div className="mt-10 text-center">
           <p className="text-2xl font-bold text-pink-600">Failed to fetch products 😢</p>
@@ -113,6 +103,7 @@ export default function ProductPage() {
         </div>
       )}
 
+      {/* Product List */}
       {loadingStatus === "loaded" && (
         <div className="flex flex-wrap justify-center mt-4">
           {filteredProducts.length > 0 ? (
