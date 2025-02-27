@@ -7,8 +7,10 @@ import SignUpPage from "./pages/signUpPage";
 import AdminHomepage from "./pages/admin/adminHomePage";
 import { Toaster } from "react-hot-toast";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import AboutUs from "./pages/aboutUsPage";
+
 import ProductPage from "./pages/home/product";
+import ContactUs from "./pages/home/contactUsPage";
+import AboutUs from "./pages/home/aboutUsPage";
 
 export default function App() {
   return (
@@ -19,6 +21,8 @@ export default function App() {
           <Routes>
             <Route path="/*" element={<Homepage />} />
             <Route path="/:category" element={<ProductPage />} />
+            <Route path="/about-us" element={<AboutUs/>}/>
+            <Route path="/contact-us" element={<ContactUs/>}/>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/admin/*" element={<AdminHomepage />} />
