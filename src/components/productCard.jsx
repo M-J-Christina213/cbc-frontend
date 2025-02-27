@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart, Heart } from 'react-icons/fa'; // Ensure you're using correct icon imports
+import { FaShoppingCart, FaHeart } from 'react-icons/fa'; // Correct import
 
 function ProductCard({ product }) {
   const [isFavorite, setIsFavorite] = useState(false); // To track whether the product is in favorites
 
   const toggleFavorite = () => {
     setIsFavorite(prevState => !prevState); // Toggle the favorite status
-    // Logic to add/remove from wishlist or favorites can go here (e.g., save to localStorage or backend)
   };
 
   return (
@@ -24,13 +23,13 @@ function ProductCard({ product }) {
         )}
         <div className="mt-4 flex justify-between">
           <button className="bg-purple-600 text-white py-2 px-4 rounded-lg flex items-center gap-2 hover:bg-purple-800">
-            <ShoppingCart size={18} /> Add to Cart
+            <FaShoppingCart size={18} /> Add to Cart
           </button>
           <button 
             className={`text-purple-600 hover:text-red-500 ${isFavorite ? 'text-red-500' : ''}`} 
             onClick={toggleFavorite}
           >
-            <Heart size={22} />
+            <FaHeart size={22} />
           </button>
         </div>
       </div>

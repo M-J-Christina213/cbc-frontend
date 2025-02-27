@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Heart, ShoppingCart } from "lucide-react";
+import ProductCard from "../../components/productCard";
 
 const categories = ["Makeup", "Skincare", "Haircare", "Nails", "Body & Bath", "Tools & Brushes"];
 
