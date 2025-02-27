@@ -1,43 +1,41 @@
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ShoppingCart, Heart } from 'react-icons/fa'; // Ensure you're using correct icon imports
 
-export default function ProductCard(props) {
+function ProductCard({ product }) {
+  const [isFavorite, setIsFavorite] = useState(false); // To track whether the product is in favorites
+
+  const toggleFavorite = () => {
+    setIsFavorite(prevState => !prevState); // Toggle the favorite status
+    // Logic to add/remove from wishlist or favorites can go here (e.g., save to localStorage or backend)
+  };
+
   return (
-    <Link
-      to={`/productInfo/${props.product.productID}`}
-      className="group"
-    >
-      <div className="bg-white w-[300px] h-[450px] m-[30px] rounded-xl shadow-lg hover:shadow-2xl hover:border-[3px] transition-shadow duration-300 overflow-hidden flex flex-col">
-        <div className="h-[60%] overflow-hidden max-h-[400px]">
-          <img
-            src={props.product.images[0]}
-            alt={props.product.productName}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          />
+    <div className="bg-white shadow-md rounded-lg overflow-hidden transform hover:scale-105 transition-all duration-300">
+      <Link to={`/productInfo/${product.productID}`}>
+        <img src={product.images[0]} alt={product.productName} className="w-full h-64 object-cover" />
+      </Link>
+      <div className="p-4">
+        <h3 className="text-lg font-bold text-gray-900">{product.productName}</h3>
+        <p className="text-sm text-gray-600">Product ID: {product.productID}</p>
+        <p className="text-purple-700 font-semibold">LKR {product.lastPrice.toFixed(2)}</p>
+        {product.lastPrice < product.price && (
+          <p className="text-gray-500 line-through">LKR {product.price.toFixed(2)}</p>
+        )}
+        <div className="mt-4 flex justify-between">
+          <button className="bg-purple-600 text-white py-2 px-4 rounded-lg flex items-center gap-2 hover:bg-purple-800">
+            <ShoppingCart size={18} /> Add to Cart
+          </button>
+          <button 
+            className={`text-purple-600 hover:text-red-500 ${isFavorite ? 'text-red-500' : ''}`} 
+            onClick={toggleFavorite}
+          >
+            <Heart size={22} />
+          </button>
         </div>
-        <div className=" max-h-[40%] h-[40%]">
-       
-            <h1 className="text-xl text-center font-bold text-primary group-hover:text-secondary transition-colors">
-                {props.product.productName}
-            </h1>
-            <h2 className="text-lg text-gray-500 text-center">
-              {props.product.productID}
-            </h2>
-            <p className="text-lg  text-left font-semibold"> LKR. 
-                {props.product.lastPrice.toFixed(2)}
-            </p>
-            {
-                (props.product.lastPrice < props.product.price) &&
-
-                <p className="text-lg  text-left font-semibold line-through text-gray-500"> LKR. 
-                {props.product.price.toFixed(2)}
-            </p>
-            }
-            
-            
-          
-         </div> 
-        </div>
-      
-    </Link>
+      </div>
+    </div>
   );
 }
+
+export default ProductCard;
