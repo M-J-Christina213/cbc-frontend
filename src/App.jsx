@@ -18,7 +18,7 @@ export default function App() {
         <GoogleOAuthProvider clientId='379936970749-rc95kiaddidqut5i5klqkt7cjp3m48vq.apps.googleusercontent.com'>
           <Routes>
             <Route path="/*" element={<Homepage />} />
-            <Route path="/products/:category" element={<ProductPage />} />
+            <Route path="/:category" element={<ProductPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/admin/*" element={<AdminHomepage />} />
