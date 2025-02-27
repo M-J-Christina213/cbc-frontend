@@ -1,6 +1,6 @@
 import { FiPhone, FiMail } from 'react-icons/fi';
-import Header from '../components/header';
-import Footer from '../components/footer';
+import Header from '../../components/header';
+import Footer from '../../components/footer';
 
 export default function ContactUs() {
   return (

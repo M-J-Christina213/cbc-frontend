@@ -1,7 +1,8 @@
 import React from 'react';
-import Header from '../components/header.jsx';
-import Footer from '../components/footer';
-import SpecialOffersBanner from '../components/SpecialOfferBanner';
+
+
+import Header from '../../components/header';
+import Footer from '../../components/footer';
 
 export default function AboutUs() {
   return (
