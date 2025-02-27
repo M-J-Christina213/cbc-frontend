@@ -86,7 +86,7 @@ export default function AddProductForm() {
             navigate("/admin/products");
             toast.success("Product Added Successfully");
         } catch (err) {
-            console.error("Error during product creation:", err.response ? err.response.data : err.message);
+            console.error("Error during product creation:", err);
             toast.error("Failed to add product");
         }
         

@@ -69,24 +69,29 @@ export default function AdminProductsPage() {
                       className="text-red-600 hover:text-red-800"
                       title="Delete Product"
                       onClick={() => {
-                        const confirmDelete = window.confirm("Do you want to delete this product permanently?");
+                        const confirmDelete = window.confirm("Do you want to delete " + product.productID + " permanently?");
                         if (confirmDelete) {
                           const token = localStorage.getItem("token");
                           axios
-                            .delete(import.meta.env.VITE_BACKEND_URL + `/api/products/${product.productId}`, {
+                            .delete(import.meta.env.VITE_BACKEND_URL + `/api/products/${product.productID}`, {
                               headers: {
                                 Authorization: `Bearer ${token}`,
                               },
                             })
                             .then(() => {
                               toast.success("Product deleted successfully");
-                              setProductsLoaded(false);
+                              
+                              // Remove the deleted product from the local state
+                              setProducts((prevProducts) =>
+                                prevProducts.filter((item) => item.productID !== product.productID)
+                              );
                             })
                             .catch(() => {
                               toast.error("Failed to delete product");
                             });
                         }
                       }}
+                      
                     >
                       <FaTrashAlt />
                     </button>
