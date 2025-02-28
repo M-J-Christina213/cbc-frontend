@@ -4,6 +4,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Heart, ShoppingCart } from "lucide-react";
 import ProductCard from "../../components/productCard";
+import Header from "../../components/header";
 
 const categories = ["Makeup", "Skincare", "Haircare", "Nails", "Body & Bath", "Tools & Brushes"];
 
@@ -30,7 +31,9 @@ export default function ProductPage() {
   }, [category]);
 
   return (
+    
     <div className="w-full min-h-screen bg-gray-100">
+      <Header/>
       {/* Navigation */}
       <nav className="bg-purple-700 text-white py-4 px-6 flex justify-center gap-6 shadow-md">
         {categories.map((cat) => (
