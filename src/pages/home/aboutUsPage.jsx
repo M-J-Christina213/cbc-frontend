@@ -1,6 +1,12 @@
 import React from 'react';
-import Header from '../components/header';
-import Footer from '../components/footer';
+
+
+import Header from '../../components/header';
+import Footer from '../../components/footer';
+import banner from "../../assets/images-cbc/aboutUs/banner.png"
+import mission from "../../assets/images-cbc/aboutUs/mission.jpg"
+import ourvision from "../../assets/images-cbc/aboutUs/ourvision.jpg"
+import story from "../../assets/images-cbc/aboutUs/story.png"
 
 export default function AboutUs() {
   return (
@@ -10,7 +16,7 @@ export default function AboutUs() {
       {/* Banner Section */}
       <div className="relative w-full h-[400px]">
         <img
-          src="https://source.unsplash.com/1600x900/?beauty,makeup"
+          src={banner}
           alt="Crystal Beauty Clear Banner"
           className="w-full h-full object-cover"
         />
@@ -23,7 +29,7 @@ export default function AboutUs() {
       <section className="container mx-auto py-12 px-6 md:px-12 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-6 md:mb-0">
           <img
-            src="https://source.unsplash.com/600x400/?beauty,women"
+            src={story}
             alt="Our Story"
             className="rounded-lg shadow-lg w-full"
           />
@@ -44,7 +50,7 @@ export default function AboutUs() {
         <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row-reverse items-center">
           <div className="md:w-1/2 mb-6 md:mb-0">
             <img
-              src="https://source.unsplash.com/600x400/?selfcare,spa"
+              src={mission}
               alt="Our Mission"
               className="rounded-lg shadow-lg w-full"
             />
@@ -65,7 +71,7 @@ export default function AboutUs() {
         <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-6 md:mb-0">
             <img
-              src="https://source.unsplash.com/600x400/?future,goals"
+              src={ourvision}
               alt="Our Vision"
               className="rounded-lg shadow-lg w-full"
             />

@@ -44,12 +44,13 @@ const Menu = [
 ];
 
 const DropdownLinks = [
-  { id: 1, name: "Makeup", link: "/#" },
-  { id: 2, name: "Skincare", link: "/#" },
-  { id: 3, name: "Haircare", link: "/#" },
-  { id: 4, name: "Nails", link: "/#" },
-  { id: 5, name: "Fragrances", link: "/#" },
-  { id: 6, name: "Bath & Body", link: "/#" },
+  { id: 1, name: "Makeup", link: "/makeup" }, 
+  { id: 2, name: "Skincare", link: "/skincare" }, 
+  { id: 3, name: "Haircare", link: "/haircare" }, 
+  { id: 4, name: "Nails", link: "/nails" }, 
+  { id: 5, name: "Fragrances", link: "/fragrances" }, 
+  { id: 6, name: "Bath & Body", link: "/bath-body" }, 
+  { id: 7, name: "Tools & Brushes", link: "/tools-brushes" }, 
 ];
 
 export default function Header() {
