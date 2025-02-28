@@ -5,6 +5,8 @@ import ProductNotFound from "./productNotFound";
 import ImageSlider from "../../components/imageSlider";
 import { addToCart } from "../../utilis/cartFunction";
 import toast from "react-hot-toast";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 export default function ProductOverview() {
     const params = useParams();
@@ -53,7 +55,8 @@ export default function ProductOverview() {
     }
 
     return (
-        <div className="w-full h-[calc(100vh-100px)]">
+        <div className="w-full h-[calc(100vh-100px)] ">
+            <Header/>
             {status === "loading" && (
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-500 border-b-accent">
@@ -99,14 +102,15 @@ export default function ProductOverview() {
                       <span> ${"LKR." + product.lastPrice} </span>
                     </p>
                     <p className="text-base text-gray-600 mb-6">{product.description}</p>
-                    <button onClick={onAddtoCartClick} className="bg-primary text-white p-2 rounded-lg"> Add to Cart </button>
-                    <button onClick={onBuyNowClick} className="text-primary border-primary border mx-1 p-2 rounded-lg"> Buy now </button>
+                    <button onClick={onAddtoCartClick} className="bg-primary text-white p-2 "> Add to Cart </button>
+                    <button onClick={onBuyNowClick} className="text-primary border-primary border mx-1 p-2"> Buy now </button>
                   </div>
                 </div>
              
               
               
             )}
+            <Footer/>
         </div>
     );
 }

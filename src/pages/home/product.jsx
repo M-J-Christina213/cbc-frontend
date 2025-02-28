@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { Heart, ShoppingCart } from "lucide-react";
 import ProductCard from "../../components/productCard";
 import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 const categories = ["Makeup", "Skincare", "Haircare", "Nails", "Body & Bath", "Tools & Brushes"];
 const subcategories = {
@@ -115,6 +116,7 @@ export default function ProductPage() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
