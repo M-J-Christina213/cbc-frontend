@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaShoppingCart, FaHeart } from 'react-icons/fa'; // Correct import
+import { FaShoppingCart, FaRegHeart } from 'react-icons/fa'; 
 
 function ProductCard({ product }) {
   const [isFavorite, setIsFavorite] = useState(false); // To track whether the product is in favorites
@@ -44,18 +44,13 @@ function ProductCard({ product }) {
             <p className="text-gray-500 text-center line-through">LKR {product.price.toFixed(2)}</p>
           )}
         </div>
-        <div className="mt-4 flex justify-between items-center">
+        <div className="mt-4 flex justify-center items-center">
           <button 
-            className="bg-purple-600 text-white py-2 px-4 text-center flex items-center gap-2 hover:bg-purple-800 w-full"
+            className="bg-purple-600 text-white py-2 px-16 text-center flex justify-center items-center gap-2 hover:bg-purple-800 w-full"
           >
             <FaShoppingCart size={18} /> Add to Cart
           </button>
-          <button 
-            className={`text-black border-2 border-black hover:text-red-500 hover:border-red-500 ${isFavorite ? 'text-red-500 fill-red-500' : 'fill-none'} ml-8`} 
-            onClick={toggleFavorite}
-          >
-            <FaHeart size={22} />
-          </button>
+      
         </div>
       </div>
     </div>
