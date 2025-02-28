@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaShoppingCart, FaRegHeart } from 'react-icons/fa'; 
+import { FaShoppingCart, FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
-function ProductCard({ product }) {
-  const [isFavorite, setIsFavorite] = useState(false); // To track whether the product is in favorites
+export default function ProductCard({ product }) {
+  const [isFavorite, setIsFavorite] = useState(false);
 
-  // Load wishlist from localStorage on component mount
   useEffect(() => {
     const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
     const isProductInWishlist = wishlist.some(item => item.productID === product.productID);
@@ -14,21 +13,42 @@ function ProductCard({ product }) {
 
   const toggleFavorite = () => {
     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-
     if (isFavorite) {
-      // Remove from wishlist if it's already there
       wishlist = wishlist.filter(item => item.productID !== product.productID);
     } else {
-      // Add to wishlist if it's not already there
       wishlist.push(product);
     }
-
-    // Update the wishlist in localStorage
     localStorage.setItem('wishlist', JSON.stringify(wishlist));
-
-    // Toggle favorite status
     setIsFavorite(prevState => !prevState);
   };
+
+  // ⭐ Function to generate star rating
+  const renderStars = (rating) => {
+    const stars = [];
+    const maxStars = 5;
+    const roundedRating = Math.round(rating * 2) / 2; // Round to the nearest 0.5
+
+    for (let i = 1; i <= maxStars; i++) {
+      if (i <= roundedRating) {
+        stars.push(<FaStar key={i} className="text-yellow-500" />);
+      } else if (i - 0.5 === roundedRating) {
+        stars.push(<FaStarHalfAlt key={i} className="text-yellow-500" />);
+      } else {
+        stars.push(<FaRegStar key={i} className="text-gray-400" />);
+      }
+    }
+    return stars;
+  };
+
+  // ⭐ Function to generate a random rating from predefined options
+  const generateRandomRating = () => {
+    const ratings = [3, 3.2, 3.5, 3.8, 4, 5, 4.2, 4.4, 4.6, 4.5, 4.8]; // Possible ratings
+    const randomIndex = Math.floor(Math.random() * ratings.length);
+    return ratings[randomIndex];
+  };
+
+  // ⭐ Get a random rating for the product
+  const randomReviewRating = generateRandomRating();
 
   return (
     <div className="bg-white shadow-md overflow-hidden transform hover:scale-105 transition-all duration-300 flex flex-col h-full">
@@ -43,18 +63,20 @@ function ProductCard({ product }) {
           {product.lastPrice < product.price && (
             <p className="text-gray-500 text-center line-through">LKR {product.price.toFixed(2)}</p>
           )}
+
+          {/* ⭐ Rating Section */}
+          <div className="flex justify-center items-center mt-2">
+            {renderStars(randomReviewRating)} {/* Use the random rating here */}
+            <span className="ml-2 text-gray-600 text-sm">({randomReviewRating})</span> {/* Show random rating */}
+          </div>
         </div>
+
         <div className="mt-4 flex justify-center items-center">
-          <button 
-            className="bg-purple-600 text-white py-2 px-16 text-center flex justify-center items-center gap-2 hover:bg-purple-800 w-full"
-          >
+          <button className="bg-purple-600 text-white py-2 px-16 text-center flex justify-center items-center gap-2 hover:bg-purple-800 w-full">
             <FaShoppingCart size={18} /> Add to Cart
           </button>
-      
         </div>
       </div>
     </div>
   );
 }
-
-export default ProductCard;
