@@ -7,20 +7,46 @@ import ProductCard from "../../components/productCard";
 import Header from "../../components/header";
 
 const categories = ["Makeup", "Skincare", "Haircare", "Nails", "Body & Bath", "Tools & Brushes"];
+const subcategories = {
+  Makeup: {
+    Eyes: ["Eyeshadow Palette", "Eyeliner", "Eye Definer", "Eyebrow Pencil", "Mascara"],
+    Lips: ["Lipstick", "Lip Cream", "Lip Definer", "Lip Liner"],
+    Face: ["Blusher", "Concealer", "Compact Powder", "Foundation"]
+  },
+  Skincare: {
+    Cleanser: ["Cleanser", "Eye Gel Mask", "Moisturizer", "Serum", "Day & Night Cream", "Toner", "Face Wash", "Scrub", "Men's Skincare"],
+  },
+  Haircare: {
+    Shampoo: ["Shampoo", "Conditioner", "Hair Care Treatment"],
+  },
+  Nails: {
+    NailPolish: ["Nail Polish", "Nail Polish Remover"],
+  },
+  BodyAndBath: {
+    BodyCare: ["Body Lotion", "Body Care", "Body Wash", "Hand Sanitizer", "Hand Wash", "Foot Cream"],
+  },
+  ToolsAndBrushes: {
+    Brushes: ["Makeup Brushes", "Makeup Sponges", "Brush Set"],
+  }
+};
 
 export default function ProductPage() {
-  const { category } = useParams();
+  const { category, subcategory } = useParams();
   const [products, setProducts] = useState([]);
   const [loadingStatus, setLoadingStatus] = useState("loading");
-  
-  const formattedCategory = category
-    ? category.charAt(0).toUpperCase() + category.slice(1).toLowerCase()
-    : "";
+
+  const formattedCategory = category ? category.charAt(0).toUpperCase() + category.slice(1).toLowerCase() : "";
+  const formattedSubcategory = subcategory ? subcategory.charAt(0).toUpperCase() + subcategory.slice(1).toLowerCase() : "";
 
   useEffect(() => {
     setLoadingStatus("loading");
-    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products?category=${formattedCategory}`)
+
+    console.log("Category:", category, "Subcategory:", subcategory); // Debugging params
+
+    // Fetch products based on category and subcategory
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products?category=${formattedCategory}&subcategory=${formattedSubcategory}`)
       .then((res) => {
+        console.log(res.data);  // Check the data received
         setProducts(res.data);
         setLoadingStatus("loaded");
       })
@@ -28,35 +54,65 @@ export default function ProductPage() {
         toast.error("Failed to fetch products");
         setLoadingStatus("error");
       });
-  }, [category]);
+  }, [category, subcategory]);
 
   return (
-    
     <div className="w-full min-h-screen bg-gray-100">
-      <Header/>
+      <Header />
       {/* Navigation */}
       <nav className="bg-purple-700 text-white py-4 px-6 flex justify-center gap-6 shadow-md">
         {categories.map((cat) => (
-          <Link 
-            key={cat} 
-            to={`/${cat.toLowerCase()}`} 
-            className="hover:underline text-lg font-semibold">
+          <Link key={cat} to={`/${cat.toLowerCase()}`} className="hover:underline text-lg font-semibold">
             {cat}
           </Link>
         ))}
       </nav>
-      
-      {/* Product Grid */}
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <h2 className="text-3xl font-bold text-purple-800 text-center mb-6">{formattedCategory}</h2>
-        {loadingStatus === "loading" && <p className="text-center">Loading products...</p>}
-        {loadingStatus === "error" && <p className="text-center text-red-500">Failed to load products</p>}
-        {loadingStatus === "loaded" && products.length === 0 && <p className="text-center">No products found</p>}
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {products.map((product) => (
-            <ProductCard key={product.productID} product={product} />
-          ))}
+
+      {/* Main Content */}
+      <div className="flex max-w-7xl mx-auto px-6 py-8 gap-6">
+        {/* Left Subcategory Navigation */}
+        <div className="w-1/4 bg-white p-4 shadow-md">
+          <h3 className="text-xl font-bold text-purple-800 mb-4">Subcategories</h3>
+          <ul className="space-y-2">
+            {Object.keys(subcategories[formattedCategory] || {}).map((subcategoryKey) => (
+              <li key={subcategoryKey} className="text-lg font-semibold">
+                <Link
+                  to={`/${category.toLowerCase()}/${subcategoryKey.toLowerCase()}`}
+                  className="hover:underline text-purple-700"
+                >
+                  {subcategoryKey}
+                </Link>
+                <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-600">
+                  {subcategories[formattedCategory][subcategoryKey].map((item) => (
+                    <li key={item}>
+                      <Link
+                        to={`/${category.toLowerCase()}/${subcategoryKey.toLowerCase()}`}
+                        className="hover:underline"
+                      >
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Product Grid */}
+        <div className="w-3/4">
+          <h2 className="text-3xl font-bold text-purple-800 text-center mb-6">{formattedCategory}</h2>
+          <h3 className="text-2xl font-semibold text-center mb-6">{formattedSubcategory}</h3>
+
+          {loadingStatus === "loading" && <p className="text-center">Loading products...</p>}
+          {loadingStatus === "error" && <p className="text-center text-red-500">Failed to load products</p>}
+          {loadingStatus === "loaded" && products.length === 0 && <p className="text-center">No products found</p>}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {products.map((product) => (
+              <ProductCard key={product.productID} product={product} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
