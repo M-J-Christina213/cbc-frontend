@@ -26,21 +26,26 @@ export default function ContactUs() {
       <div className="w-full h-80 my-12">
         <iframe
           className="w-full h-full"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345092177!2d144.95373531550417!3d-37.81627977975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d5df1f5a6f7%3A0x5045675218ce6e0!2sMelbourne%2C%20Australia!5e0!3m2!1sen!2s!4v1644465738456!5m2!1sen!2s"
-          allowFullScreen=""
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3404.2987463919812!2d79.84967905293544!3d6.898736725348884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2595ffeac7b1d%3A0x9c009a42b1587194!2s123%20Marine%20Drive%2C%20Colombo!5e0!3m2!1sen!2slk!4v1740707677126!5m2!1sen!2slk"
+          width="600"
+          height="450"
+          style={{ border: 0 }}
+          allowFullScreen
           loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
+
 
       {/* Customer Care Section */}
       <div className="bg-black text-white py-12 px-6 text-center">
         <h2 className="text-2xl font-semibold mb-4">Customer Care</h2>
-        <p className="text-lg mb-2">📍 123 Beauty St, Crystal City, CC 45678</p>
+        <p className="text-lg mb-2">📍 123 Marine Drive, Colombo 03, Sri Lanka </p>
         <p className="flex items-center justify-center gap-2 text-lg">
-          <FiPhone /> +1 234 567 890
+          <FiPhone />  Contact: +94 11 234 5678
         </p>
         <p className="flex items-center justify-center gap-2 text-lg mt-2">
-          <FiMail /> support@crystalclearbeauty.com
+          <FiMail />  support@crystalclearbeauty.com
         </p>
         <p className="mt-4">Response Time: 24-48 hours</p>
       </div>
