@@ -9,11 +9,13 @@ import MyOrdersPage from './home/myOrders';
 import HeroSection from '../components/heroSection';
 import ProductCategories from '../components/productCategories';
 
-import SpecialOffersBanner from '../components/SpecialOfferBanner';
+
 import FeaturedProducts from '../components/FeatureProducts';
 import Testimonials from '../components/testimonials';
 import FAQ from '../components/FAQ';
 import Footer from '../components/footer';
+import SpecialOffersBanner from '../components/specialOfferBanner';
+
 
 
 
