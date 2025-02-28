@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
+import { addToCart } from '../utilis/cartFunction.jsx'; // Import the addToCart function
 
 export default function ProductCard({ product }) {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -50,6 +51,10 @@ export default function ProductCard({ product }) {
   // ⭐ Get a random rating for the product
   const randomReviewRating = generateRandomRating();
 
+  const handleAddToCart = () => {
+    addToCart(product.productID, 1); // Add product to cart with quantity 1
+  };
+
   return (
     <div className="bg-white shadow-md overflow-hidden transform hover:scale-105 transition-all duration-300 flex flex-col h-full">
       <Link to={`/productInfo/${product.productID}`}>
@@ -72,7 +77,10 @@ export default function ProductCard({ product }) {
         </div>
 
         <div className="mt-4 flex justify-center items-center">
-          <button className="bg-purple-600 text-white py-2 px-16 text-center flex justify-center items-center gap-2 hover:bg-purple-800 w-full">
+          <button 
+            onClick={handleAddToCart} // Add to cart when button is clicked
+            className="bg-purple-600 text-white py-2 px-16 text-center flex justify-center items-center gap-2 hover:bg-purple-800 w-full"
+          >
             <FaShoppingCart size={18} /> Add to Cart
           </button>
         </div>
