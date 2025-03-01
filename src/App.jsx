@@ -23,6 +23,7 @@ export default function App() {
           <Routes>
             <Route path="/*" element={<Homepage />} />
             <Route path="/:category" element={<ProductPage />} />
+            <Route path="/:category/:subcategory" element={<ProductPage />} />
             <Route path="/productInfo/:productID" element={<ProductOverview/>}/>
             <Route path="/about-us" element={<AboutUs/>}/>
             <Route path="/contact-us" element={<ContactUs/>}/>
