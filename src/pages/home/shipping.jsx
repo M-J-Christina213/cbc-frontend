@@ -114,7 +114,7 @@ export default function ShippingPage() {
                 
                 <table className="w-full mt-5 border-collapse border border-gray-200">
                     <thead>
-                        <tr className="bg-gray-200">
+                        <tr className="bg-primary/50 text-white">
                             <th className="p-2">Image</th>
                             <th className="p-2">Product Name</th>
                             <th className="p-2">Product ID</th>
