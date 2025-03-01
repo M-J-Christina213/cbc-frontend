@@ -13,6 +13,7 @@ import ContactUs from "./pages/home/contactUsPage";
 import AboutUs from "./pages/home/aboutUsPage";
 import Cart from "./pages/home/cart";
 import ProductOverview from "./pages/home/productOverview";
+import ShippingPage from "./pages/home/shipping";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
             <Route path="/about-us" element={<AboutUs/>}/>
             <Route path="/contact-us" element={<ContactUs/>}/>
             <Route path="/cart" element={<Cart/>}/>
+            <Route path="/shipping" element={<ShippingPage/>} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/admin/*" element={<AdminHomepage />} />

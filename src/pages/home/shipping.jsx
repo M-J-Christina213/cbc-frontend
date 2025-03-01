@@ -4,6 +4,8 @@ import CartCard from "../../components/cartCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {jwtDecode} from "jwt-decode";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 export default function ShippingPage() {
     const location = useLocation();
@@ -82,8 +84,9 @@ export default function ShippingPage() {
     }
 
     return (
-        <div className="w-full min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 p-5">
-            <div className="max-w-4xl mx-auto p-6 shadow-lg rounded-lg bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 ">
+        <div className="w-full min-h-screen bg-white p-5">
+            <Header/>
+            <div className="max-w-4xl mx-auto p-6 shadow-lg  bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 ">
                 <h1 className="text-2xl font-bold mb-4">Shipping Details</h1>
                 <div className="grid grid-cols-1 gap-4">
                     <input 
@@ -135,10 +138,11 @@ export default function ShippingPage() {
                 
                 <button 
                     onClick={createOrder} 
-                    className="bg-blue-600 text-white p-3 rounded-lg w-full mt-4 hover:bg-blue-700">
+                    className="bg-primary border-white border-2 text-white p-3  w-full mt-4 hover:bg-primary/50">
                     Checkout
                 </button>
             </div>
+            <Footer/>
         </div>
     );
 }
