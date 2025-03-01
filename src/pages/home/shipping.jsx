@@ -84,7 +84,7 @@ export default function ShippingPage() {
     }
 
     return (
-        <div className="w-full min-h-screen bg-white p-5">
+        <div className="w-full min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 ">
             <Header/>
             <div className="max-w-4xl mx-auto p-6 shadow-lg  bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 ">
                 <h1 className="text-2xl font-bold mb-4">Shipping Details</h1>
@@ -92,21 +92,21 @@ export default function ShippingPage() {
                     <input 
                         type="text" 
                         placeholder="Full Name" 
-                        className="p-2 border rounded w-full" 
+                        className="p-2 border w-full" 
                         value={name} 
                         onChange={(e) => setName(e.target.value)}
                     />
                     <input 
                         type="text" 
                         placeholder="Address" 
-                        className="p-2 border rounded w-full" 
+                        className="p-2 border  w-full" 
                         value={address} 
                         onChange={(e) => setAddress(e.target.value)}
                     />
                     <input 
                         type="text" 
                         placeholder="Phone Number" 
-                        className="p-2 border rounded w-full" 
+                        className="p-2 border  w-full" 
                         value={phone} 
                         onChange={(e) => setPhone(e.target.value)}
                     />

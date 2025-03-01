@@ -40,11 +40,11 @@ export default function Cart() {
     }
 
     return (
-        <div className="w-full min-h-screen flex flex-col items-center bg-white text-primary">
+        <div className="w-full min-h-screen flex flex-col items-center bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 text-primary">
             <Header />
             <div className="w-3/4 bg-white shadow-lg p-6 mt-8 border-2 border-pink-500">
                 <h1 className="text-4xl font-bold text-center text-primary">Shopping Cart</h1>
-                <table className="w-full mt-4 border border-purple-300 overflow-hidden">
+                <table className="w-full mt-4 bg-white border border-purple-300 overflow-hidden">
                     <thead className="bg-purple-600 text-white">
                         <tr>
                             <th className="p-3">Image</th>
