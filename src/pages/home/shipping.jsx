@@ -38,16 +38,15 @@ export default function ShippingPage() {
             toast.error("Please fill in all fields");
             return;
         }
-    
+
         const token = localStorage.getItem("token");
         
         if (!token) {
-            // If no token found, prompt the user to sign up
-            toast.error("Please sign up to purchase your order");
-            navigate("/signup"); // Redirecting user to signup page
+            toast.error("Please log in as a customer to create orders");  // Show toast if no token
+            navigate("/login");
             return;
         }
-    
+
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, {
             orderedItems: cart,
             name,
@@ -56,23 +55,20 @@ export default function ShippingPage() {
         }, {
             headers: { Authorization: `Bearer ${token}` },
         })
-            .then(() => {
-                toast.success("Order placed successfully!");
-                navigate("/orders");
-            })
-            .catch((error) => {
-                // Check for other errors (like server errors or network issues)
-                if (error.response && error.response.status === 401) {
-                    toast.error("Please log in as a customer to create orders");
-                } else {
-                    toast.error("Order creation failed. Please try again!");
-                }
-                console.log(error.message);
-            });
+        .then(() => {
+            toast.success("Order placed successfully!");
+            navigate("/orders");
+        })
+        .catch((error) => {
+            if (error.response && error.response.data.message) {
+                // Backend error with message
+                toast.error(error.response.data.message);  
+            } else {
+                toast.error("Order creation failed. Please try again!");  
+            }
+            console.log(error.message);  
+        });
     }
-    
-    
-    
 
     return (
         <div className="w-full min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400">
