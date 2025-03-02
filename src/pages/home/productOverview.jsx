@@ -7,6 +7,7 @@ import { addToCart } from "../../utilis/cartFunction";
 import toast from "react-hot-toast";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
+import Reviews from "../../components/reviews";
 
 export default function ProductOverview() {
     const params = useParams();
@@ -55,7 +56,7 @@ export default function ProductOverview() {
     }
 
     return (
-        <div className="w-full h-[calc(100vh-100px)] ">
+        <div className="w-full h-[calc(100vh-190px)] ">
             <Header/>
             {status === "loading" && (
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -110,6 +111,7 @@ export default function ProductOverview() {
               
               
             )}
+            <Reviews/>
             <Footer/>
         </div>
     );
