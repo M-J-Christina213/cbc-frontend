@@ -38,7 +38,9 @@ export default function CartCard(props) {
             <td className="p-2">
                 <img src={product?.images[0]} className="w-[90px] h-[90px] mx-auto" alt={product?.productName} />
             </td>
-            <td className="text-center p-2">{product?.productName}</td>
+            <td className="text-center p-2 w-[180px] break-words">
+                {product?.productName}
+            </td>
             <td className="text-center p-2">{productID}</td>
             <td className="text-center p-2">
                 <input
@@ -49,8 +51,10 @@ export default function CartCard(props) {
                     min="1"
                 />
             </td>
-            <td className="text-center p-2">LKR. {(product?.lastPrice || 0).toFixed(2)}</td>
-            <td className="text-center p-2">
+            <td className="text-center p-2 whitespace-nowrap">
+                LKR. {(product?.lastPrice || 0).toFixed(2)}
+            </td>
+            <td className="text-center p-2 whitespace-nowrap">
                 LKR. {(product?.lastPrice * qty || 0).toFixed(2)}
             </td>
         </tr>
