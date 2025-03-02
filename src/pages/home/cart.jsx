@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { loadCart, clearCart, removeFromCart } from "../../utilis/cartFunction"; // Make sure `removeFromCart` is implemented
+import { loadCart, clearCart, deleteFromCart } from "../../utilis/cartFunction"; 
 import CartCard from "../../components/cartCard";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -28,8 +28,8 @@ export default function Cart() {
         .catch((err) => console.error("Quote API Error:", err));
     }, []);
 
-    const handleDeleteProduct = (productId) => {
-        removeFromCart(productId); // This function should remove the item from the cart in local storage
+    const handleDeleteProduct = (productID) => {
+        deleteFromCart(productID); 
         setCart(loadCart()); // Update cart state after deletion
     };
 
@@ -58,32 +58,16 @@ export default function Cart() {
                             <th className="p-3">Qty</th>
                             <th className="p-3 text-right">Price</th>
                             <th className="p-3 text-right">Total</th>
-                            <th className="p-3">Action</th> {/* New column for the delete button */}
+                            <th className="p-3">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {cart.map((item) => (
-                            <tr key={item.productId}>
-                                <td className="p-3">
-                                    <img src={item.image} alt={item.productName} className="w-16 h-16 object-cover" />
-                                </td>
-                                <td className="p-3">{item.productName}</td>
-                                <td className="p-3">{item.productId}</td>
-                                <td className="p-3">{item.qty}</td>
-                                <td className="p-3 text-right">Rs. {item.price}</td>
-                                <td className="p-3 text-right">Rs. {item.qty * item.price}</td>
-                                <td className="p-3 text-center">
-                                    <button 
-                                        onClick={() => handleDeleteProduct(item.productId)} 
-                                        className="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded"
-                                    >
-                                        Delete
-                                    </button>
-                                </td>
-                            </tr>
+                            <CartCard key={item.productId} productID={item.productId} qty={item.qty} />
                         ))}
                     </tbody>
                 </table>
+    
                 <div className="flex justify-center items-center mt-6">
                     <div className="text-xl font-semibold text-center">
                         <p>Total: <span className="text-primary">Rs. {Number(labeledTotal).toFixed(2)}</span></p>
@@ -99,4 +83,6 @@ export default function Cart() {
             <Footer />
         </div>
     );
+    
+    
 }

@@ -1,8 +1,9 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { FaTrash } from 'react-icons/fa';  
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function CartCard(props) {
-    const { productID, qty: initialQty, isShippingPage } = props;
+    const { productID, qty: initialQty, isShippingPage, handleDeleteProduct } = props;
 
     const [product, setProduct] = useState(null);
     const [qty, setQty] = useState(initialQty);
@@ -57,6 +58,18 @@ export default function CartCard(props) {
             <td className="text-center p-2 whitespace-nowrap">
                 LKR. {(product?.lastPrice * qty || 0).toFixed(2)}
             </td>
+            {/* Conditionally render the "Actions" column only if it's not the shipping page */}
+            {!isShippingPage && (
+                <td className="text-center p-2">
+                    <button
+                        onClick={() => handleDeleteProduct(productID)}
+                        className="bg-transparent border-none text-red-500 hover:text-red-700 p-1"
+                        title="Delete"
+                    >
+                        <FaTrash className="w-5 h-5" />
+                    </button>
+                </td>
+            )}
         </tr>
     );
 }
