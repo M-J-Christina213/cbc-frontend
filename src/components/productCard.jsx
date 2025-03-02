@@ -77,12 +77,12 @@ export default function ProductCard({ product }) {
         </div>
 
         <div className="mt-4 flex justify-center items-center">
-          <button 
-            onClick={handleAddToCart} // Add to cart when button is clicked
-            className="bg-purple-600 text-white py-2 px-16 text-center flex justify-center items-center gap-2 hover:bg-purple-800 w-full"
-          >
-            <FaShoppingCart size={18} /> Add to Cart
-          </button>
+        <button 
+          onClick={handleAddToCart}
+          className="bg-purple-600 text-white py-2 px-4 flex items-center gap-2 hover:bg-purple-800 w-full text-center whitespace-nowrap"
+        >
+          <FaShoppingCart size={18} /> Add to Cart
+        </button>
         </div>
       </div>
     </div>
