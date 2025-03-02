@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Heart, ShoppingCart } from "lucide-react";
 import ProductCard from "../../components/productCard";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
@@ -70,9 +69,9 @@ export default function ProductPage() {
       </nav>
 
       {/* Main Content */}
-      <div className="flex max-w-7xl mx-auto px-6 py-8 gap-6">
+      <div className="flex max-w-9xl mx-0 px-6 py-8 gap-6">
         {/* Left Subcategory Navigation */}
-        <div className="w-1/4 bg-white p-4 shadow-md">
+        <div className="w-1/5 bg-white p-4 shadow-md flex-shrink-0">
           <h3 className="text-xl font-bold text-purple-800 mb-4">Subcategories</h3>
           {formattedCategory === "Makeup" && (
             <ul className="space-y-2">
@@ -116,20 +115,22 @@ export default function ProductPage() {
           )}
         </div>
 
-        {/* Product Grid */}
-        <div className="w-3/4">
-          <h2 className="text-3xl font-bold text-purple-800 text-center mb-6">{formattedCategory}</h2>
-          <h3 className="text-2xl font-semibold text-center mb-6">{formattedSubcategory}</h3>
-
-          {loadingStatus === "loading" && <p className="text-center">Loading products...</p>}
-          {loadingStatus === "error" && <p className="text-center text-red-500">Failed to load products</p>}
-          {loadingStatus === "loaded" && products.length === 0 && <p className="text-center">No products found</p>}
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <ProductCard key={product.productID} product={product} />
-            ))}
-          </div>
+        {/* Product Grid - Take Remaining Space */}
+        <div className="flex-grow">
+          <h2 className="text-3xl font-bold text-purple-900 text-center mb-8">
+            {formattedSubcategory ? formattedSubcategory : formattedCategory} Products
+          </h2>
+          {loadingStatus === "loading" ? (
+            <p>Loading...</p>
+          ) : loadingStatus === "error" ? (
+            <p>Failed to load products</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {products.map((product) => (
+                <ProductCard key={product.productID} product={product} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <Footer />

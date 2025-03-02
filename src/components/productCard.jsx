@@ -59,6 +59,7 @@ export default function ProductCard({ product }) {
     <div className="bg-white shadow-md overflow-hidden transform hover:scale-105 transition-all duration-300 flex flex-col h-full">
       <Link to={`/productInfo/${product.productID}`}>
         <img src={product.images[0]} alt={product.productName} className="w-full h-64 object-cover" />
+
       </Link>
       <div className="p-4 flex flex-col justify-between flex-grow">
         <div>
@@ -77,13 +78,13 @@ export default function ProductCard({ product }) {
         </div>
 
         <div className="mt-4 flex justify-center items-center">
-        <button 
-          onClick={handleAddToCart}
-          className="bg-purple-600 text-white py-2 px-4 flex items-center justify-center gap-2 hover:bg-purple-800 w-full text-center whitespace-nowrap"
-        >
-          <FaShoppingCart size={18} />
-          <span>Add to Cart</span>
-        </button>
+          <button
+            onClick={handleAddToCart}
+            className="bg-purple-600 text-white py-2 px-4 flex items-center justify-center gap-2 hover:bg-purple-800 w-full text-center whitespace-nowrap"
+          >
+            <FaShoppingCart size={18} />
+            <span>Add to Cart</span>
+          </button>
         </div>
       </div>
     </div>
