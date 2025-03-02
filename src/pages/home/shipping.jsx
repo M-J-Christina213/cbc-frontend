@@ -1,15 +1,15 @@
-import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import CartCard from "../../components/cartCard";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 import axios from "axios";
-import {jwtDecode} from "jwt-decode";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 export default function ShippingPage() {
     const location = useLocation();
     const navigate = useNavigate();
     const cart = location.state?.items || [];
-
     const [total, setTotal] = useState(0);
     const [labeledTotal, setLabelledTotal] = useState(0);
     const [name, setName] = useState("");
@@ -38,31 +38,16 @@ export default function ShippingPage() {
             toast.error("Please fill in all fields");
             return;
         }
-
-        const token = localStorage.getItem("token");
-        if (!token) {
-            toast.error("You need to login first");
-            navigate("/login");
-            return;
-        }
-
-        try {
-            const decoded = jwtDecode(token);
-            const currentTime = Date.now() / 1000;
     
-            if (decoded.exp && decoded.exp < currentTime) {
-                toast.error("Session expired, please log in again.");
-                localStorage.removeItem("token");
-                navigate("/login");
-                return;
-            }
-        } catch (error) {
-            toast.error("Invalid session. Please log in again.");
-            localStorage.removeItem("token");
-            navigate("/login");
+        const token = localStorage.getItem("token");
+        
+        if (!token) {
+            // If no token found, prompt the user to sign up
+            toast.error("Please sign up to purchase your order");
+            navigate("/signup"); // Redirecting user to signup page
             return;
         }
-
+    
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, {
             orderedItems: cart,
             name,
@@ -71,47 +56,56 @@ export default function ShippingPage() {
         }, {
             headers: { Authorization: `Bearer ${token}` },
         })
-        .then(() => {
-            toast.success("Order placed successfully!");
-            navigate("/orders");  
-        })
-        .catch((error) =>{
-            toast.error("Order creation failed. Please try again!");
-            console.log(error.message)
-    });
+            .then(() => {
+                toast.success("Order placed successfully!");
+                navigate("/orders");
+            })
+            .catch((error) => {
+                // Check for other errors (like server errors or network issues)
+                if (error.response && error.response.status === 401) {
+                    toast.error("Please log in as a customer to create orders");
+                } else {
+                    toast.error("Order creation failed. Please try again!");
+                }
+                console.log(error.message);
+            });
     }
+    
+    
+    
 
     return (
-        <div className="w-full min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 p-5">
-            <div className="max-w-4xl mx-auto p-6 shadow-lg rounded-lg bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 ">
+        <div className="w-full min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400">
+            <Header />
+            <div className="max-w-4xl mx-auto p-6 shadow-lg bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400">
                 <h1 className="text-2xl font-bold mb-4">Shipping Details</h1>
                 <div className="grid grid-cols-1 gap-4">
-                    <input 
-                        type="text" 
-                        placeholder="Full Name" 
-                        className="p-2 border rounded w-full" 
-                        value={name} 
+                    <input
+                        type="text"
+                        placeholder="Full Name"
+                        className="p-2 border w-full"
+                        value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
-                    <input 
-                        type="text" 
-                        placeholder="Address" 
-                        className="p-2 border rounded w-full" 
-                        value={address} 
+                    <input
+                        type="text"
+                        placeholder="Address"
+                        className="p-2 border w-full"
+                        value={address}
                         onChange={(e) => setAddress(e.target.value)}
                     />
-                    <input 
-                        type="text" 
-                        placeholder="Phone Number" 
-                        className="p-2 border rounded w-full" 
-                        value={phone} 
+                    <input
+                        type="text"
+                        placeholder="Phone Number"
+                        className="p-2 border w-full"
+                        value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                     />
                 </div>
-                
+
                 <table className="w-full mt-5 border-collapse border border-gray-200">
                     <thead>
-                        <tr className="bg-gray-200">
+                        <tr className="bg-primary/50 text-white">
                             <th className="p-2">Image</th>
                             <th className="p-2">Product Name</th>
                             <th className="p-2">Product ID</th>
@@ -122,23 +116,26 @@ export default function ShippingPage() {
                     </thead>
                     <tbody className="bg-white">
                         {cart.map((item) => (
-                            <CartCard key={item.productId} productID={item.productId} qty={item.qty} />
+                            <CartCard key={item.productId} productID={item.productId} qty={item.qty} isShippingPage={true} />
                         ))}
                     </tbody>
                 </table>
-                
-                <div className="mt-4 text-lg font-bold">
-                    <p>Total: Rs. {Number(labeledTotal).toFixed(2)}</p>
-                    <p>Discount: Rs. {Number(labeledTotal - total).toFixed(2)}</p>
-                    <p>Grand Total: Rs. {Number(total).toFixed(2)}</p>
+
+                <div className="mt-4 flex  justify-end">
+                    <div className="text-lg font-bold text-right">
+                        <p>Total: Rs. {Number(labeledTotal).toFixed(2)}</p>
+                        <p>Discount: Rs. {Number(Math.abs(Number(labeledTotal - total).toFixed(2))).toFixed(2)}</p>
+                        <p>Grand Total: Rs. {Number(total).toFixed(2)}</p>
+                    </div>
                 </div>
-                
-                <button 
-                    onClick={createOrder} 
-                    className="bg-blue-600 text-white p-3 rounded-lg w-full mt-4 hover:bg-blue-700">
-                    Checkout
+
+                <button
+                    onClick={createOrder}
+                    className="bg-primary border-white border-2 text-white p-3 w-full mt-4 hover:bg-primary/50">
+                    Place Order
                 </button>
             </div>
+            <Footer />
         </div>
     );
 }

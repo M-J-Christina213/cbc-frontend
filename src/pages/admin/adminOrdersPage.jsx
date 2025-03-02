@@ -65,8 +65,8 @@ export default function AdminOrdersPage() {
     
             // Update orders list
             setOrders(prevOrders =>
-                prevOrders.map(o => (o.orderId === orderId ? response.data.order : o))
-            );
+              prevOrders.map((o, index) => (o.orderId === orderId ? response.data.order : o))
+          );
     
             setSelectedOrder(null);
         } catch (error) {
@@ -97,9 +97,9 @@ export default function AdminOrdersPage() {
                             </tr>
                         </thead>
                         <tbody>
-                            {orders.map((order) => (
+                            {orders.map((order,index) => (
                                 <tr key={order._id} className="text-center hover:bg-gray-100">
-                                    <td className="border px-4 py-2">{order.orderId}</td>
+                                    <td className="border px-4 py-2">{`ORD${String(index + 1).padStart(4, "0")}`}</td>
                                     <td className="border px-4 py-2">
                                         <span className={`px-2 py-1 rounded text-white ${
                                             order.status === "delivered" ? "bg-green-500" :

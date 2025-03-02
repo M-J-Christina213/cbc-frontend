@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { FiUser, FiShoppingCart, FiHeart, FiSearch } from "react-icons/fi";
+import { FiShoppingCart, FiSearch, FiUserCheck } from "react-icons/fi"; // Import FiUserCheck for login
+import { RiUserShared2Line } from "react-icons/ri";
 import { FaCaretDown } from "react-icons/fa";
 import NavSlider from "./navSlider";
 
@@ -12,9 +13,9 @@ const Menu = [
     link: "/",
   },
   {
-    id: 2, 
+    id: 2,
     name: "Shop",
-    dropdown: true, // Indicating it's a dropdown
+    dropdown: true,
   },
   {
     id: 3,
@@ -44,12 +45,13 @@ const Menu = [
 ];
 
 const DropdownLinks = [
-  { id: 1, name: "Makeup", link: "/#" },
-  { id: 2, name: "Skincare", link: "/#" },
-  { id: 3, name: "Haircare", link: "/#" },
-  { id: 4, name: "Nails", link: "/#" },
-  { id: 5, name: "Fragrances", link: "/#" },
-  { id: 6, name: "Bath & Body", link: "/#" },
+  { id: 1, name: "Makeup", link: "/makeup" }, 
+  { id: 2, name: "Skincare", link: "/skincare" }, 
+  { id: 3, name: "Haircare", link: "/haircare" }, 
+  { id: 4, name: "Nails", link: "/nails" }, 
+  { id: 5, name: "Fragrances", link: "/fragrances" }, 
+  { id: 6, name: "Bath & Body", link: "/bath-body" }, 
+  { id: 7, name: "Tools & Brushes", link: "/tools-brushes" }, 
 ];
 
 export default function Header() {
@@ -85,10 +87,10 @@ export default function Header() {
           {/* Icons */}
           <div className="flex items-center gap-6">
             <Link to="/login" className="text-gray-700 hover:text-primary">
-              <FiUser size={20} />
+              <FiUserCheck size={20} /> {/* Login icon */}
             </Link>
-            <Link to="/wishlist" className="text-gray-700 hover:text-primary">
-              <FiHeart size={20} />
+            <Link to="/signup" className="text-gray-700 hover:text-primary">
+                <RiUserShared2Line size={20} /> {/* Signup icon */}
             </Link>
             <Link to="/cart" className="text-gray-700 hover:text-primary relative">
               <FiShoppingCart size={20} />
@@ -104,11 +106,9 @@ export default function Header() {
 
         {/* Bottom Navigation Section */}
         <div className="bg-black flex justify-center">
-
           <ul className="sm:flex hidden items-center gap-4 justify-center pb-2 pt-2">
             {Menu.map((data) =>
               data.dropdown ? (
-                // "Shop" dropdown menu
                 <li key={data.id} className="relative group">
                   <span className="text-white flex items-center gap-[2px] py-2 px-4 hover:border-b-2 border-secondary cursor-pointer">
                     {data.name}
@@ -130,7 +130,6 @@ export default function Header() {
                   </div>
                 </li>
               ) : (
-                // Regular menu items
                 <li key={data.id}>
                   <Link
                     to={data.link}
@@ -142,7 +141,6 @@ export default function Header() {
               )
             )}
           </ul>
-
         </div>
       </header>
     </>

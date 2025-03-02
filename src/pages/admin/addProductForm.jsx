@@ -8,6 +8,8 @@ export default function AddProductForm() {
 
     const [productId, setProductId] = useState("");
     const [productName, setProductName] = useState("");
+    const [category, setCategory] = useState("");
+    const [subcategory, setSubcategory] = useState("");
     const [alternativeNames, setAlternativeNames] = useState("");
     const [imgUrls, setImageUrls] = useState("");
     const [imageFiles, setImageFiles] = useState([]);
@@ -17,72 +19,77 @@ export default function AddProductForm() {
     const [description, setDescription] = useState("");
     const navigate = useNavigate();
 
-    async function handleSubmit(){
+    async function handleSubmit() {
         if (!imageFiles || imageFiles.length === 0) {
             console.error("No files selected for upload");
             toast.error("Please upload at least one image");
             return;
         }
-        
-        // Validate image files for correct file type (JPG or PNG)
-    const validImageTypes = ["image/jpeg", "image/png"];
-    for (let i = 0; i < imageFiles.length; i++) {
-        if (!validImageTypes.includes(imageFiles[i].type)) {
-            console.error("Invalid file type:", imageFiles[i].type);
-            toast.error("Please select a jpg or png file");
-            return; // Stop the process if an invalid file is found
-        }
-    }
     
-        
-        const promisesArray = []
-
+        // Validate image files for correct file type (JPG or PNG)
+        const validImageTypes = ["image/jpeg", "image/png"];
+        for (let i = 0; i < imageFiles.length; i++) {
+            if (!validImageTypes.includes(imageFiles[i].type)) {
+                console.error("Invalid file type:", imageFiles[i].type);
+                toast.error("Please select a jpg or png file");
+                return; // Stop the process if an invalid file is found
+            }
+        }
+    
+        const promisesArray = [];
+    
         // Create upload promises
         for (let i = 0; i < imageFiles.length; i++) {
-            promisesArray[i] = uploadMediaToSupabase(imageFiles[i])
+            promisesArray[i] = uploadMediaToSupabase(imageFiles[i]);
         }
-
-       const imgUrls = await Promise.all(promisesArray)
     
-       console.log(imgUrls)
-       
-    try {
-        const values = await Promise.all(promisesArray); // Resolves with an array of URLs
-        console.log("Upload success, URLs:", values);
-        setImageUrls(values); // Assign the URLs to imgUrls
-
-        const altNames = alternativeNames.split(",").map(name => name.trim()).filter(name => name !== "");
-        console.log("Alternative names: ", altNames);  // Add this log to verify the value
-
-        // Create the product object
-        const product = {
-            productID: productId,
-            productName: productName,
-            altNames: altNames,
-            images: values, // Use the uploaded URLs here
-            price: price,
-            lastPrice: lastPrice,
-            stock: stock,
-            description: description,
-        };
-
-        const token = localStorage.getItem("token");
-
-        // API call to add the product
+        try {
+            const imgUrls = await Promise.all(promisesArray);
+            console.log("Upload success, URLs:", imgUrls);
+    
+            // Log values of category and subcategory for debugging
+            console.log("Category:", category);
+            console.log("Subcategory:", subcategory);
+    
+            // Ensure category and subcategory are provided
+            if (!category || !subcategory) {
+                toast.error("Category and Subcategory are required");
+                return;
+            }
+    
+            const altNames = alternativeNames.split(",").map(name => name.trim()).filter(name => name !== "");
+            console.log("Alternative names: ", altNames);
+    
+            // Create the product object
+            const product = {
+                productID: productId,
+                productName: productName,
+                category: category, // Ensure category is included
+                subcategory: subcategory, // Ensure subcategory is included
+                altNames: altNames,
+                images: imgUrls,
+                price: price,
+                lastPrice: lastPrice,
+                stock: stock,
+                description: description,
+            };
+    
+            const token = localStorage.getItem("token");
+    
+            // API call to add the product
+            await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/products`, product, {
+                headers: {
+                    Authorization: "Bearer " + token,
+                },
+            });
+    
+            navigate("/admin/products");
+            toast.success("Product Added Successfully");
+        } catch (err) {
+            console.error("Error during product creation:", err);
+            toast.error("Failed to add product");
+        }
         
-        await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/products`, product, {
-            headers: {
-                Authorization: "Bearer " + token,
-            },
-        });
-
-        navigate("/admin/products");
-        toast.success("Product Added Successfully");
-    } catch(err) {
-        console.error("Error during product creation:", err.response ? err.response.data : err.message);
-        toast.error("Failed to add product");
-    }
-
         
     }
     return (
@@ -105,6 +112,21 @@ export default function AddProductForm() {
                     onChange={(e)=>{setProductName(e.target.value)}}
                     />
                 </div>
+                <div className="flex flex-col">
+                    <label className="font-semibold text-gray-700">Category</label>
+                    <input type="text" placeholder="Enter Category" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" 
+                    value ={category}
+                    onChange={(e)=>{setCategory(e.target.value)}}
+                    />
+                </div>
+                <div className="flex flex-col">
+                    <label className="font-semibold text-gray-700">Subcategory</label>
+                    <input type="text" placeholder="Enter Subcategory" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" 
+                    value ={subcategory}
+                    onChange={(e)=>{setSubcategory(e.target.value)}}
+                    />
+                </div>
+
                 <div className="flex flex-col">
                     <label className="font-semibold text-gray-700">Alternative Names</label>
                     <input type="text" placeholder="Enter Alternative Names" className="p-2 border rounded-md focus:ring-2 focus:ring-pink-600" 
