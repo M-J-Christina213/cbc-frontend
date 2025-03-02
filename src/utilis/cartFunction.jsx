@@ -59,3 +59,14 @@ export function deleteItem(productID){
         }
     
 }
+
+export function deleteFromCart(productID) {
+    const cart = loadCart();
+
+    const index = cart.findIndex((item) => item.productId == productID);
+
+    if (index != -1) {
+        cart.splice(index, 1); 
+        saveCart(cart); 
+    }
+}

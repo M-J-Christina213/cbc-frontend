@@ -6,7 +6,7 @@ import ProductCard from "../../components/productCard";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 
-const categories = ["Makeup", "Skincare", "Haircare", "Nails", "Body & Bath", "Tools & Brushes"];
+const categories = ["Makeup", "Skincare", "Haircare", "Nails", "Body and Bath", "Tools and Brushes"];
 const subcategories = {
   Makeup: {
     Eyes: ["Eyeshadow Palette", "Eyeliner", "Eye Definer", "Eyebrow Pencil", "Mascara"],
@@ -14,7 +14,7 @@ const subcategories = {
     Face: ["Blusher", "Concealer", "Compact Powder", "Foundation"]
   },
   Skincare: [
-    "Cleanser", "Eye Gel Mask", "Moisturizer", "Serum", "Day & Night Cream", "Toner", "Face Wash", "Scrub", "Men's Skincare"
+    "Cleanser", "Moisturizer", "Serum", "Day and Night Cream", "Toner", "Face Wash", "Scrub", "Mens skincare"
   ],
   Haircare: [
     "Shampoo", "Conditioner", "Hair Care Treatment"
