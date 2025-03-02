@@ -3,6 +3,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { jwtDecode } from "jwt-decode";
 import { Dialog } from "@headlessui/react";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
 
 export default function MyOrdersPage() {
     const [orders, setOrders] = useState([]);
@@ -51,6 +53,7 @@ export default function MyOrdersPage() {
 
     return (
         <div className="w-full h-full p-4">
+            <Header/>
             <h2 className="text-2xl font-semibold mb-4 text-center">My Orders</h2>
             
             {loading ? (
@@ -152,6 +155,7 @@ export default function MyOrdersPage() {
                     </div>
                 </Dialog>
             )}
+            <Footer/>
         </div>
     );
 }
