@@ -40,14 +40,14 @@ export default function ShippingPage() {
             toast.error("Please fill in all fields");
             return;
         }
-
+    
         const token = localStorage.getItem("token");
         if (!token) {
             toast.error("You need to login first");
             navigate("/login");
             return;
         }
-
+    
         try {
             const decoded = jwtDecode(token);
             const currentTime = Date.now() / 1000;
@@ -58,13 +58,20 @@ export default function ShippingPage() {
                 navigate("/login");
                 return;
             }
+    
+            // Check if the user is a customer
+            if (decoded.role !== "customer") {
+                toast.error("Please log in as a customer to create orders");
+                return;
+            }
+    
         } catch (error) {
             toast.error("Invalid session. Please log in again.");
             localStorage.removeItem("token");
             navigate("/login");
             return;
         }
-
+    
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, {
             orderedItems: cart,
             name,
@@ -77,11 +84,11 @@ export default function ShippingPage() {
             toast.success("Order placed successfully!");
             navigate("/orders");  
         })
-        .catch((error) =>{
+        .catch((error) => {
             toast.error("Order creation failed. Please try again!");
-            console.log(error.message)
-    });
+        });
     }
+    
 
     return (
         <div className="w-full min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 ">
