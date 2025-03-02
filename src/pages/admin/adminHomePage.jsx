@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import AdminDashboard from './adminDashboard';
+import AdminReviewsPage from './adminReviewsPage';
+import AdminCustomersPage from './adminCustomersPage';
 
 
 export default function AdminHomePage() {
@@ -88,8 +90,8 @@ export default function AdminHomePage() {
        <Route path="/products/addProduct" element={<AddProductForm/>} />
        <Route path="/products/editProduct" element={<EditProductForm/>} />
        <Route path="/orders" element={<AdminOrdersPage/>} />
-       <Route path="/customers" element={<h1> Customers </h1>} />
-       <Route path="/reviews" element={<h1> Reviews </h1>} />
+       <Route path="/customers" element={<AdminCustomersPage/>} />
+       <Route path="/reviews" element={<AdminReviewsPage/>} />
        <Route path="/*" element={<h1> 404 not found the admin page</h1>} />
       </Routes>}
       {
