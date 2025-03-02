@@ -113,7 +113,7 @@ export default function ShippingPage() {
 
                 <div className="mt-4 text-lg font-bold">
                     <p>Total: Rs. {Number(labeledTotal).toFixed(2)}</p>
-                    <p>Discount: Rs. {Number(labeledTotal - total).toFixed(2)}</p>
+                    <p>Discount: Rs. {Number(Math.abs(Number(labeledTotal - total).toFixed(2))).toFixed(2)}</p>
                     <p>Grand Total: Rs. {Number(total).toFixed(2)}</p>
                 </div>
 

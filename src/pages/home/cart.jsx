@@ -56,22 +56,27 @@ export default function Cart() {
                             <th className="p-3">Product Name</th>
                             <th className="p-3">Product ID</th>
                             <th className="p-3">Qty</th>
-                            <th className="p-3 text-right">Price</th>
-                            <th className="p-3 text-right">Total</th>
+                            <th className="p-3 ">Price</th>
+                            <th className="p-3 ">Total</th>
                             <th className="p-3">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {cart.map((item) => (
-                            <CartCard key={item.productId} productID={item.productId} qty={item.qty} />
+                            <CartCard 
+                                key={item.productId} 
+                                productID={item.productId} 
+                                qty={item.qty} 
+                                handleDeleteProduct={handleDeleteProduct} // Pass the function here
+                            />
                         ))}
                     </tbody>
                 </table>
     
-                <div className="flex justify-center items-center mt-6">
-                    <div className="text-xl font-semibold text-center">
+                <div className="flex  justify-end  mt-6">
+                    <div className="text-xl font-semibold text-right">
                         <p>Total: <span className="text-primary">Rs. {Number(labeledTotal).toFixed(2)}</span></p>
-                        <p>Discount: <span className="text-pink-500">Rs. {Number(labeledTotal - total).toFixed(2)}</span></p>
+                        <p>Discount: <span className="text-pink-500">Rs. {Number(Math.abs(Number(labeledTotal - total).toFixed(2))).toFixed(2)}</span></p>
                         <p>Grand Total: <span className="text-purple-700 font-bold">Rs. {Number(total).toFixed(2)}</span></p>
                     </div>
                 </div>
@@ -83,6 +88,4 @@ export default function Cart() {
             <Footer />
         </div>
     );
-    
-    
 }
