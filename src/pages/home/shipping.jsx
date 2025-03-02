@@ -132,7 +132,7 @@ export default function ShippingPage() {
                 <button
                     onClick={createOrder}
                     className="bg-primary border-white border-2 text-white p-3 w-full mt-4 hover:bg-primary/50">
-                    Checkout
+                    Place Order
                 </button>
             </div>
             <Footer />
