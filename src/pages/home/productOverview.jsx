@@ -113,45 +113,60 @@ export default function ProductOverview() {
               {/* Review Section */}
               <div className="mt-2 relative bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 p-2">
                 <h3 className="text-xl font-bold mb-4 text-white">Leave a Review</h3>
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="border p-2 mb-4 text-gray-700 "
-                  value={newReview.name}
-                  onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
-                />
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="border p-2 mb-4 text-gray-700 "
-                  value={newReview.email}
-                  onChange={(e) => setNewReview({ ...newReview, email: e.target.value })}
+                <div className="flex gap-2"> 
+                    {/* Name Input */}
+                    <input
+                        type="text"
+                        placeholder="Your Name"
+                        className="border p-2 mb-4 w-[300px] text-gray-700"  
+                        value={newReview.name}
+                        onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
+                    />
+                    
+                    {/* Email Input */}
+                    <input
+                        type="email"
+                        placeholder="Your Email"
+                        className="border p-2 mb-4 w-[800px] text-gray-700"  
+                        value={newReview.email}
+                        onChange={(e) => setNewReview({ ...newReview, email: e.target.value })}
+                    />
+                </div>
+                
+                {/* Review Textarea */}
+                <textarea
+                    placeholder="Your Review"
+                    className="border p-2 w-full mb-2 text-gray-700"  
+                    value={newReview.review}
+                    onChange={(e) => setNewReview({ ...newReview, review: e.target.value })}
                 />
                 
-                <textarea
-                  placeholder="Your Review"
-                  className="border p-2 w-full mb-4 text-gray-700"
-                  value={newReview.review}
-                  onChange={(e) => setNewReview({ ...newReview, review: e.target.value })}
-                />
-                <select
-                  className="border p-2 gap-2 mb-4 text-gray-700"
-                  value={newReview.rating}
-                  onChange={(e) => setNewReview({ ...newReview, rating: Number(e.target.value) })}
-                >
-                  {[1, 2, 3, 4, 5].map((num) => (
-                    <option key={num} value={num}>
-                      {num}⭐
-                    </option>
-                  ))}
-                </select>
-                <button
-                  className="bg-white text-purple-600 px-4 py-2 hover:bg-pink-500 transition duration-300"
-                  onClick={submitReview}
-                >
-                  Submit Review
-                </button>
-              </div>
+                <div className="flex gap-2"> 
+                
+                    {/* Rating Select */}
+                    <select
+                        className="border p-2 mb-4 text-gray-700"  
+                        value={newReview.rating}
+                        onChange={(e) => setNewReview({ ...newReview, rating: Number(e.target.value) })}
+                    >
+                        {[1, 2, 3, 4, 5].map((num) => (
+                        <option key={num} value={num}>
+                            {num}⭐
+                        </option>
+                        ))}
+                    </select>
+                    
+                    {/* Submit Review Button */}
+                    <button
+                        className="bg-primary text-white mx-1 p-2 mb-4 w-[500px] hover:bg-primary/80 transition duration-300"
+                        onClick={submitReview}
+                    >
+                        Submit Review
+                    </button>
+                  </div>
+                </div>
+
+
             </div>
           </div>
         )}
