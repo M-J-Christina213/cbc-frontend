@@ -14,21 +14,21 @@ const subcategories = {
     Lips: ["Lipstick", "Lip Cream", "Lip Definer", "Lip Liner"],
     Face: ["Blusher", "Concealer", "Compact Powder", "Foundation"]
   },
-  Skincare: {
-    Cleanser: ["Cleanser", "Eye Gel Mask", "Moisturizer", "Serum", "Day & Night Cream", "Toner", "Face Wash", "Scrub", "Men's Skincare"],
-  },
-  Haircare: {
-    Shampoo: ["Shampoo", "Conditioner", "Hair Care Treatment"],
-  },
-  Nails: {
-    NailPolish: ["Nail Polish", "Nail Polish Remover"],
-  },
-  BodyAndBath: {
-    BodyCare: ["Body Lotion", "Body Care", "Body Wash", "Hand Sanitizer", "Hand Wash", "Foot Cream"],
-  },
-  ToolsAndBrushes: {
-    Brushes: ["Makeup Brushes", "Makeup Sponges", "Brush Set"],
-  }
+  Skincare: [
+    "Cleanser", "Eye Gel Mask", "Moisturizer", "Serum", "Day & Night Cream", "Toner", "Face Wash", "Scrub", "Men's Skincare"
+  ],
+  Haircare: [
+    "Shampoo", "Conditioner", "Hair Care Treatment"
+  ],
+  Nails: [
+    "Nail Polish", "Nail Polish Remover"
+  ],
+  BodyAndBath: [
+    "Body Lotion", "Body Care", "Body Wash", "Hand Sanitizer", "Hand Wash", "Foot Cream"
+  ],
+  ToolsAndBrushes: [
+    "Makeup Brushes", "Makeup Sponges", "Brush Set"
+  ]
 };
 
 export default function ProductPage() {
@@ -74,30 +74,46 @@ export default function ProductPage() {
         {/* Left Subcategory Navigation */}
         <div className="w-1/4 bg-white p-4 shadow-md">
           <h3 className="text-xl font-bold text-purple-800 mb-4">Subcategories</h3>
-          <ul className="space-y-2">
-            {Object.keys(subcategories[formattedCategory] || {}).map((subcategoryKey) => (
-              <li key={subcategoryKey} className="text-lg font-semibold">
-                <Link
-                  to={`/${category.toLowerCase()}/${subcategoryKey.toLowerCase()}`}
-                  className="hover:underline text-purple-700"
-                >
-                  {subcategoryKey}
-                </Link>
-                <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-600">
-                  {subcategories[formattedCategory][subcategoryKey].map((item) => (
-                    <li key={item}>
-                      <Link
-                        to={`/${category.toLowerCase()}/${subcategoryKey.toLowerCase()}`}
-                        className="hover:underline"
-                      >
-                        {item}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
+          {formattedCategory === "Makeup" && (
+            <ul className="space-y-2">
+              {Object.keys(subcategories[formattedCategory]).map((subcategoryKey) => (
+                <li key={subcategoryKey} className="text-lg font-semibold">
+                  <Link
+                    to={`/${category.toLowerCase()}/${subcategoryKey.toLowerCase()}`}
+                    className="hover:underline text-purple-700"
+                  >
+                    {subcategoryKey}
+                  </Link>
+                  <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-600">
+                    {subcategories[formattedCategory][subcategoryKey].map((item) => (
+                      <li key={item}>
+                        <Link
+                          to={`/${category.toLowerCase()}/${subcategoryKey.toLowerCase()}`}
+                          className="hover:underline"
+                        >
+                          {item}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          )}
+          {formattedCategory !== "Makeup" && (
+            <ul className="space-y-2">
+              {subcategories[formattedCategory].map((item) => (
+                <li key={item} className="text-lg font-semibold">
+                  <Link
+                    to={`/${category.toLowerCase()}/${item.toLowerCase()}`}
+                    className="hover:underline text-purple-700"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         {/* Product Grid */}
@@ -116,7 +132,7 @@ export default function ProductPage() {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
