@@ -43,7 +43,12 @@ export default function MyOrdersPage() {
             headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
-            setOrders(res.data);
+            // Format order IDs as "ORD0001", "ORD0002", etc.
+            const formattedOrders = res.data.map((order, index) => ({
+                ...order,
+                orderId: `ORD${String(index + 1).padStart(4, "0")}`, // Format ID with padding
+            }));
+            setOrders(formattedOrders);
         })
         .catch(() => {
             setError("Failed to fetch orders. Please try again!");
@@ -89,7 +94,7 @@ export default function MyOrdersPage() {
                                         className="text-center cursor-pointer hover:bg-secondary hover:text-white font-semibold group"
                                         onClick={() => setSelectedOrder(order)}
                                     >
-                                        <td className="border border-gray-200 px-4 py-2">{order.orderId}</td>
+                                        <td className="border border-gray-200 px-4 py-2">{order.orderId}</td> {/* Displaying formatted Order ID */}
                                         <td className="border border-gray-200 px-4 py-2">
                                             <span className={`px-2 py-1 rounded text-white ${
                                                 order.status === "delivered" ? "bg-green-500" :
