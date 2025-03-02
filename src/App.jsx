@@ -7,7 +7,7 @@ import SignUpPage from './pages/signUpPage'
 import AdminHomepage from './pages/admin/adminHomePage'
 import { Toaster } from 'react-hot-toast'
 import { GoogleOAuthProvider } from '@react-oauth/google'
-import AboutUs from './pages/aboutUsPage'
+import AboutUs from './pages/home/aboutUsPage'
 
 
 function App() {
