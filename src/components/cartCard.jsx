@@ -2,8 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function CartCard(props) {
-    const productID = props.productID;
-    const initialQty = props.qty;
+    const { productID, qty: initialQty, isShippingPage } = props;
 
     const [product, setProduct] = useState(null);
     const [qty, setQty] = useState(initialQty);
@@ -47,8 +46,9 @@ export default function CartCard(props) {
                     type="number"
                     value={qty}
                     onChange={handleChangeQuantity}
-                    className="w-12 text-center border border-gray-300 rounded-md text-black group-hover:text-black"
+                    className="w-12 text-center border border-gray-300  text-black group-hover:text-black"
                     min="1"
+                    disabled={isShippingPage} // Disable input in shipping page
                 />
             </td>
             <td className="text-center p-2 whitespace-nowrap">
