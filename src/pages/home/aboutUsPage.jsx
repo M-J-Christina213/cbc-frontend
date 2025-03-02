@@ -10,7 +10,7 @@ import story from "../../assets/images-cbc/aboutUs/story.png"
 
 export default function AboutUs() {
   return (
-   
+        
     <div className="bg-white text-gray-900">
          <Header/>
       {/* Banner Section */}

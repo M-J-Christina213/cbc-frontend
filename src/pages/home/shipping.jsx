@@ -38,14 +38,15 @@ export default function ShippingPage() {
             toast.error("Please fill in all fields");
             return;
         }
-      
+
         const token = localStorage.getItem("token");
+        
         if (!token) {
             toast.error("Please log in as a customer to create orders");  // Show toast if no token
             navigate("/login");
             return;
         }
-      
+
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/orders/`, {
             orderedItems: cart,
             name,
@@ -68,7 +69,6 @@ export default function ShippingPage() {
             console.log(error.message);  
         });
     }
-    
 
     return (
         <div className="w-full min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400">
@@ -117,16 +117,18 @@ export default function ShippingPage() {
                     </tbody>
                 </table>
 
-                <div className="mt-4 text-lg font-bold">
-                    <p>Total: Rs. {Number(labeledTotal).toFixed(2)}</p>
-                    <p>Discount: Rs. {Number(Math.abs(Number(labeledTotal - total).toFixed(2))).toFixed(2)}</p>
-                    <p>Grand Total: Rs. {Number(total).toFixed(2)}</p>
+                <div className="mt-4 flex  justify-end">
+                    <div className="text-lg font-bold text-right">
+                        <p>Total: Rs. {Number(labeledTotal).toFixed(2)}</p>
+                        <p>Discount: Rs. {Number(Math.abs(Number(labeledTotal - total).toFixed(2))).toFixed(2)}</p>
+                        <p>Grand Total: Rs. {Number(total).toFixed(2)}</p>
+                    </div>
                 </div>
 
                 <button
                     onClick={createOrder}
                     className="bg-primary border-white border-2 text-white p-3 w-full mt-4 hover:bg-primary/50">
-                    Checkout
+                    Place Order
                 </button>
             </div>
             <Footer />
