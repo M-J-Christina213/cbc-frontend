@@ -2,19 +2,29 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaEye, FaTrashAlt, FaUserSlash } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function AdminReviewsPage() {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Function to fetch reviews from the backend
   const fetchReviews = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(import.meta.env.VITE_BACKEND_URL + "/api/reviews");
-      setReviews(response.data);
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/reviews`
+      );
+      
+      // Check if no reviews are returned
+      if (response.data.length === 0) {
+        toast.info("No reviews found for any product.");
+      } else {
+        setReviews(response.data);
+      }
     } catch (err) {
       console.error("Failed to fetch reviews:", err);
+      toast.error("Failed to fetch reviews.");
     } finally {
       setLoading(false);
     }
@@ -26,9 +36,9 @@ export default function AdminReviewsPage() {
 
   const handleHideReview = async (reviewID) => {
     try {
-      await axios.put(import.meta.env.VITE_BACKEND_URL + `/api/reviews/${reviewID}/hide`);
+      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/reviews/${reviewID}/hide`);
       toast.success("Review hidden successfully");
-      fetchReviews();
+      fetchReviews(); // Refresh reviews after hiding
     } catch {
       toast.error("Failed to hide review");
     }
@@ -36,7 +46,7 @@ export default function AdminReviewsPage() {
 
   const handleBlockCustomer = async (customerID) => {
     try {
-      await axios.put(import.meta.env.VITE_BACKEND_URL + `/api/customers/${customerID}/block`);
+      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/customers/${customerID}/block`);
       toast.success("Customer blocked successfully");
     } catch {
       toast.error("Failed to block customer");
@@ -59,7 +69,7 @@ export default function AdminReviewsPage() {
             <thead>
               <tr className="bg-purple-100 text-purple-700 font-semibold">
                 <th className="p-3 text-left">Product ID</th>
-                <th className="p-3 text-left">Reviews</th>
+                <th className="p-3 text-left">Reviews Count</th>
                 <th className="p-3 text-left">Avg Rating</th>
                 <th className="p-3 text-left">Actions</th>
               </tr>
@@ -82,6 +92,18 @@ export default function AdminReviewsPage() {
                       >
                         <FaEye />
                       </Link>
+                      <button
+                        onClick={() => handleHideReview(product._id)}
+                        className="text-red-600 hover:text-red-800"
+                      >
+                        <FaTrashAlt />
+                      </button>
+                      <button
+                        onClick={() => handleBlockCustomer(product.customerID)}
+                        className="text-gray-600 hover:text-gray-800"
+                      >
+                        <FaUserSlash />
+                      </button>
                     </td>
                   </tr>
                 ))
