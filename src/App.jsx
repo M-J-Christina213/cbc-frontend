@@ -15,6 +15,7 @@ import Cart from "./pages/home/cart";
 import ProductOverview from "./pages/home/productOverview";
 import ShippingPage from "./pages/home/shipping";
 import MyOrdersPage from "./pages/home/myOrders";
+import ExclusiveProducts from "./components/exclusiveProducts";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="/*" element={<Homepage />} />
             <Route path="/:category" element={<ProductPage />} />
             <Route path="/:category/:subcategory" element={<ProductPage />} />
+            <Route path="/exclusive/:category" element={<ExclusiveProducts />} />
             <Route path="/productInfo/:productID" element={<ProductOverview/>}/>
             <Route path="/about-us" element={<AboutUs/>}/>
             <Route path="/contact-us" element={<ContactUs/>}/>

@@ -20,17 +20,17 @@ const Menu = [
   {
     id: 3,
     name: "New Arrivals",
-    link: "/new-arrivals",
+    link: "/exclusive/new-arrivals",
   },
   {
     id: 4,
     name: "Special Offers",
-    link: "/special-offers",
+    link: "/exclusive/special-offers",
   },
   {
     id: 5,
     name: "Gifts",
-    link: "/gifts",
+    link: "/exclusive/gifts",
   },
   {
     id: 6,
