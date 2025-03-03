@@ -1,6 +1,6 @@
 import { useState } from "react";
 import makeup from "../assets/featured/Lipstick.jpeg";
-import paletteImage from "../assets/featured/palette.jpeg";
+import paletteImage from "../assets/featured/shimmer.jpeg";
 import foundation from "../assets/featured/foundation.jpeg";
 import highlighter from "../assets/featured/highlighter.jpeg";
 import lipgloss from "../assets/featured/lipgloss.jpeg";
