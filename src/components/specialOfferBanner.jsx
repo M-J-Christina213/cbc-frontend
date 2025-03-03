@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import skincare from "../assets/images-cbc/saleskincare.png";
+import offer1 from "../assets/specialOffer/offer1.jpeg";
+import offer2 from "../assets/specialOffer/offer2.jpeg";
+import offer3 from "../assets/specialOffer/offer3.jpeg";
 
 const specialOffers = [
   {
     id: 1,
-    title: 'Exclusive 20% OFF',
-    description: 'Get 20% off on all skincare products. Limited time only!',
+    title: 'Exclusive 50% OFF',
+    description: 'Get 50% off on all skincare products. Limited time only!',
     price: 'Rs. 1,500',
     newPrice: 'Rs. 1,200',
-    image: skincare,
+    image: offer1,
   },
   {
     id: 2,
@@ -16,7 +18,7 @@ const specialOffers = [
     description: 'Buy any lipstick and get another one for free!',
     price: 'Rs. 1,000',
     newPrice: 'Rs. 500',
-    image: skincare,
+    image: offer2,
   },
   {
     id: 3,
@@ -24,7 +26,7 @@ const specialOffers = [
     description: 'Shop now and enjoy free shipping on orders above Rs. 2,000.',
     price: 'Rs. 2,000',
     newPrice: 'Rs. 2,000',
-    image: skincare,
+    image: offer3,
   },
 ];
 
@@ -32,8 +34,8 @@ export default function SpecialOffersBanner() {
   const [hoveredOffer, setHoveredOffer] = useState(null);
 
   return (
-    <div className="w-full py-10 px-6 md:px-12 bg-purple-100">
-      <h2 className="text-3xl font-bold text-center mb-6">Special Offers</h2>
+    <div className="w-full min-h-screen py-12 px-6 md:px-16 bg-purple-100">
+      <h2 className="text-4xl font-bold text-center mb-10">Special Offers</h2>
 
       {/* Special Offers Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -42,15 +44,15 @@ export default function SpecialOffersBanner() {
             key={offer.id}
             onMouseEnter={() => setHoveredOffer(offer.id)}
             onMouseLeave={() => setHoveredOffer(null)}
-            className={`relative bg-white shadow-lg rounded-lg overflow-hidden transition-all duration-300 ease-in-out transform ${
-              hoveredOffer === offer.id ? 'scale-105 shadow-xl' : ''
+            className={`relative bg-white shadow-lg rounded-xl overflow-hidden transition-all duration-300 ease-in-out transform ${
+              hoveredOffer === offer.id ? 'scale-105 shadow-2xl' : ''
             }`}
           >
             {/* Offer Image */}
             <img
               src={offer.image}
               alt={offer.title}
-              className="w-full h-40 object-cover"
+              className="w-full h-58 object-cover"
             />
 
             {/* Offer Details */}
