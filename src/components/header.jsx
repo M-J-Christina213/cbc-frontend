@@ -62,14 +62,15 @@ export default function Header() {
       {isSliderOpen && <NavSlider closeSlider={() => setIsSliderOpen(false)} />}
 
       {/* Top Section */}
-      <header className="bg-white w-full shadow-md">
+      <header className="bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 w-full shadow-md">
         <div className="flex justify-between items-center px-6 py-3 lg:px-12">
           {/* Logo */}
           <img
-            src="/CBC-Logo-transparent.png"
+            src="/CBC-Logo.png"
             alt="Logo"
-            className="h-20 md:cursor-pointer"
+            className="h-24 w-24 rounded-full object-cover md:cursor-pointer"
           />
+
 
           {/* Search Bar */}
           <div className="md:flex items-center flex-grow mx-6 max-w-md relative">
