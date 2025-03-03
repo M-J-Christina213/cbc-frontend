@@ -1,35 +1,35 @@
 import { useState } from "react";
-import makeup from "../assets/images-cbc/categoryMakeup.png";
-import eyeshadow from "../assets/images-cbc/categoryMakeup.png";
-import foundation from "../assets/images-cbc/categoryMakeup.png";
-import highlighter from "../assets/images-cbc/categoryMakeup.png";
-import lipgloss from "../assets/images-cbc/categoryMakeup.png";
-import shimmerEyeshadow from "../assets/images-cbc/categoryMakeup.png";
-import bbCream from "../assets/images-cbc/categoryMakeup.png";
-import mascara from "../assets/images-cbc/categoryMakeup.png";
-import exclusiveLipstick from "../assets/images-cbc/categoryMakeup.png";
-import exclusivePalette from "../assets/images-cbc/categoryMakeup.png";
-import exclusiveFoundation from "../assets/images-cbc/categoryMakeup.png";
-import exclusiveBlush from "../assets/images-cbc/categoryMakeup.png";
+import makeup from "../assets/featured/Lipstick.jpeg";
+import eyeshadow from "../assets/featured/palette.jpeg";
+import foundation from "../assets/featured/foundation.jpeg";
+import highlighter from "../assets/featured/highlighter.jpeg";
+import lipgloss from "../assets/featured/lipgloss.jpeg";
+import shimmerEyeshadow from "../assets/featured/shimmer.jpeg";
+import bbCream from "../assets/featured/bbcream1.webp";
+import mascara from "../assets/featured/mascara.jpg";
+import exclusiveLipstick from "../assets/featured/exlipstick.jpg";
+import exclusivePalette from "../assets/featured/diamond.jpeg";
+import exclusiveFoundation from "../assets/featured/luxuryStick.avif";
+import exclusiveBlush from "../assets/featured/blush.jpg";
 
 const productCategories = {
   "Best Sellers": [
-    { id: 1, name: "Matte Liquid Lipstick", price: "Rs 15.99", image: makeup, rating: 4 },
-    { id: 2, name: "Velvet Eyeshadow Palette", price: "Rs 22.49", image: eyeshadow, rating: 5 },
-    { id: 3, name: "Full-Coverage Foundation", price: "Rs 18.99", image: foundation, rating: 3 },
-    { id: 4, name: "Glow Highlighter", price: "Rs 12.99", image: highlighter, rating: 4 },
+    { id: 1, name: "Matte Liquid Lipstick", price: "Rs 1500.99", image: makeup, rating: 4 },
+    { id: 2, name: "Velvet Eyeshadow Palette", price: "Rs 2200.49", image: eyeshadow, rating: 5 },
+    { id: 3, name: "Full-Coverage Foundation", price: "Rs 1800.99", image: foundation, rating: 3 },
+    { id: 4, name: "Glow Highlighter", price: "Rs 1200.99", image: highlighter, rating: 4 },
   ],
   "New Arrivals": [
-    { id: 5, name: "Hydrating Lip Gloss", price: "Rs 14.99", image: lipgloss, rating: 4 },
-    { id: 6, name: "Shimmer Eyeshadow Palette", price: "Rs 24.99", image: shimmerEyeshadow, rating: 5 },
-    { id: 7, name: "BB Cream SPF 30", price: "Rs 19.99", image: bbCream, rating: 3 },
-    { id: 8, name: "Long-Wear Mascara", price: "Rs 16.49", image: mascara, rating: 4 },
+    { id: 5, name: "Hydrating Lip Gloss", price: "Rs 1400.99", image: lipgloss, rating: 4 },
+    { id: 6, name: "Shimmer Eyeshadow Palette", price: "Rs 2400.99", image: shimmerEyeshadow, rating: 5 },
+    { id: 7, name: "BB Cream SPF 30", price: "Rs 1900.99", image: bbCream, rating: 3 },
+    { id: 8, name: "Long-Wear Mascara", price: "Rs 1600.49", image: mascara, rating: 4 },
   ],
   "Exclusives": [
-    { id: 9, name: "Limited Edition Lipstick", price: "Rs 21.99", image: exclusiveLipstick, rating: 5 },
-    { id: 10, name: "Diamond Glow Palette", price: "Rs 29.99", image: exclusivePalette, rating: 4 },
-    { id: 11, name: "Luxury Foundation Stick", price: "Rs 26.99", image: exclusiveFoundation, rating: 4 },
-    { id: 12, name: "Silk Finish Blush", price: "Rs 17.99", image: exclusiveBlush, rating: 3 },
+    { id: 9, name: "Limited Edition Lipstick", price: "Rs 2100.99", image: exclusiveLipstick, rating: 5 },
+    { id: 10, name: "Diamond Glow Palette", price: "Rs 2900.99", image: exclusivePalette, rating: 4 },
+    { id: 11, name: "Luxury Foundation Stick", price: "Rs 2600.99", image: exclusiveFoundation, rating: 4 },
+    { id: 12, name: "Silk Finish Blush", price: "Rs 1700.99", image: exclusiveBlush, rating: 3 },
   ],
 };
 
@@ -93,7 +93,7 @@ export default function FeaturedProducts() {
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-60 object-cover rounded-md"
+              className="w-full h-65 object-cover rounded-md"
             />
             <h3 className="text-lg font-semibold mt-3">{product.name}</h3>
             <p className="text-primary font-bold mt-1">{product.price}</p>
