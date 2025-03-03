@@ -12,6 +12,7 @@ import exclusivePalette from "../assets/featured/diamond.jpeg";
 import exclusiveFoundation from "../assets/featured/luxuryStick.avif";
 import exclusiveBlush from "../assets/featured/blush.jpg";
 
+
 const productCategories = {
   "Best Sellers": [
     { id: 1, name: "Matte Liquid Lipstick", price: "Rs 1500.99", image: makeup, rating: 4 },
