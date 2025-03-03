@@ -1,6 +1,6 @@
 import { useState } from "react";
 import makeup from "../assets/featured/Lipstick.jpeg";
-import eyeshadow from "../assets/featured/palette.jpeg";
+import paletteImage from "../assets/featured/palette.jpeg";
 import foundation from "../assets/featured/foundation.jpeg";
 import highlighter from "../assets/featured/highlighter.jpeg";
 import lipgloss from "../assets/featured/lipgloss.jpeg";
@@ -16,7 +16,7 @@ import exclusiveBlush from "../assets/featured/blush.jpg";
 const productCategories = {
   "Best Sellers": [
     { id: 1, name: "Matte Liquid Lipstick", price: "Rs 1500.99", image: makeup, rating: 4 },
-    { id: 2, name: "Velvet Eyeshadow Palette", price: "Rs 2200.49", image: eyeshadow, rating: 5 },
+    { id: 2, name: "Velvet Eyeshadow Palette", price: "Rs 2200.49", image: paletteImage, rating: 5 },
     { id: 3, name: "Full-Coverage Foundation", price: "Rs 1800.99", image: foundation, rating: 3 },
     { id: 4, name: "Glow Highlighter", price: "Rs 1200.99", image: highlighter, rating: 4 },
   ],
