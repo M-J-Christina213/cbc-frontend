@@ -28,44 +28,44 @@ export default function HeroSection() {
     useEffect(() => {
         const interval = setInterval(() => {
             nextSlide();
-        }, 5000); // Auto-slide every 5 seconds
+        }, 5000);
 
-        return () => clearInterval(interval); // Cleanup on unmount
+        return () => clearInterval(interval);
     }, []);
 
     return (
-        <div className="max-w-[1400px] min-h-screen w-full m-auto relative group">
+        <div className="max-w-full w-full min-h-screen flex justify-center items-center relative group">
             <div 
                 style={{ backgroundImage: `url(${slides[currentSlide].url})` }}
-                className="w-full h-[500px] bg-center bg-cover bg-no-repeat duration-500"
+                className="w-full h-[730px] bg-center bg-cover bg-no-repeat transition-all duration-500"
             ></div>
             
             {/* Left Arrow */}
-            <div 
+            <button 
                 onClick={prevSlide} 
-                className="hidden group-hover:block absolute top-[50%] left-5 transform -translate-y-1/2 cursor-pointer text-2xl rounded-full bg-black/20 p-2"
+                className="hidden group-hover:flex absolute top-1/2 left-4 transform -translate-y-1/2 cursor-pointer text-3xl rounded-full bg-black/30 text-white p-2"
             >
                 <BsChevronCompactLeft size={30}/>
-            </div>
+            </button>
             
             {/* Right Arrow */}
-            <div 
+            <button 
                 onClick={nextSlide} 
-                className="hidden group-hover:block absolute top-[50%] right-5 transform -translate-y-1/2 cursor-pointer text-2xl rounded-full bg-black/20 p-2"
+                className="hidden group-hover:flex absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer text-3xl rounded-full bg-black/30 text-white p-2"
             >
                 <BsChevronCompactRight size={30}/>
-            </div>
+            </button>
 
             {/* Dots Indicator */}
-            <div className="flex justify-center py-2">
+            <div className="absolute bottom-4 flex justify-center w-full gap-2">
                 {slides.map((_, slideIndex) => (
-                    <div 
+                    <button 
                         key={slideIndex} 
                         onClick={() => setCurrentSlide(slideIndex)}
-                        className={`text-2xl cursor-pointer ${currentSlide === slideIndex ? 'text-gray-800' : 'text-gray-400'}`}
+                        className={`text-2xl cursor-pointer transition-all duration-300 ${currentSlide === slideIndex ? 'text-gray-900' : 'text-gray-500'}`}
                     >
                         <RxDotFilled />
-                    </div>
+                    </button>
                 ))}
             </div>
         </div>
